@@ -19,10 +19,7 @@ class VisiteurController extends Controller
         }
     }
 
-    /**
-     *Authentifie le visiteur
-     * @return type Vue formLogin ou home
-     */
+
     public function signIn(){
         try {
             $login = Request::input('login');
@@ -49,10 +46,7 @@ class VisiteurController extends Controller
         }
     }
 
-    /**
-     * Déconnecte le visiteur authentifié
-     * @return type Vue home
-     */
+
     public function signOut() {
         $unVisiteur = new ServiceVisiteur();
         $unVisiteur->logout();
