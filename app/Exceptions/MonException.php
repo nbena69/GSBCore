@@ -8,6 +8,10 @@ class MonException extends Exception{
     protected $message = 'Unkown exception';
     private $string;
     protected $code = 0;
+    /*
+     * protected $file;
+     * protected $line;
+    */
     private $trade;
 
     public function __construct($message, $code = 0, Exception $previous = null){

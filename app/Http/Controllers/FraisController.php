@@ -12,5 +12,7 @@ use Illuminate\Support\Facades\Session;
 
 class FraisController extends Controller
 {
+    public function getFraisVisiteur() {
 
+    }
 }
