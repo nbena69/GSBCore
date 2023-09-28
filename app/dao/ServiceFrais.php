@@ -2,6 +2,7 @@
 
 namespace App\dao;
 
+use App\metier\Frais;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\DB;
 use App\Exceptions\MonException;
@@ -36,5 +37,17 @@ class ServiceFrais
 
     public function getById($id_frais)
     {
+        try {
+            $frais = Frais::find($id_frais);
+
+            if ($frais) {
+                return $frais;
+            } else {
+                throw new MonException('Frais non trouvé.');
+            }
+        } catch (\Exception $e) {
+            throw new MonException('Une erreur s\'est produite lors de la récupération des données de frais.');
+        }
     }
+
 }

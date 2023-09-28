@@ -27,6 +27,6 @@ Route::get('/getLogout', [VisiteurController::class, 'signOut']);
 
 Route::get('/getListeFrais', [FraisController::class, 'getFraisVisiteur']);
 
-Route::get('/modifierFrais', [FraisController::class, 'updateFrais']);
+Route::get('/modifierFrais/{id}', [FraisController::class, 'updateFrais']);
 Route::get('/validerFrais', [FraisController::class, 'validateFrais']);
 
