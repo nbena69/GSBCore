@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\VisiteurController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,5 +22,5 @@ Route::get('/', function () {
 });
 
 Route::get('/formLogin', [VisiteurController::class, 'getLogin']);
-Route::get('/login', [VisiteurController::class, 'signIn']);
+Route::post('/login', [VisiteurController::class, 'signIn']);
 Route::get('/getLogout', [VisiteurController::class, 'signOut']);

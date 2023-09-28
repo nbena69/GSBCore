@@ -4,20 +4,28 @@ namespace App\Http\Controllers;
 use App\Exceptions\MonException;
 use Request;
 use App\metier\Visiteur;
+use App\dao\ServiceVisiteur;
+use Exception;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+
+
+
 class VisiteurController extends Controller
 {
     public function getLogin(){
         try {
             $erreur = "";
-            return view ('vues/formLogin', compact('erreur'));
-        } catch (MonException $e) {
-            $monErreur = $e->getMessage();
-            return view('vues/formLogin', compact('erreur'));
-        } catch (Exception $e) {
-            $monErreur = $e->getMessage();
-            return view('vues/formLogin', compact('erreur'));
+            return view('vues.formLogin', compact('erreur'));
+        } catch (\MonException $e) {
+            $erreur = $e->getMessage();
+            return view('vues.formLogin', compact('erreur'));
+        } catch (\Exception $e) {
+            $erreur = $e->getMessage();
+            return view('vues.formLogin', compact('erreur'));
         }
     }
+
 
 
     public function signIn(){

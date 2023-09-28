@@ -17,7 +17,8 @@
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-target">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target="#navbar-collapse-target">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -28,7 +29,8 @@
             @if (Session::get('id') == 0)
                 <div class="collapse navbar-collapse navbar-right">
                     <ul class="nav navbar-nav">
-                        <li><a href="" data-toggle="collapse" data-target=".navbar-collapse.in">Se connecter</a></li>
+                        <li><a href="{{ url('/formLogin') }}" data-toggle="collapse"
+                               data-target=".navbar-collapse.in">Se connecter</a></li>
                     </ul>
                 </div>
             @endif
@@ -39,7 +41,7 @@
                         <li><a href="" data-toggle="collapse" data-target=".navbar-collapse.in">Ajouter</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="" data-toggle="collapse" data-target=".navbar-collapse.in">Se déconnecter</a></li>
+                        <li><a href="{{ url('/getLogout') }}" data-toggle="collapse" data-target=".navbar-collapse.in">Se déconnecter</a></li>
                     </ul>
                 </div>
             @endif

@@ -2,11 +2,14 @@
 
 namespace App\dao;
 
-use Illumiante\Support\Facades\DB;
+use Illuminate\Support\Facades\DB;
 use App\Exceptions\MonException;
+use Illuminate\Support\Facades\Session;
+
 
 class ServiceVisiteur {
-    public function login(type $login, $pwd)
+
+    public function login($login, $pwd)
     {
         $connected = false;
         try {
@@ -27,7 +30,12 @@ class ServiceVisiteur {
         }
         return $connected;
     }
+
+
+    public function logout(){
+        Session::put('id', 0);
+    }
 }
 
 
-?>
+
