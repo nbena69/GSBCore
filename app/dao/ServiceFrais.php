@@ -38,11 +38,11 @@ class ServiceFrais
     public function getById($id_frais)
     {
         try {
-            $dateJour = date("Y-m-d");
-            DB::table('frais')
+            $frais = DB::table('frais')
                 ->select()
                 ->where('id_frais', '=', $id_frais)
-                ->get();
+                ->first();
+            return $frais;
         } catch (QueryException $e) {
             throw new MonException($e->getMessage(), 5);
         }
