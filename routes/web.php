@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FraisController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VisiteurController;
 
@@ -17,10 +18,11 @@ use App\Http\Controllers\VisiteurController;
 
 
 Route::get('/', function () {
-    $nael = 2;
     return view('home');
 });
 
 Route::get('/formLogin', [VisiteurController::class, 'getLogin']);
 Route::post('/login', [VisiteurController::class, 'signIn']);
 Route::get('/getLogout', [VisiteurController::class, 'signOut']);
+
+Route::get('/getListeFrais', [FraisController::class, 'getFraisVisiteur']);
