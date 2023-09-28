@@ -35,17 +35,17 @@ class FraisController extends Controller
 
     public function updateFrais($id_frais) {
         try {
-            $monErreur = "";
+            $erreur = "";
             $unServiceFrais = new ServiceFrais();
             $unFrais = $unServiceFrais->getById($id_frais);
             $titreVue = "Modification d'une fiche de frais";
-            return view('vues/formFrais', compact('unFrais', 'titreVue', 'monErreur'));
+            return view('vues/formFrais', compact('unFrais', 'titreVue', 'erreur'));
         } catch (MonException $e) {
-            $monErreur = $e->getMessage();
-            return view('vues/error', compact('monErreur'));
+            $erreur = $e->getMessage();
+            return view('vues/error', compact('erreur'));
         } catch (Exception $e) {
-            $monErreur = $e->getMessage();
-            return view('vues/error', compact('monErreur'));
+            $erreur = $e->getMessage();
+            return view('vues/error', compact('erreur'));
         }
     }
     public function validateFrais() {

@@ -38,15 +38,13 @@ class ServiceFrais
     public function getById($id_frais)
     {
         try {
-            $frais = Frais::find($id_frais);
-
-            if ($frais) {
-                return $frais;
-            } else {
-                throw new MonException('Frais non trouvé.');
-            }
-        } catch (\Exception $e) {
-            throw new MonException('Une erreur s\'est produite lors de la récupération des données de frais.');
+            $dateJour = date("Y-m-d");
+            DB::table('frais')
+                ->select()
+                ->where('id_frais', '=', $id_frais)
+                ->get();
+        } catch (QueryException $e) {
+            throw new MonException($e->getMessage(), 5);
         }
     }
 
