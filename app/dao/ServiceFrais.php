@@ -33,4 +33,8 @@ class ServiceFrais
             throw new MonException($e->getMessage(), 5);
         }
     }
+
+    public function getById($id_frais)
+    {
+    }
 }
