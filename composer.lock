@@ -4,8 +4,45 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d1853b2fc8c43d3f8c320b39788453a2",
+    "content-hash": "3b705bd5c36268ab7b0b8d86ec9d9662",
     "packages": [
+        {
+            "name": "benaissa/test-montant-frais",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nbena69/test-montant-frais.git",
+                "reference": "601abd4ce16a2cca45f73c16c0d0826306a21651"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nbena69/test-montant-frais/zipball/601abd4ce16a2cca45f73c16c0d0826306a21651",
+                "reference": "601abd4ce16a2cca45f73c16c0d0826306a21651",
+                "shasum": ""
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Benaissa\\TestMontantFrais\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Nokia"
+            ],
+            "authors": [
+                {
+                    "name": "nbena69",
+                    "email": "naelbenaissapro@gmail.com"
+                }
+            ],
+            "support": {
+                "issues": "https://github.com/nbena69/test-montant-frais/issues",
+                "source": "https://github.com/nbena69/test-montant-frais/tree/master"
+            },
+            "time": "2023-09-29T13:09:40+00:00"
+        },
         {
             "name": "brick/math",
             "version": "0.11.0",
@@ -8205,7 +8242,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "benaissa/test-montant-frais": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
