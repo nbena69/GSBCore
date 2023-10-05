@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Exceptions\MonException;
 use App\metier\Frais;
+use App\metier\Visiteur;
+use App\Models\User;
 use App\dao\ServiceFrais;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Session;
+
 
 
 class FraisController extends Controller
@@ -113,6 +116,23 @@ class FraisController extends Controller
         } catch (Exception $e) {
             $erreur = $e->getMessage();
             return view('vues/error', compact('erreur'));
+        }
+    }
+
+    public function supprimeFrais($id_frais)
+    {
+        $unServiceFrais = new ServiceFrais();
+
+        try {
+            $unServiceFrais->deleteFrais($id_frais);
+        } catch (MonException $e) {
+            $erreur = $e->getMessage();
+            return view('vues/error', compact('erreur'));
+        } catch (Exception $e) {
+            $erreur = $e->getMessage();
+            return view('vues/error', compact('erreur'));
+        } finally {
+           return redirect('/getListeFrais');
         }
     }
 }

@@ -38,7 +38,8 @@
                     <ul class="nav navbar-nav">
                         <li><a href="{{ url('/getListeFrais') }}" data-toggle="collapse"
                                data-target=".navbar-collapse.in">Lister</a></li>
-                        <li><a href="{{ url('/ajouterFrais') }}" data-toggle="collapse" data-target=".navbar-collapse.in">Ajouter</a></li>
+                        <li><a href="{{ url('/ajouterFrais') }}" data-toggle="collapse"
+                               data-target=".navbar-collapse.in">Ajouter</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="{{ url('/getLogout') }}" data-toggle="collapse"
@@ -73,6 +74,10 @@
         @endforeach
     </table>
 </div>
+<div class="col-md-6 col-md-offset-3">
+    @include('vues/error')
+</div>
+
 <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('assets/js/bootstrap.js') }}"></script>
 </body>

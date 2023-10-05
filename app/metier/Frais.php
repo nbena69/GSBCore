@@ -4,7 +4,8 @@ namespace App\metier;
 
 use App\Exceptions\MonException;
 use Illuminate\Database\Eloquent\Model;
-use DB;
+use Illuminate\Support\Facades\DB;
+
 use Illuminate\Database\QueryException;
 
 class Frais extends model
@@ -27,13 +28,5 @@ class Frais extends model
         $this->id_frais = 0;
     }
 
-    public function deleteFrais($id_frais)
-    {
-        try {
-            DB::table('fraishorsforfait')->where('id_frais', '=', $id_frais)->delete();
-            DB::table('frais')->where('id_frais', '=', $id_frais)->delete();
-        } catch (QueryException $e) {
-            throw new MonException($e->getMessage(), 5);
-        }
-    }
+
 }

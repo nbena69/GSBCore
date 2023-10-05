@@ -32,5 +32,5 @@ Route::get('/validerFrais', [FraisController::class, 'validateFrais']);
 
 Route::get('/ajouterFrais', [FraisController::class, 'addFrais']);
 
-Route::get('/supprimerFrais/{id}', [FraisController::class, 'updateFrais']);
+Route::get('/supprimerFrais/{id}', [FraisController::class, 'supprimeFrais']);
 
