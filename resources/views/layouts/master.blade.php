@@ -12,47 +12,50 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:400,300" rel="stylesheet" type="text/css">
 </head>
 <body class="body">
-    <div class="container">
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse"
-                            data-target="#navbar-collapse-target">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="{{ url('/') }}">GSB Frais</a>
-                </div>
-                @if (Session::get('id') == 0)
-                    <div class="collapse navbar-collapse navbar-right">
-                        <ul class="nav navbar-nav">
-                            <li><a href="{{ url('/formLogin') }}" data-toggle="collapse"
-                                   data-target=".navbar-collapse.in">Se connecter</a></li>
-                        </ul>
-                    </div>
-                @endif
-                @if (Session::get('id') > 0)
-                    <div class="collapse navbar-collapse" id="navbar-collapse-target">
-                        <ul class="nav navbar-nav">
-                            <li><a href="{{ url('/getListeFrais') }}" data-toggle="collapse"
-                                   data-target=".navbar-collapse.in">Lister</a></li>
-                            <li><a href="{{ url('/ajouterFrais') }}" data-toggle="collapse" data-target=".navbar-collapse.in">Ajouter</a></li>
-                        </ul>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a href="{{ url('/getLogout') }}" data-toggle="collapse"
-                                   data-target=".navbar-collapse.in">Se déconnecter</a></li>
-                        </ul>
-                    </div>
-                @endif
+<div class="container">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target="#navbar-collapse-target">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ url('/') }}">GSB Frais</a>
             </div>
-        </nav>
-    </div>
+            @if (Session::get('id') == 0)
+                <div class="collapse navbar-collapse navbar-right">
+                    <ul class="nav navbar-nav">
+                        <li><a href="{{ url('/formLogin') }}" data-toggle="collapse"
+                               data-target=".navbar-collapse.in">Se connecter</a></li>
+                    </ul>
+                </div>
+            @endif
+            @if (Session::get('id') > 0)
+                <div class="collapse navbar-collapse" id="navbar-collapse-target">
+                    <ul class="nav navbar-nav">
+                        <li><a href="{{ url('/getListeFrais') }}" data-toggle="collapse"
+                               data-target=".navbar-collapse.in">Lister</a></li>
+                        <li><a href="{{ url('/ajouterFrais') }}" data-toggle="collapse"
+                               data-target=".navbar-collapse.in">Ajouter</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{{ url('/getLogout') }}" data-toggle="collapse"
+                               data-target=".navbar-collapse.in">Se déconnecter</a></li>
+                    </ul>
+                </div>
+            @endif
+        </div>
+    </nav>
+</div>
 <div class="container">
     @yield('content')
 </div>
-
+<footer class="fixed-bottom bg-light text-center py-2" style="position: fixed;bottom: 0;width: 100%;background-color: #f0f0f0;padding: 10px 0;text-align: center;">
+    © 2023 Tous droits réservés à la société GSB Frais
+</footer>
 <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('assets/js/bootstrap.js') }}"></script>
 </body>
