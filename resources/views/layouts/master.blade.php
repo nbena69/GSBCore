@@ -38,7 +38,7 @@
                         <ul class="nav navbar-nav">
                             <li><a href="{{ url('/getListeFrais') }}" data-toggle="collapse"
                                    data-target=".navbar-collapse.in">Lister</a></li>
-                            <li><a href="" data-toggle="collapse" data-target=".navbar-collapse.in">Ajouter</a></li>
+                            <li><a href="{{ url('/ajouterFrais') }}" data-toggle="collapse" data-target=".navbar-collapse.in">Ajouter</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="{{ url('/getLogout') }}" data-toggle="collapse"
