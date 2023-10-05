@@ -48,4 +48,19 @@ class ServiceFrais
         }
     }
 
+    public function insertFrais($anneemois, $nbjustificatifs, $id_visiteur)
+    {
+        try {
+            DB::table('frais')->insert(
+                ['anneemois' => $anneemois,
+                    'nbjustificatifs' => $nbjustificatifs,
+                    'id_etat' => 2,
+                    'id_visiteur' => $id_visiteur,
+                    'montantvalide' => 0]
+            );
+        } catch (QueryException $e) {
+            throw new MonException($e->getMessage(), 5);
+        }
+
+    }
 }
