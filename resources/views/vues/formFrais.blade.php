@@ -41,7 +41,7 @@
                 <div class="form-group">
                     <label class="col-md-3 col-sm-3 control-label">Montant validé :</label>
                     <div class="col-md-3 col-sm-3">
-                        <label class="control-label" >{{ $unFrais->montantvalide ?? 0 }}</label>
+                        <label class="control-label">{{ $unFrais->montantvalide ?? 0 }}</label>
                     </div>
                 </div>
                 <div class="form-group">
@@ -56,15 +56,17 @@
                         </button>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
-                        <a href="{{ url('frais-hors-forfait') }}">
-                            <button type="button" class="btn btn-default btn-primary">
-                                <span class="glyphicon glyphicon-list"></span> Frais hors forfait
-                            </button>
-                        </a>
+                @if($unFrais->montantvalide ?? 0)
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
+                            <a href="{{ url('frais-hors-forfait') }}">
+                                <button type="button" class="btn btn-default btn-primary">
+                                    <span class="glyphicon glyphicon-list"></span> Frais hors forfait
+                                </button>
+                            </a>
+                        </div>
                     </div>
-                </div>
+                @endif
                 <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
                 </div>
             </div>
