@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Exceptions\MonException;
-use Request;
+use http\Client\Request;
 use App\metier\Visiteur;
 use App\dao\ServiceVisiteur;
 use Exception;
@@ -17,10 +17,10 @@ class VisiteurController extends Controller
         try {
             $erreur = "";
             return view('vues.formLogin', compact('erreur'));
-        } catch (\MonException $e) {
+        } catch (MonException $e) {
             $erreur = $e->getMessage();
             return view('vues.formLogin', compact('erreur'));
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $erreur = $e->getMessage();
             return view('vues.formLogin', compact('erreur'));
         }
