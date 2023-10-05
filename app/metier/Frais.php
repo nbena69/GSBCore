@@ -15,7 +15,7 @@ class Frais extends model {
         'id_visiteur',
         'nbjustificatifs',
         'datemodification',
-        'montant_valide'
+        'montantvalide'
     ];
 
     public function __construct()

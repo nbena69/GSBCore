@@ -73,7 +73,7 @@
                 <div class="form-group">
                     <label class="col-md-3 col-sm-3 control-label">Montant validé :</label>
                     <div class="col-md-3 col-sm-3">
-                        <label class="control-label" ></label>
+                        <label class="control-label" >{{ $unFrais->montantvalide ?? 0 }}</label>
                     </div>
                 </div>
                 <div class="form-group">
@@ -83,7 +83,7 @@
                         </button>
                         &nbsp;
                         <button type="button" class="btn btn-default btn-primary"
-                                onclick="javascript: window.location = '';">
+                                onclick="javascript: window.location = '{{url('/getListeFrais')}}';">
                             <span class="glyphicon glyphicon-remove"></span> Annuler
                         </button>
                     </div>
@@ -98,7 +98,6 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
-                    <!-- Ajoutez du contenu ici si nécessaire -->
                 </div>
             </div>
         </div>

@@ -7,9 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Error</title>
 </head>
+<body>
 @if($erreur != "")
     <div class="alert-danger" role="alert">
-        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>{{$erreur}}
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        {{ $erreur}}
     </div>
 @endif
-
+</body>
+</html>
