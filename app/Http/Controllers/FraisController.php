@@ -84,7 +84,7 @@ class FraisController extends Controller
             $erreur = '';
             $unFrais = "";
             $titreVue = "Ajout d'une fiche de Frais";
-            return view('Vues/formFrais', compact('unFrais', 'titreVue', 'erreur'));
+            return view('vues/formFrais', compact('unFrais', 'titreVue', 'erreur'));
         } catch (MonException $e) {
             $erreur = $e->getMessage();
             return view('vues/error', compact('erreur'));
