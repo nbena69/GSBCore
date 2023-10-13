@@ -19,8 +19,6 @@ class FraisController extends Controller
     public function getFraisVisiteur()
     {
         try {
-
-
             $erreur = Session::get('monErreur');
             Session::forget('monErreur');
             $unServiceFrais = new ServiceFrais();
@@ -135,4 +133,6 @@ class FraisController extends Controller
            return redirect('/getListeFrais');
         }
     }
+
+
 }

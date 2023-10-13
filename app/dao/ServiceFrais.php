@@ -61,7 +61,6 @@ class ServiceFrais
         } catch (QueryException $e) {
             throw new MonException($e->getMessage(), 5);
         }
-
     }
 
     public function deleteFrais($id_frais)

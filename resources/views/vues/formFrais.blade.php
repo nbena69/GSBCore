@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GSB Frais Liste</title>
+    <title>GSB Frais</title>
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/monStyle.css') }}">
     <!-- Inclure jQuery avant Bootstrap JavaScript -->
@@ -56,17 +56,20 @@
                         </button>
                     </div>
                 </div>
-                @if($unFrais->montantvalide ?? 0)
+                @if(is_object($unFrais) && property_exists($unFrais, 'id_frais'))
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
-                            <a href="{{ url('frais-hors-forfait') }}">
+                            <a href="{{ url('/getListeFraisHors') }}/{{$unFrais->id_frais}}">
                                 <button type="button" class="btn btn-default btn-primary">
                                     <span class="glyphicon glyphicon-list"></span> Frais hors forfait
                                 </button>
                             </a>
                         </div>
                     </div>
+                @else
+                    <!-- Ne rien afficher, car c'est un ajout -->
                 @endif
+
                 <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
                 </div>
             </div>

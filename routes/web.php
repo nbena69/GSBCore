@@ -3,6 +3,8 @@
 use App\Http\Controllers\FraisController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VisiteurController;
+use App\Http\Controllers\FraisHorsController;
+
 
 
 /*
@@ -33,4 +35,6 @@ Route::get('/validerFrais', [FraisController::class, 'validateFrais']);
 Route::get('/ajouterFrais', [FraisController::class, 'addFrais']);
 
 Route::get('/supprimerFrais/{id}', [FraisController::class, 'supprimeFrais']);
+
+Route::get('/getListeFraisHors/{id}', [FraisHorsController::class, 'getFraisHors']);
 
