@@ -3,6 +3,7 @@
 
     <div>
         <h1 class="bvn"> Gestion des frais de déplacements</h1>
-        <p>Suppression pas faite</p>
+        <p>Rappel :</p>
+        <p>Suppression pas faite pour frais</p>
     </div>
 @stop
