@@ -1574,3 +1574,14 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+
+INSERT INTO fraishorsforfait (id_fraishorsforfait, id_frais, date_fraishorsforfait, montant_fraishorsforfait, lib_fraishorsforfait)
+VALUES
+  (10, 1, '2023-10-22', 18.75, 'Frais de déjeuner'),
+  (11, 1, '2023-10-23', 24.50, 'Frais de taxi'),
+  (12, 1, '2023-10-24', 31.20, 'Frais de stationnement');
+  (7, 5, '2023-10-19', 35.25, 'Frais de carburant'),
+  (8, 6, '2023-10-20', 42.60, 'Frais de déplacement'),
+  (9, 7, '2023-10-21', 28.90, 'Frais de repas d\'affaires');
