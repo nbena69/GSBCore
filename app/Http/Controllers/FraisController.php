@@ -124,14 +124,13 @@ class FraisController extends Controller
             $unServiceFrais->deleteFrais($id_frais);
         } catch (MonException $e) {
             $erreur = $e->getMessage();
-            Session::put('erreur', 'Impossible de supprimer une fiche ayant des Frais Hors forfait');
         } catch (Exception $e) {
             $erreur = $e->getMessage();
-            Session::put('erreur', 'Impossible de supprimer une fiche ayant des Frais Hors forfait');
         } finally {
+            if (isset($erreur)) {
+                Session::put('erreur', 'Impossible de supprimer une fiche ayant des Frais Hors forfait');
+            }
             return redirect('/getListeFrais');
         }
     }
-
-
 }
