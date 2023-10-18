@@ -18,12 +18,12 @@ class FraisHorsController extends Controller
     public function getFraisHors($id_fraisHors)
     {
         try {
-            $unServiceFraisHors = new ServiceFraisHors();
-            $mesFraisHors = $unServiceFraisHors->getFraisHors($id_fraisHors);
-
             // Calcul du montant total des frais hors forfait
             $fraisHorsForfait = FraisHors::all();
+            $unServiceFraisHors = new ServiceFraisHors();
             $montantTotal = $unServiceFraisHors->calculerMontantTotalFraisHorsForfait($fraisHorsForfait);
+
+            $mesFraisHors = $unServiceFraisHors->getFraisHors($id_fraisHors);
 
             return view('vues/listeFraisHors', compact('mesFraisHors', 'montantTotal'));
         } catch (MonException $e) {
@@ -34,6 +34,7 @@ class FraisHorsController extends Controller
             return view('vues/error', compact('erreur'));
         }
     }
+
 
 
 

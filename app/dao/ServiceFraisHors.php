@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\DB;
 use App\Exceptions\MonException;
 use Illuminate\Support\Facades\Session;
 
-class ServiceFraisHors {
+class ServiceFraisHors
+{
     public function getByIds($id_fraisHors, $id_frais)
     {
         try {
@@ -21,6 +22,7 @@ class ServiceFraisHors {
             throw new MonException($e->getMessage(), 5);
         }
     }
+
     public function getById($id_frais)
     {
         try {
@@ -46,7 +48,7 @@ class ServiceFraisHors {
         }
     }
 
-    public function insertFraisHors($id_frais, $libelle, $date, $montant)
+    /*public function insertFraisHors($id_frais, $libelle, $date, $montant)
     {
         try {
             DB::table('frais')->insert(
@@ -59,16 +61,15 @@ class ServiceFraisHors {
         } catch (QueryException $e) {
             throw new MonException($e->getMessage(), 5);
         }
-    }
+    }*/
+
     public function calculerMontantTotalFraisHorsForfait($fraisHorsForfait)
     {
         $montantTotal = 0;
 
         foreach ($fraisHorsForfait as $frais) {
-            $montantTotal += $frais->montant;
+            $montantTotal += $frais->montant_fraishorsforfait;
         }
-
         return $montantTotal;
     }
-
 }
