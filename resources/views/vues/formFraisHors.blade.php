@@ -26,23 +26,24 @@
                 <input type="hidden" name="id_frais" value="{{ $unFrais->id_frais ?? 0 }}"/>
                 <div class="form-group">
                     <label class="col-md-3 col-sm-3 control-label">Libelle :</label>
-                    <div class="col-md-2 col-sm-2">
-                        <input type="text" name="anneemois" value="{{ $unFrais->anneemois ?? '' }}"
-                               class="form-control" placeholder="AAAA-MM" required autofocus>
+                    <div class="col-md-6 col-sm-6">
+                        <input type="text" name="anneemois" value=""
+                               class="form-control" placeholder="Saisissez le libellé" required autofocus>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="col-md-3 col-sm-3 control-label">Date :</label>
-                    <div class="col-md-2 col-sm-2">
-                        <input type="number" name="nbjustificatifs" value="{{ $unFrais->nbjustificatifs ?? 0 }}"
-                               class="form-control" placeholder="Nombre de justificatifs" required>
+                    <div class="col-md-6 col-sm-6">
+                        <input type="text" name="nbjustificatifs" value=""
+                               class="form-control" placeholder="AAAA-MM" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-3 col-sm-3 control-label">Montant : </label>
-                    <div class="col-md-3 col-sm-3">
-                        <label class="control-label">{{ $unFrais->montantvalide ?? 0 }}</label>
+                    <div class="col-md-6 col-sm-6">
+                        <input type="text" name="montantvalide" value=""
+                               class="form-control" placeholder="Saisissez le montant" required>
                     </div>
                 </div>
                 <div class="form-group">
