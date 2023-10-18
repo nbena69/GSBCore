@@ -43,15 +43,15 @@
                     </td>
                 </tr>
             @endforeach
-            <td>Montant Total :</td>
-            <td></td>
+            <td>Montant Total : </td>
+            <td>{{ $montantTotal }}</td>
         @else
             <p>Aucun frais hors forfait trouvé.</p>
         @endif
     </table>
     <div style="text-align: center">
         <button class="btn btn-default btn-primary"
-                onclick="javascript: window.location = '{{url('/ajouter')}}';">
+                onclick="javascript: window.location = '{{ url('/ajouterFraisHors')}}';">
             <span class="glyphicon glyphicon-plus"></span>Ajouter
         </button>
         <button type="submit" class="btn btn-default btn-primary"
