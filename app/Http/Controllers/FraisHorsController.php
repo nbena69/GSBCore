@@ -41,6 +41,7 @@ class FraisHorsController extends Controller
         try {
             $erreur = '';
             $unFraisHors = "";
+
             $titreVue = "Ajout d'une fiche de Frais Hors Forfait";
             return view('vues/formFraisHors', compact('unFraisHors', 'titreVue', 'erreur', 'id_frais'));
         } catch (MonException $e) {
