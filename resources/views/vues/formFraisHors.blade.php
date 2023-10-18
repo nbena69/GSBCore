@@ -23,11 +23,11 @@
         <div class="col-md-12 col-sm-12 well well-md">
             <center><h1>Titre</h1></center>
             <div class="form-horizontal">
-                <input type="hidden" name="id_frais" value="{{ $unFrais->id_frais ?? 0 }}"/>
+                <input type="hidden" name="id_frais" value="{{ $unFraisHors->id_frais ?? 0 }}"/>
                 <div class="form-group">
                     <label class="col-md-3 col-sm-3 control-label">Libelle :</label>
                     <div class="col-md-6 col-sm-6">
-                        <input type="text" name="anneemois" value=""
+                        <input type="text" name="libelle" value=""
                                class="form-control" placeholder="Saisissez le libellé" required autofocus>
                     </div>
                 </div>
@@ -35,14 +35,14 @@
                 <div class="form-group">
                     <label class="col-md-3 col-sm-3 control-label">Date :</label>
                     <div class="col-md-6 col-sm-6">
-                        <input type="text" name="nbjustificatifs" value=""
+                        <input type="text" name="anneemois" value=""
                                class="form-control" placeholder="AAAA-MM" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-3 col-sm-3 control-label">Montant : </label>
                     <div class="col-md-6 col-sm-6">
-                        <input type="text" name="montantvalide" value=""
+                        <input type="text" name="montant" value=""
                                class="form-control" placeholder="Saisissez le montant" required>
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                         </button>
                         &nbsp;
                         <button type="button" class="btn btn-default btn-primary"
-                                onclick="javascript: window.location = '{{url('/getListeFrais')}}';">
+                                onclick="javascript: window.location = '{{ url('/getListeFraisHors') }}/{{$unFraisHors->id_frais}}';">
                             <span class="glyphicon glyphicon-remove"></span> Annuler
                         </button>
                     </div>
