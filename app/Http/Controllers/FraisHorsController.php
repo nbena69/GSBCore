@@ -20,7 +20,23 @@ class FraisHorsController extends Controller
         try {
             $unServiceFraisHors = new ServiceFraisHors();
             $mesFraisHors = $unServiceFraisHors->getFraisHors($id_fraisHors);
-            return view('vues/formFraisHors', compact('mesFraisHors'));
+            return view('vues/listeFraisHors', compact('mesFraisHors'));
+        } catch (MonException $e) {
+            $erreur = $e->getMessage();
+            return view('vues/error', compact('erreur'));
+        } catch (Exception $e) {
+            $erreur = $e->getMessage();
+            return view('vues/error', compact('erreur'));
+        }
+    }
+
+    public function addFraisHors()
+    {
+        try {
+            $erreur = '';
+            $unFraisHors = "";
+            $titreVue = "Ajout d'une fiche de Frais Hors Forfait";
+            return view('vues/formFraisHors', compact('unFraisHors', 'titreVue', 'erreur'));
         } catch (MonException $e) {
             $erreur = $e->getMessage();
             return view('vues/error', compact('erreur'));

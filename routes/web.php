@@ -38,3 +38,5 @@ Route::get('/supprimerFrais/{id}', [FraisController::class, 'supprimeFrais']);
 
 Route::get('/getListeFraisHors/{id}', [FraisHorsController::class, 'getFraisHors']);
 
+
+Route::get('/ajouterFraisHors',  [FraisHorsController::class, 'addFraisHors']);
