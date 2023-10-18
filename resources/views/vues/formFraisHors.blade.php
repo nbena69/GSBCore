@@ -6,11 +6,10 @@
     <title>GSB Frais</title>
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/monStyle.css') }}">
-    <!-- Inclure jQuery avant Bootstrap JavaScript -->
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
 
-    <!-- Fonts -->
     <link href="//fonts.googleapis.com/css?family=Roboto:400,300" rel="stylesheet" type="text/css">
 </head>
 <body class="body">
