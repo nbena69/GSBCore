@@ -39,7 +39,16 @@
     </table>
 </div>
 <div class="col-md-6 col-md-offset-3">
-    @include('vues/error')
+    @php
+        $erreur = session('erreur');
+    @endphp
+
+    @if ($erreur)
+        <div class="alert alert-danger" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            {{ $erreur }}
+        </div>
+    @endif
 </div>
 
 <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>

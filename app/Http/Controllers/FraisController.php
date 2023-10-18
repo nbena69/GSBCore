@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Session;
 
 
-
 class FraisController extends Controller
 {
     public function getFraisVisiteur()
@@ -125,12 +124,12 @@ class FraisController extends Controller
             $unServiceFrais->deleteFrais($id_frais);
         } catch (MonException $e) {
             $erreur = $e->getMessage();
-            return view('vues/error', compact('erreur'));
+            Session::put('erreur', 'Impossible de supprimer une fiche ayant des Frais Hors forfait');
         } catch (Exception $e) {
             $erreur = $e->getMessage();
-            return view('vues/error', compact('erreur'));
+            Session::put('erreur', 'Impossible de supprimer une fiche ayant des Frais Hors forfait');
         } finally {
-           return redirect('/getListeFrais');
+            return redirect('/getListeFrais');
         }
     }
 
