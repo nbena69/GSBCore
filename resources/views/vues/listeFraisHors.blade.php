@@ -51,7 +51,7 @@
     </table>
     <div style="text-align: center">
         <button class="btn btn-default btn-primary"
-                onclick="javascript: window.location = '{{ url('/ajouterFraisHors')}}/{{$unFraisHors->id_frais}}';">
+                onclick="javascript: window.location = '{{ url('/ajouterFraisHors')}}/{{$id_frais}}';">
             <span class="glyphicon glyphicon-plus"></span>Ajouter
         </button>
         <button type="submit" class="btn btn-default btn-primary"
