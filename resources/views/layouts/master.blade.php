@@ -7,9 +7,53 @@
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/monStyle.css') }}">
     <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-
-    <!-- Fonts -->
     <link href="//fonts.googleapis.com/css?family=Roboto:400,300" rel="stylesheet" type="text/css">
+    <style>
+        body {
+            padding-top: 35px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .navbar {
+            margin-bottom: 0;
+            background-color: #f8f8f8;
+            border-color: #e7e7e7;
+        }
+
+        .navbar-fixed-top {
+            border: none;
+        }
+
+        .navbar-brand {
+            color: #333;
+            font-weight: bold;
+        }
+
+        .navbar-nav > li > a {
+            color: #333;
+        }
+
+        .navbar-nav > li > a:hover,
+        .navbar-nav > li > a:focus {
+            color: #555;
+            background-color: transparent;
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #f0f0f0;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+    </style>
 </head>
 <body class="body">
 <div class="container">
@@ -53,7 +97,7 @@
 <div class="container">
     @yield('content')
 </div>
-<footer class="fixed-bottom bg-light text-center py-2" style="position: fixed;bottom: 0;width: 100%;background-color: #f0f0f0;padding: 10px 0;text-align: center;">
+<footer class="footer">
     © 2023 Tous droits réservés à la société GSB Frais
 </footer>
 <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
