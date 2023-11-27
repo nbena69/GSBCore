@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\dao\ServiceFrais;
 use App\Exceptions\MonException;
 use App\metier\FraisHors;
 use App\Models\User;
@@ -12,18 +13,18 @@ use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Session;
 
 
-
 class FraisHorsController extends Controller
 {
     public function getFraisHors($id_fraisHors)
     {
         try {
-            // Calcul du montant total des frais hors forfait
-            $fraisHorsForfait = FraisHors::all();
             $unServiceFraisHors = new ServiceFraisHors();
-            $montantTotal = $unServiceFraisHors->calculerMontantTotalFraisHorsForfait($fraisHorsForfait);
 
-            $mesFraisHors = $unServiceFraisHors->getFraisHors($id_fraisHors);
+            $fraisHorsForfait = FraisHors::all();
+
+            $montantTotal = $unServiceFraisHors->calculerMontantTotalFraisHorsForfait($fraisHorsForfait, $id_fraisHors);
+
+            $mesFraisHors = $fraisHorsForfait->where('id_frais', $id_fraisHors);
 
             return view('vues/listeFraisHors', compact('mesFraisHors', 'montantTotal'));
         } catch (MonException $e) {
@@ -53,4 +54,21 @@ class FraisHorsController extends Controller
         }
     }
 
+    public function supprimeFraisHors($id_fraisHors)
+    {
+        $unServiceFraisHors = new ServiceFraisHors();
+
+        try {
+            $unServiceFraisHors->deleteFraisHors($id_fraisHors);
+        } catch (MonException $e) {
+            $erreur = $e->getMessage();
+        } catch (Exception $e) {
+            $erreur = $e->getMessage();
+        } finally {
+            if (isset($erreur)) {
+                Session::put('erreur', 'Impossible de supprimer une fiche ayant des Frais Hors forfait');
+            }
+            return redirect('/getListeFrais');
+        }
+    }
 }

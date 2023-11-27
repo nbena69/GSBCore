@@ -18,7 +18,8 @@
     <table class="table table-bordered table-striped table-responsive">
         <thead>
         <tr>
-            <th style="width:60%">Période</th>
+            <th style="width:40%">Période</th>
+            <th style="width:20%">Nombre de Justificatifs</th>
             <th style="width:20%">Modifier</th>
             <th style="width:20%">Supprimer</th>
         </tr>
@@ -26,6 +27,7 @@
         @foreach($mesFrais as $unFrais)
             <tr>
                 <td>{{$unFrais->anneemois}}</td>
+                <td>{{$unFrais->nbjustificatifs}}</td>
                 <td style="text-align: center;"><a href="{{url('/modifierFrais')}}/{{$unFrais->id_frais}}">
                         <span class="glyphicon glyphicon-pencil" data-toggle="tooltip" data-placement="top"
                               title="modification"></span>

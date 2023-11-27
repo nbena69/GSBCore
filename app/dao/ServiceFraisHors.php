@@ -63,13 +63,24 @@ class ServiceFraisHors
         }
     }*/
 
-    public function calculerMontantTotalFraisHorsForfait($fraisHorsForfait)
+    public function calculerMontantTotalFraisHorsForfait($fraisHorsForfait, $id_frais)
     {
         $montantTotal = 0;
 
         foreach ($fraisHorsForfait as $frais) {
-            $montantTotal += $frais->montant_fraishorsforfait;
+            if ($frais->id_frais === $id_frais) {
+                $montantTotal += $frais->montant_fraishorsforfait;
+            }
         }
         return $montantTotal;
+    }
+
+    public function deleteFraisHors($id_fraisHors)
+    {
+        try {
+            DB::table('fraishorsforfait')->where('id_fraishorsforfait', '=', $id_fraisHors)->delete();
+        } catch (QueryException $e) {
+            throw new MonException($e->getMessage(), 5);
+        }
     }
 }

@@ -16,6 +16,7 @@
 <body class="body">
 @extends('layouts.master')
 
+
 <form action="{{ url('validerFrais') }}" method="get">
     @csrf
     <div class="container">
