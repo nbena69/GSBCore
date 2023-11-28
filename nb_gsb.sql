@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : jeu. 12 oct. 2023 à 15:39
--- Version du serveur : 10.4.28-MariaDB
--- Version de PHP : 8.2.4
+-- Généré le : mar. 28 nov. 2023 à 22:08
+-- Version du serveur : 10.4.27-MariaDB
+-- Version de PHP : 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -98,46 +98,46 @@ CREATE TABLE `constituer` (
 --
 
 INSERT INTO `constituer` (`id_composant`, `id_medicament`, `qte_composant`) VALUES
-(1, 2, 200.00),
-(1, 3, 400.00),
-(1, 4, 100.00),
-(2, 1, 50.00),
-(2, 28, 400.00),
-(3, 1, 100.00),
-(4, 1, 100.00),
-(5, 1, 500.00),
-(6, 5, 100.00),
-(6, 6, 300.00),
-(6, 7, 40.00),
-(7, 8, 200.00),
-(8, 8, 100.00),
-(9, 9, 200.00),
-(9, 10, 50.00),
-(10, 7, 200.00),
-(10, 10, 100.00),
-(10, 11, 300.00),
-(11, 12, 200.00),
-(12, 13, 500.00),
-(13, 14, 200.00),
-(14, 7, 100.00),
-(14, 10, 20.00),
-(14, 11, 100.00),
-(15, 15, 200.00),
-(16, 16, 400.00),
-(17, 17, 200.00),
-(18, 18, 100.00),
-(19, 19, 200.00),
-(20, 20, 200.00),
-(20, 21, 300.00),
-(21, 22, 200.00),
-(22, 10, 30.00),
-(23, 23, 300.00),
-(24, 24, 200.00),
-(25, 25, 300.00),
-(26, 26, 300.00),
-(27, 5, 400.00),
-(27, 7, 50.00),
-(28, 27, 100.00);
+(1, 2, '200.00'),
+(1, 3, '400.00'),
+(1, 4, '100.00'),
+(2, 1, '50.00'),
+(2, 28, '400.00'),
+(3, 1, '100.00'),
+(4, 1, '100.00'),
+(5, 1, '500.00'),
+(6, 5, '100.00'),
+(6, 6, '300.00'),
+(6, 7, '40.00'),
+(7, 8, '200.00'),
+(8, 8, '100.00'),
+(9, 9, '200.00'),
+(9, 10, '50.00'),
+(10, 7, '200.00'),
+(10, 10, '100.00'),
+(10, 11, '300.00'),
+(11, 12, '200.00'),
+(12, 13, '500.00'),
+(13, 14, '200.00'),
+(14, 7, '100.00'),
+(14, 10, '20.00'),
+(14, 11, '100.00'),
+(15, 15, '200.00'),
+(16, 16, '400.00'),
+(17, 17, '200.00'),
+(18, 18, '100.00'),
+(19, 19, '200.00'),
+(20, 20, '200.00'),
+(20, 21, '300.00'),
+(21, 22, '200.00'),
+(22, 10, '30.00'),
+(23, 23, '300.00'),
+(24, 24, '200.00'),
+(25, 25, '300.00'),
+(26, 26, '300.00'),
+(27, 5, '400.00'),
+(27, 7, '50.00'),
+(28, 27, '100.00');
 
 -- --------------------------------------------------------
 
@@ -320,15 +320,16 @@ CREATE TABLE `frais` (
 --
 
 INSERT INTO `frais` (`id_frais`, `id_etat`, `anneemois`, `id_visiteur`, `nbjustificatifs`, `datemodification`, `montantvalide`) VALUES
-(1, 4, '2018-09', 1, 3, '2023-10-05', 845.00),
-(2, 3, '2019-07', 5, 1, '2019-07-01', 917.00),
-(3, 3, '2019-07', 5, 1, '2019-07-01', 917.00),
-(4, 2, '2020-05', 3, 5, '2020-05-15', 1234.50),
-(5, 1, '2021-02', 7, 2, '2021-02-10', 750.25),
-(6, 4, '2019-11', 2, 4, '2019-11-20', 1045.75),
-(7, 3, '2022-03', 8, 3, '2022-03-05', 625.00),
-(8, 2, '2020-12', 6, 6, '2020-12-28', 1500.75),
-(11, 2, '2022-08', 1, 4, NULL, 0.00);
+(1, 4, '2018-08', 1, 3, '2023-11-28', '845.00'),
+(2, 3, '2019-07', 5, 1, '2019-07-01', '917.00'),
+(3, 3, '2019-07', 5, 1, '2019-07-01', '917.00'),
+(4, 2, '2020-05', 3, 5, '2020-05-15', '1234.50'),
+(5, 1, '2021-02', 7, 2, '2021-02-10', '750.25'),
+(6, 4, '2019-11', 2, 4, '2019-11-20', '1045.75'),
+(7, 3, '2022-03', 8, 3, '2022-03-05', '625.00'),
+(8, 2, '2020-12', 6, 6, '2020-12-28', '1500.75'),
+(14, 2, '2018-07', 1, 4, NULL, '0.00'),
+(16, 2, '2017-09', 1, 2, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -347,10 +348,10 @@ CREATE TABLE `fraisforfait` (
 --
 
 INSERT INTO `fraisforfait` (`id_fraisforfait`, `lib_fraisforfait`, `montant_frais_forfait`) VALUES
-(1, 'Forfait Etape', 180.00),
-(2, 'Frais Kilométrique', 0.89),
-(3, 'Nuitée Hôtel', 90.00),
-(4, 'Repas Restaurant', 35.00);
+(1, 'Forfait Etape', '180.00'),
+(2, 'Frais Kilométrique', '0.89'),
+(3, 'Nuitée Hôtel', '90.00'),
+(4, 'Repas Restaurant', '35.00');
 
 -- --------------------------------------------------------
 
@@ -371,7 +372,14 @@ CREATE TABLE `fraishorsforfait` (
 --
 
 INSERT INTO `fraishorsforfait` (`id_fraishorsforfait`, `id_frais`, `date_fraishorsforfait`, `montant_fraishorsforfait`, `lib_fraishorsforfait`) VALUES
-(4, 2, '2020-05-25', 30.00, 'Frais de transport');
+(4, 2, '2020-05-25', '30.00', 'Frais de transport'),
+(7, 5, '2023-10-19', '35.25', 'Frais de carburant'),
+(8, 6, '2023-10-20', '42.60', 'Frais de déplacement'),
+(9, 7, '2023-10-21', '28.90', 'Frais de repas d\'affaires'),
+(13, 1, '2023-11-27', '25.50', 'Frais de repas'),
+(14, 1, '2023-11-28', '30.00', 'Frais de transport'),
+(29, 1, '2023-11-03', '100.00', 'Frais de deplacement'),
+(32, 1, '2023-11-16', '10.00', 'Frais de voiture');
 
 -- --------------------------------------------------------
 
@@ -468,34 +476,34 @@ CREATE TABLE `medicament` (
 --
 
 INSERT INTO `medicament` (`id_medicament`, `id_famille`, `depot_legal`, `nom_commercial`, `effets`, `contre_indication`, `prix_echantillon`) VALUES
-(1, 18, '3MYC7', 'TRIMYCINE', 'Ce médicament est un corticoïde à  activité forte ou très forte associé à  un antibiotique et un antifongique, utilisé en application locale dans certaines atteintes cutanées surinfectées.', 'Ce médicament est contre-indiqué en cas d\'allergie à  l\'un des constituants, d\'infections de la peau ou de parasitisme non traités, d\'acné. Ne pas appliquer sur une plaie, ni sous un pansement occlusif.', 8.00),
-(2, 7, 'ADIMOL9', 'ADIMOL', 'Ce médicament, plus puissant que les pénicillines simples, est utilisé pour traiter des infections bactériennes spécifiques.', 'Ce médicament est contre-indiqué en cas d\'allergie aux pénicillines ou aux céphalosporines.', 9.00),
-(3, 7, 'AMOPIL7', 'AMOPIL', 'Ce médicament, plus puissant que les pénicillines simples, est utilisé pour traiter des infections bactériennes spécifiques.', 'Ce médicament est contre-indiqué en cas d\'allergie aux pénicillines. Il doit être administré avec prudence en cas d\'allergie aux céphalosporines.', 5.00),
+(1, 18, '3MYC7', 'TRIMYCINE', 'Ce médicament est un corticoïde à  activité forte ou très forte associé à  un antibiotique et un antifongique, utilisé en application locale dans certaines atteintes cutanées surinfectées.', 'Ce médicament est contre-indiqué en cas d\'allergie à  l\'un des constituants, d\'infections de la peau ou de parasitisme non traités, d\'acné. Ne pas appliquer sur une plaie, ni sous un pansement occlusif.', '8.00'),
+(2, 7, 'ADIMOL9', 'ADIMOL', 'Ce médicament, plus puissant que les pénicillines simples, est utilisé pour traiter des infections bactériennes spécifiques.', 'Ce médicament est contre-indiqué en cas d\'allergie aux pénicillines ou aux céphalosporines.', '9.00'),
+(3, 7, 'AMOPIL7', 'AMOPIL', 'Ce médicament, plus puissant que les pénicillines simples, est utilisé pour traiter des infections bactériennes spécifiques.', 'Ce médicament est contre-indiqué en cas d\'allergie aux pénicillines. Il doit être administré avec prudence en cas d\'allergie aux céphalosporines.', '5.00'),
 (4, 7, 'AMOX45', 'AMOXAR', 'Ce médicament, plus puissant que les pénicillines simples, est utilisé pour traiter des infections bactériennes spécifiques.', 'La prise de ce médicament peut rendre positifs les tests de dépistage du dopage.', NULL),
-(5, 7, 'AMOXIG12', 'AMOXI Gé', 'Ce médicament, plus puissant que les pénicillines simples, est utilisé pour traiter des infections bactériennes spécifiques.', 'Ce médicament est contre-indiqué en cas d\'allergie aux pénicillines. Il doit être administré avec prudence en cas d\'allergie aux céphalosporines.', 8.00),
-(6, 13, 'APATOUX22', 'APATOUX Vitamine C', 'Ce médicament est utilisé pour traiter les affections de la bouche et de la gorge.', 'Ce médicament est contre-indiqué en cas d\'allergie à  l\'un des constituants, en cas de phénylcétonurie et chez l\'enfant de moins de 6 ans.', 5.00),
-(7, 6, 'BACTIG10', 'BACTIGEL', 'Ce médicament est utilisé en application locale pour traiter l\'acné et les infections cutanées bactériennes associées.', 'Ce médicament est contre-indiqué en cas d\'allergie aux antibiotiques de la famille des macrolides ou des lincosanides.', 6.00),
-(8, 9, 'BACTIV13', 'BACTIVIL', 'Ce médicament est utilisé pour traiter des infections bactériennes spécifiques.', 'Ce médicament est contre-indiqué en cas d\'allergie aux macrolides (dont le chef de file est l\'érythromycine).', 7.00),
-(9, 2, 'BITALV', 'BIVALIC', 'Ce médicament est utilisé pour traiter les douleurs d\'intensité modérée ou intense.', 'Ce médicament est contre-indiqué en cas d\'allergie aux médicaments de cette famille, d\'insuffisance hépatique ou d\'insuffisance rénale.', 4.00),
-(10, 2, 'CARTION6', 'CARTION', 'Ce médicament est utilisé dans le traitement symptomatique de la douleur ou de la fièvre.', 'Ce médicament est contre-indiqué en cas de troubles de la coagulation (tendances aux hémorragies), d\'ulcère gastroduodénal, maladies graves du foie.', 7.00),
-(11, 9, 'CLAZER6', 'CLAZER', 'Ce médicament est utilisé pour traiter des infections bactériennes spécifiques. Il est également utilisé dans le traitement de l\'ulcère gastro-duodénal, en association avec d\'autres médicaments.', 'Ce médicament est contre-indiqué en cas d\'allergie aux macrolides (dont le chef de file est l\'érythromycine).', 2.00),
-(12, 11, 'DEPRIL9', 'DEPRAMIL', 'Ce médicament est utilisé pour traiter les épisodes dépressifs sévères, certaines douleurs rebelles, les troubles obsessionnels compulsifs et certaines énurésies chez l\'enfant.', 'Ce médicament est contre-indiqué en cas de glaucome ou d\'adénome de la prostate, d\'infarctus récent, ou si vous avez reà§u un traitement par IMAO durant les 2 semaines précédentes ou en cas d\'allergie aux antidépresseurs imipraminiques.', 3.00),
-(13, 3, 'DIMIRTAM6', 'DIMIRTAM', 'Ce médicament est utilisé pour traiter les épisodes dépressifs sévères.', 'La prise de ce produit est contre-indiquée en cas de d\'allergie à  l\'un des constituants.', 5.00),
-(14, 2, 'DOLRIL7', 'DOLORIL', 'Ce médicament est utilisé dans le traitement symptomatique de la douleur ou de la fièvre.', 'Ce médicament est contre-indiqué en cas d\'allergie au paracétamol ou aux salicylates.', 11.00),
-(15, 19, 'DORNOM8', 'NORMADOR', 'Ce médicament est utilisé pour traiter l\'insomnie chez l\'adulte.', 'Ce médicament est contre-indiqué en cas de glaucome, de certains troubles urinaires (rétention urinaire) et chez l\'enfant de moins de 15 ans.', 4.00),
-(16, 4, 'EQUILARX6', 'EQUILAR', 'Ce médicament est utilisé pour traiter les vertiges et pour prévenir le mal des transports.', 'Ce médicament ne doit pas être utilisé en cas d\'allergie au produit, en cas de glaucome ou de rétention urinaire.', 7.00),
-(17, 20, 'EVILR7', 'EVEILLOR', 'Ce médicament est utilisé pour traiter les troubles de la vigilance et certains symptomes neurologiques chez le sujet agé.', 'Ce médicament est contre-indiqué en cas d\'allergie à  l\'un des constituants.', 10.00),
-(18, 10, 'INSXT5', 'INSECTIL', 'Ce médicament est utilisé en application locale sur les piqûres d\'insecte et l\'urticaire.', 'Ce médicament est contre-indiqué en cas d\'allergie aux antihistaminiques.', 5.00),
-(19, 9, 'JOVAI8', 'JOVENIL', 'Ce médicament est utilisé pour traiter des infections bactériennes spécifiques.', 'Ce médicament est contre-indiqué en cas d\'allergie aux macrolides (dont le chef de file est l\'érythromycine).', 7.00),
-(20, 8, 'LIDOXY23', 'LIDOXYTRACINE', 'Ce médicament est utilisé en injection intramusculaire pour traiter certaines infections spécifiques.', 'Ce médicament est contre-indiqué en cas d\'allergie à  l\'un des constituants. Il ne doit pas être associé aux rétinoïdes.', 6.00),
-(21, 16, 'LITHOR12', 'LITHORINE', 'Ce médicament est indiqué dans la prévention des psychoses maniaco-dépressives ou pour traiter les états maniaques.', 'Ce médicament ne doit pas être utilisé si vous êtes allergique au lithium. Avant de prendre ce traitement, signalez à  votre médecin traitant si vous souffrez d\'insuffisance rénale, ou si vous avez un régime sans sel.', 8.00),
-(22, 1, 'PARMOL16', 'PARMOCODEINE', 'Ce médicament est utilisé pour le traitement des douleurs lorsque des antalgiques simples ne sont pas assez efficaces.', 'Ce médicament est contre-indiqué en cas d\'allergie à  l\'un des constituants, chez l\'enfant de moins de 15 Kg, en cas d\'insuffisance hépatique ou respiratoire, d\'asthme, de phénylcétonurie et chez la femme qui allaite.', 5.00),
-(23, 20, 'PHYSOI8', 'PHYSICOR', 'Ce médicament est utilisé pour traiter les baisses d\'activité physique ou psychique, souvent dans un contexte de dépression.', 'Ce médicament est contre-indiqué en cas d\'allergie à  l\'un des constituants.', 13.00),
-(24, 5, 'PIRIZ8', 'PIRIZAN', 'Ce médicament est utilisé, en association à  d\'autres antibiotiques, pour traiter la tuberculose.', 'Ce médicament est contre-indiqué en cas d\'allergie à  l\'un des constituants, d\'insuffisance rénale ou hépatique, d\'hyperuricémie ou de porphyrie.', 11.00),
-(25, 15, 'POMDI20', 'POMADINE', 'Ce médicament est utilisé pour traiter les infections oculaires de la surface de l\'oeil.', 'Ce médicament est contre-indiqué en cas d\'allergie aux antibiotiques appliqués localement.', 9.00),
-(26, 12, 'TROXT21', 'TROXADET', 'Ce médicament est utilisé pour traiter la dépression et les troubles obsessionnels compulsifs. Il peut également être utilisé en prévention des crises de panique avec ou sans agoraphobie.', 'Ce médicament est contre-indiqué en cas d\'allergie au produit.', 4.00),
-(27, 13, 'TXISOL22', 'TOUXISOL Vitamine C', 'Ce médicament est utilisé pour traiter les affections de la bouche et de la gorge.', 'Ce médicament est contre-indiqué en cas d\'allergie à  l\'un des constituants et chez l\'enfant de moins de 6 ans.', 7.00),
-(28, 17, 'URIEG6', 'URIREGUL', 'Ce médicament est utilisé pour traiter les infections urinaires simples chez la femme de moins de 65 ans.', 'La prise de ce médicament est contre-indiquée en cas d\'allergie à  l\'un des constituants et d\'insuffisance rénale.', 5.00);
+(5, 7, 'AMOXIG12', 'AMOXI Gé', 'Ce médicament, plus puissant que les pénicillines simples, est utilisé pour traiter des infections bactériennes spécifiques.', 'Ce médicament est contre-indiqué en cas d\'allergie aux pénicillines. Il doit être administré avec prudence en cas d\'allergie aux céphalosporines.', '8.00'),
+(6, 13, 'APATOUX22', 'APATOUX Vitamine C', 'Ce médicament est utilisé pour traiter les affections de la bouche et de la gorge.', 'Ce médicament est contre-indiqué en cas d\'allergie à  l\'un des constituants, en cas de phénylcétonurie et chez l\'enfant de moins de 6 ans.', '5.00'),
+(7, 6, 'BACTIG10', 'BACTIGEL', 'Ce médicament est utilisé en application locale pour traiter l\'acné et les infections cutanées bactériennes associées.', 'Ce médicament est contre-indiqué en cas d\'allergie aux antibiotiques de la famille des macrolides ou des lincosanides.', '6.00'),
+(8, 9, 'BACTIV13', 'BACTIVIL', 'Ce médicament est utilisé pour traiter des infections bactériennes spécifiques.', 'Ce médicament est contre-indiqué en cas d\'allergie aux macrolides (dont le chef de file est l\'érythromycine).', '7.00'),
+(9, 2, 'BITALV', 'BIVALIC', 'Ce médicament est utilisé pour traiter les douleurs d\'intensité modérée ou intense.', 'Ce médicament est contre-indiqué en cas d\'allergie aux médicaments de cette famille, d\'insuffisance hépatique ou d\'insuffisance rénale.', '4.00'),
+(10, 2, 'CARTION6', 'CARTION', 'Ce médicament est utilisé dans le traitement symptomatique de la douleur ou de la fièvre.', 'Ce médicament est contre-indiqué en cas de troubles de la coagulation (tendances aux hémorragies), d\'ulcère gastroduodénal, maladies graves du foie.', '7.00'),
+(11, 9, 'CLAZER6', 'CLAZER', 'Ce médicament est utilisé pour traiter des infections bactériennes spécifiques. Il est également utilisé dans le traitement de l\'ulcère gastro-duodénal, en association avec d\'autres médicaments.', 'Ce médicament est contre-indiqué en cas d\'allergie aux macrolides (dont le chef de file est l\'érythromycine).', '2.00'),
+(12, 11, 'DEPRIL9', 'DEPRAMIL', 'Ce médicament est utilisé pour traiter les épisodes dépressifs sévères, certaines douleurs rebelles, les troubles obsessionnels compulsifs et certaines énurésies chez l\'enfant.', 'Ce médicament est contre-indiqué en cas de glaucome ou d\'adénome de la prostate, d\'infarctus récent, ou si vous avez reà§u un traitement par IMAO durant les 2 semaines précédentes ou en cas d\'allergie aux antidépresseurs imipraminiques.', '3.00'),
+(13, 3, 'DIMIRTAM6', 'DIMIRTAM', 'Ce médicament est utilisé pour traiter les épisodes dépressifs sévères.', 'La prise de ce produit est contre-indiquée en cas de d\'allergie à  l\'un des constituants.', '5.00'),
+(14, 2, 'DOLRIL7', 'DOLORIL', 'Ce médicament est utilisé dans le traitement symptomatique de la douleur ou de la fièvre.', 'Ce médicament est contre-indiqué en cas d\'allergie au paracétamol ou aux salicylates.', '11.00'),
+(15, 19, 'DORNOM8', 'NORMADOR', 'Ce médicament est utilisé pour traiter l\'insomnie chez l\'adulte.', 'Ce médicament est contre-indiqué en cas de glaucome, de certains troubles urinaires (rétention urinaire) et chez l\'enfant de moins de 15 ans.', '4.00'),
+(16, 4, 'EQUILARX6', 'EQUILAR', 'Ce médicament est utilisé pour traiter les vertiges et pour prévenir le mal des transports.', 'Ce médicament ne doit pas être utilisé en cas d\'allergie au produit, en cas de glaucome ou de rétention urinaire.', '7.00'),
+(17, 20, 'EVILR7', 'EVEILLOR', 'Ce médicament est utilisé pour traiter les troubles de la vigilance et certains symptomes neurologiques chez le sujet agé.', 'Ce médicament est contre-indiqué en cas d\'allergie à  l\'un des constituants.', '10.00'),
+(18, 10, 'INSXT5', 'INSECTIL', 'Ce médicament est utilisé en application locale sur les piqûres d\'insecte et l\'urticaire.', 'Ce médicament est contre-indiqué en cas d\'allergie aux antihistaminiques.', '5.00'),
+(19, 9, 'JOVAI8', 'JOVENIL', 'Ce médicament est utilisé pour traiter des infections bactériennes spécifiques.', 'Ce médicament est contre-indiqué en cas d\'allergie aux macrolides (dont le chef de file est l\'érythromycine).', '7.00'),
+(20, 8, 'LIDOXY23', 'LIDOXYTRACINE', 'Ce médicament est utilisé en injection intramusculaire pour traiter certaines infections spécifiques.', 'Ce médicament est contre-indiqué en cas d\'allergie à  l\'un des constituants. Il ne doit pas être associé aux rétinoïdes.', '6.00'),
+(21, 16, 'LITHOR12', 'LITHORINE', 'Ce médicament est indiqué dans la prévention des psychoses maniaco-dépressives ou pour traiter les états maniaques.', 'Ce médicament ne doit pas être utilisé si vous êtes allergique au lithium. Avant de prendre ce traitement, signalez à  votre médecin traitant si vous souffrez d\'insuffisance rénale, ou si vous avez un régime sans sel.', '8.00'),
+(22, 1, 'PARMOL16', 'PARMOCODEINE', 'Ce médicament est utilisé pour le traitement des douleurs lorsque des antalgiques simples ne sont pas assez efficaces.', 'Ce médicament est contre-indiqué en cas d\'allergie à  l\'un des constituants, chez l\'enfant de moins de 15 Kg, en cas d\'insuffisance hépatique ou respiratoire, d\'asthme, de phénylcétonurie et chez la femme qui allaite.', '5.00'),
+(23, 20, 'PHYSOI8', 'PHYSICOR', 'Ce médicament est utilisé pour traiter les baisses d\'activité physique ou psychique, souvent dans un contexte de dépression.', 'Ce médicament est contre-indiqué en cas d\'allergie à  l\'un des constituants.', '13.00'),
+(24, 5, 'PIRIZ8', 'PIRIZAN', 'Ce médicament est utilisé, en association à  d\'autres antibiotiques, pour traiter la tuberculose.', 'Ce médicament est contre-indiqué en cas d\'allergie à  l\'un des constituants, d\'insuffisance rénale ou hépatique, d\'hyperuricémie ou de porphyrie.', '11.00'),
+(25, 15, 'POMDI20', 'POMADINE', 'Ce médicament est utilisé pour traiter les infections oculaires de la surface de l\'oeil.', 'Ce médicament est contre-indiqué en cas d\'allergie aux antibiotiques appliqués localement.', '9.00'),
+(26, 12, 'TROXT21', 'TROXADET', 'Ce médicament est utilisé pour traiter la dépression et les troubles obsessionnels compulsifs. Il peut également être utilisé en prévention des crises de panique avec ou sans agoraphobie.', 'Ce médicament est contre-indiqué en cas d\'allergie au produit.', '4.00'),
+(27, 13, 'TXISOL22', 'TOUXISOL Vitamine C', 'Ce médicament est utilisé pour traiter les affections de la bouche et de la gorge.', 'Ce médicament est contre-indiqué en cas d\'allergie à  l\'un des constituants et chez l\'enfant de moins de 6 ans.', '7.00'),
+(28, 17, 'URIEG6', 'URIREGUL', 'Ce médicament est utilisé pour traiter les infections urinaires simples chez la femme de moins de 65 ans.', 'La prise de ce médicament est contre-indiquée en cas d\'allergie à  l\'un des constituants et d\'insuffisance rénale.', '5.00');
 
 -- --------------------------------------------------------
 
@@ -557,92 +565,92 @@ CREATE TABLE `praticien` (
 --
 
 INSERT INTO `praticien` (`id_praticien`, `id_type_praticien`, `nom_praticien`, `prenom_praticien`, `adresse_praticien`, `cp_praticien`, `ville_praticien`, `coef_notoriete`) VALUES
-(1, 1, 'Notini', 'Alain', '114 r Authie', '85000', 'LA ROCHE SUR YON', 290.00),
-(2, 2, 'Gosselin', 'Albert', '13 r Devon', '41000', 'BLOIS', 307.00),
-(3, 5, 'Delahaye', 'André', '36 av 6 Juin', '25000', 'BESANCON', 185.00),
-(4, 3, 'Leroux', 'André', '47 av Robert Schuman', '60000', 'BEAUVAIS', 172.00),
-(5, 2, 'Desmoulins', 'Anne', '31 r St Jean', '30000', 'NIMES', 94.00),
-(6, 1, 'Mouel', 'Anne', '27 r Auvergne', '80000', 'AMIENS', 45.00),
-(7, 2, 'Desgranges-Lentz', 'Antoine', '1 r Albert de Mun', '29000', 'MORLAIX', 20.00),
-(8, 5, 'Marcouiller', 'Arnaud', '31 r St Jean', '68000', 'MULHOUSE', 396.00),
-(9, 3, 'Dupuy', 'Benoit', '9 r Demolombe', '34000', 'MONTPELLIER', 395.00),
-(10, 4, 'Lerat', 'Bernard', '31 r St Jean', '59000', 'LILLE', 257.00),
-(11, 1, 'Marçais-Lefebvre', 'Bertrand', '86Bis r Basse', '67000', 'STRASBOURG', 450.00),
-(12, 2, 'Boscher', 'Bruno', '94 r Falaise', '10000', 'TROYES', 356.00),
-(13, 5, 'Morel', 'Catherine', '21 r Chateaubriand', '75000', 'PARIS', 379.00),
-(14, 3, 'Guivarch', 'Chantal', '4 av Gén Laperrine', '45000', 'ORLEANS', 114.00),
-(15, 4, 'Bessin-Grosdoit', 'Christophe', '92 r Falaise', '06000', 'NICE', 222.00),
-(16, 1, 'Rossa', 'Claire', '14 av Thiès', '06000', 'NICE', 529.00),
-(17, 2, 'Cauchy', 'Denis', '5 av Ste Thérèse', '11000', 'NARBONNE', 458.00),
-(18, 5, 'Gaffé', 'Dominique', '9 av 1ère Armée Française', '35000', 'RENNES', 213.00),
-(19, 3, 'Guenon', 'Dominique', '98 bd Mar Lyautey', '44000', 'NANTES', 175.00),
-(20, 4, 'Prévot', 'Dominique', '29 r Lucien Nelle', '87000', 'LIMOGES', 151.00),
-(21, 1, 'Houchard', 'Eliane', '9 r Demolombe', '49100', 'ANGERS', 436.00),
-(22, 2, 'Desmons', 'Elisabeth', '51 r Bernières', '29000', 'QUIMPER', 281.00),
-(23, 5, 'Flament', 'Elisabeth', '11 r Pasteur', '35000', 'RENNES', 315.00),
-(24, 3, 'Goussard', 'Emmanuel', '9 r Demolombe', '41000', 'BLOIS', 40.00),
-(25, 4, 'Desprez', 'Eric', '9 r Vaucelles', '33000', 'BORDEAUX', 406.00),
-(26, 1, 'Coste', 'Evelyne', '29 r Lucien Nelle', '19000', 'TULLE', 441.00),
-(27, 2, 'Lefebvre', 'Frédéric', '2 pl Wurzburg', '55000', 'VERDUN', 573.00),
-(28, 5, 'Lemée', 'Frédéric', '29 av 6 Juin', '56000', 'VANNES', 326.00),
-(29, 3, 'Martin', 'Frédéric', 'Bât A 90 r Bayeux', '70000', 'VESOUL', 506.00),
-(30, 4, 'Marie', 'Frédérique', '172 r Caponière', '70000', 'VESOUL', 313.00),
-(31, 1, 'Rosenstech', 'Geneviève', '27 r Auvergne', '75000', 'PARIS', 366.00),
-(32, 2, 'Pontavice', 'Ghislaine', '8 r Gaillon', '86000', 'POITIERS', 265.00),
-(33, 5, 'Leveneur-Mosquet', 'Guillaume', '47 av Robert Schuman', '64000', 'PAU', 184.00),
-(34, 3, 'Blanchais', 'Guy', '30 r Authie', '08000', 'SEDAN', 502.00),
-(35, 4, 'Leveneur', 'Hugues', '7 pl St Gilles', '62000', 'ARRAS', 7.00),
-(36, 1, 'Mosquet', 'Isabelle', '22 r Jules Verne', '76000', 'ROUEN', 77.00),
-(37, 2, 'Giraudon', 'Jean-Christophe', '1 r Albert de Mun', '38100', 'VIENNE', 92.00),
-(38, 5, 'Marie', 'Jean-Claude', '26 r Hérouville', '69000', 'LYON', 120.00),
-(39, 3, 'Maury', 'Jean-François', '5 r Pierre Girard', '71000', 'CHALON SUR SAONE', 13.00),
-(40, 4, 'Dennel', 'Jean-Louis', '7 pl St Gilles', '28000', 'CHARTRES', 550.00),
-(41, 1, 'Ain', 'Jean-Pierre', '4 résid Olympia', '02000', 'LAON', 5.00),
-(42, 2, 'Chemery', 'Jean-Pierre', '51 pl Ancienne Boucherie', '14000', 'CAEN', 396.00),
-(43, 5, 'Comoz', 'Jean-Pierre', '35 r Auguste Lechesne', '18000', 'BOURGES', 340.00),
-(44, 3, 'Desfaudais', 'Jean-Pierre', '7 pl St Gilles', '29000', 'BREST', 71.00),
-(45, 4, 'Phan', 'JérÃ´me', '9 r Clos Caillet', '79000', 'NIORT', 451.00),
-(46, 1, 'Riou', 'Line', '43 bd Gén Vanier', '77000', 'MARNE LA VALLEE', 193.00),
-(47, 2, 'Chubilleau', 'Louis', '46 r Eglise', '17000', 'SAINTES', 202.00),
-(48, 5, 'Lebrun', 'Lucette', '178 r Auge', '54000', 'NANCY', 410.00),
-(49, 3, 'Goessens', 'Marc', '6 av 6 Juin', '39000', 'DOLE', 548.00),
-(50, 4, 'Laforge', 'Marc', '5 résid Prairie', '50000', 'SAINT LO', 265.00),
-(51, 1, 'Millereau', 'Marc', '36 av 6 Juin', '72000', 'LA FERTE BERNARD', 430.00),
-(52, 2, 'Dauverne', 'Marie-Christine', '69 av Charlemagne', '21000', 'DIJON', 281.00),
-(53, 5, 'Vittorio', 'Myriam', '3 pl Champlain', '94000', 'BOISSY SAINT LEGER', 356.00),
-(54, 3, 'Lapasset', 'Nhieu', '31 av 6 Juin', '52000', 'CHAUMONT', 107.00),
-(55, 4, 'Plantet-Besnier', 'Nicole', '10 av 1ère Armée Française', '86000', 'CHATELLEREAULT', 369.00),
-(56, 1, 'Chubilleau', 'Pascal', '3 r Hastings', '15000', 'AURRILLAC', 290.00),
-(57, 2, 'Robert', 'Pascal', '31 r St Jean', '93000', 'BOBIGNY', 162.00),
-(58, 5, 'Jean', 'Pascale', '114 r Authie', '49100', 'SAUMUR', 375.00),
-(59, 3, 'Chanteloube', 'Patrice', '14 av Thiès', '13000', 'MARSEILLE', 478.00),
-(60, 4, 'Lecuirot', 'Patrice', 'résid St Pères 55 r Pigacière', '54000', 'NANCY', 239.00),
-(61, 1, 'Gandon', 'Patrick', '47 av Robert Schuman', '37000', 'TOURS', 599.00),
-(62, 2, 'Mirouf', 'Patrick', '22 r Puits Picard', '74000', 'ANNECY', 458.00),
-(63, 5, 'Boireaux', 'Philippe', '14 av Thiès', '10000', 'CHALON EN CHAMPAGNE', 454.00),
-(64, 3, 'Cendrier', 'Philippe', '7 pl St Gilles', '12000', 'RODEZ', 164.00),
-(65, 4, 'Duhamel', 'Philippe', '114 r Authie', '34000', 'MONTPELLIER', 98.00),
-(66, 1, 'Grigy', 'Philippe', '15 r Mélingue', '44000', 'CLISSON', 285.00),
-(67, 2, 'Linard', 'Philippe', '1 r Albert de Mun', '81000', 'ALBI', 486.00),
-(68, 5, 'Lozier', 'Philippe', '8 r Gaillon', '31000', 'TOULOUSE', 48.00),
-(69, 3, 'Dechâtre', 'Pierre', '63 av Thiès', '23000', 'MONTLUCON', 253.00),
-(70, 4, 'Goessens', 'Pierre', '22 r Jean Romain', '40000', 'MONT DE MARSAN', 426.00),
-(71, 1, 'Leménager', 'Pierre', '39 av 6 Juin', '57000', 'METZ', 118.00),
-(72, 2, 'Née', 'Pierre', '39 av 6 Juin', '82000', 'MONTAUBAN', 72.00),
-(73, 5, 'Guyot', 'Pierre-Laurent', '43 bd Gén Vanier', '48000', 'MENDE', 352.00),
-(74, 3, 'Chauchard', 'Roger', '9 r Vaucelles', '13000', 'MARSEILLE', 552.00),
-(75, 4, 'Mabire', 'Roland', '11 r Boutiques', '67000', 'STRASBOURG', 422.00),
-(76, 1, 'Leroy', 'Soazig', '45 r Boutiques', '61000', 'ALENCON', 570.00),
-(77, 2, 'Guyot', 'Stéphane', '26 r Hérouville', '46000', 'FIGEAC', 28.00),
-(78, 5, 'Delposen', 'Sylvain', '39 av 6 Juin', '27000', 'DREUX', 292.00),
-(79, 3, 'Rault', 'Sylvie', '15 bd Richemond', '02000', 'SOISSON', 526.00),
-(80, 4, 'Renouf', 'Sylvie', '98 bd Mar Lyautey', '88000', 'EPINAL', 425.00),
-(81, 1, 'Alliet-Grach', 'Thierry', '14 av Thiès', '07000', 'PRIVAS', 451.00),
-(82, 2, 'Bayard', 'Thierry', '92 r Falaise', '42000', 'SAINT ETIENNE', 271.00),
-(83, 5, 'Gauchet', 'Thierry', '7 r Desmoueux', '38100', 'GRENOBLE', 406.00),
-(84, 3, 'Bobichon', 'Tristan', '219 r Caponière', '09000', 'FOIX', 218.00),
-(85, 4, 'Duchemin-Laniel', 'Véronique', '130 r St Jean', '33000', 'LIBOURNE', 265.00),
-(86, 1, 'Laurent', 'Younès', '34 r Demolombe', '53000', 'MAYENNE', 496.00);
+(1, 1, 'Notini', 'Alain', '114 r Authie', '85000', 'LA ROCHE SUR YON', '290.00'),
+(2, 2, 'Gosselin', 'Albert', '13 r Devon', '41000', 'BLOIS', '307.00'),
+(3, 5, 'Delahaye', 'André', '36 av 6 Juin', '25000', 'BESANCON', '185.00'),
+(4, 3, 'Leroux', 'André', '47 av Robert Schuman', '60000', 'BEAUVAIS', '172.00'),
+(5, 2, 'Desmoulins', 'Anne', '31 r St Jean', '30000', 'NIMES', '94.00'),
+(6, 1, 'Mouel', 'Anne', '27 r Auvergne', '80000', 'AMIENS', '45.00'),
+(7, 2, 'Desgranges-Lentz', 'Antoine', '1 r Albert de Mun', '29000', 'MORLAIX', '20.00'),
+(8, 5, 'Marcouiller', 'Arnaud', '31 r St Jean', '68000', 'MULHOUSE', '396.00'),
+(9, 3, 'Dupuy', 'Benoit', '9 r Demolombe', '34000', 'MONTPELLIER', '395.00'),
+(10, 4, 'Lerat', 'Bernard', '31 r St Jean', '59000', 'LILLE', '257.00'),
+(11, 1, 'Marçais-Lefebvre', 'Bertrand', '86Bis r Basse', '67000', 'STRASBOURG', '450.00'),
+(12, 2, 'Boscher', 'Bruno', '94 r Falaise', '10000', 'TROYES', '356.00'),
+(13, 5, 'Morel', 'Catherine', '21 r Chateaubriand', '75000', 'PARIS', '379.00'),
+(14, 3, 'Guivarch', 'Chantal', '4 av Gén Laperrine', '45000', 'ORLEANS', '114.00'),
+(15, 4, 'Bessin-Grosdoit', 'Christophe', '92 r Falaise', '06000', 'NICE', '222.00'),
+(16, 1, 'Rossa', 'Claire', '14 av Thiès', '06000', 'NICE', '529.00'),
+(17, 2, 'Cauchy', 'Denis', '5 av Ste Thérèse', '11000', 'NARBONNE', '458.00'),
+(18, 5, 'Gaffé', 'Dominique', '9 av 1ère Armée Française', '35000', 'RENNES', '213.00'),
+(19, 3, 'Guenon', 'Dominique', '98 bd Mar Lyautey', '44000', 'NANTES', '175.00'),
+(20, 4, 'Prévot', 'Dominique', '29 r Lucien Nelle', '87000', 'LIMOGES', '151.00'),
+(21, 1, 'Houchard', 'Eliane', '9 r Demolombe', '49100', 'ANGERS', '436.00'),
+(22, 2, 'Desmons', 'Elisabeth', '51 r Bernières', '29000', 'QUIMPER', '281.00'),
+(23, 5, 'Flament', 'Elisabeth', '11 r Pasteur', '35000', 'RENNES', '315.00'),
+(24, 3, 'Goussard', 'Emmanuel', '9 r Demolombe', '41000', 'BLOIS', '40.00'),
+(25, 4, 'Desprez', 'Eric', '9 r Vaucelles', '33000', 'BORDEAUX', '406.00'),
+(26, 1, 'Coste', 'Evelyne', '29 r Lucien Nelle', '19000', 'TULLE', '441.00'),
+(27, 2, 'Lefebvre', 'Frédéric', '2 pl Wurzburg', '55000', 'VERDUN', '573.00'),
+(28, 5, 'Lemée', 'Frédéric', '29 av 6 Juin', '56000', 'VANNES', '326.00'),
+(29, 3, 'Martin', 'Frédéric', 'Bât A 90 r Bayeux', '70000', 'VESOUL', '506.00'),
+(30, 4, 'Marie', 'Frédérique', '172 r Caponière', '70000', 'VESOUL', '313.00'),
+(31, 1, 'Rosenstech', 'Geneviève', '27 r Auvergne', '75000', 'PARIS', '366.00'),
+(32, 2, 'Pontavice', 'Ghislaine', '8 r Gaillon', '86000', 'POITIERS', '265.00'),
+(33, 5, 'Leveneur-Mosquet', 'Guillaume', '47 av Robert Schuman', '64000', 'PAU', '184.00'),
+(34, 3, 'Blanchais', 'Guy', '30 r Authie', '08000', 'SEDAN', '502.00'),
+(35, 4, 'Leveneur', 'Hugues', '7 pl St Gilles', '62000', 'ARRAS', '7.00'),
+(36, 1, 'Mosquet', 'Isabelle', '22 r Jules Verne', '76000', 'ROUEN', '77.00'),
+(37, 2, 'Giraudon', 'Jean-Christophe', '1 r Albert de Mun', '38100', 'VIENNE', '92.00'),
+(38, 5, 'Marie', 'Jean-Claude', '26 r Hérouville', '69000', 'LYON', '120.00'),
+(39, 3, 'Maury', 'Jean-François', '5 r Pierre Girard', '71000', 'CHALON SUR SAONE', '13.00'),
+(40, 4, 'Dennel', 'Jean-Louis', '7 pl St Gilles', '28000', 'CHARTRES', '550.00'),
+(41, 1, 'Ain', 'Jean-Pierre', '4 résid Olympia', '02000', 'LAON', '5.00'),
+(42, 2, 'Chemery', 'Jean-Pierre', '51 pl Ancienne Boucherie', '14000', 'CAEN', '396.00'),
+(43, 5, 'Comoz', 'Jean-Pierre', '35 r Auguste Lechesne', '18000', 'BOURGES', '340.00'),
+(44, 3, 'Desfaudais', 'Jean-Pierre', '7 pl St Gilles', '29000', 'BREST', '71.00'),
+(45, 4, 'Phan', 'JérÃ´me', '9 r Clos Caillet', '79000', 'NIORT', '451.00'),
+(46, 1, 'Riou', 'Line', '43 bd Gén Vanier', '77000', 'MARNE LA VALLEE', '193.00'),
+(47, 2, 'Chubilleau', 'Louis', '46 r Eglise', '17000', 'SAINTES', '202.00'),
+(48, 5, 'Lebrun', 'Lucette', '178 r Auge', '54000', 'NANCY', '410.00'),
+(49, 3, 'Goessens', 'Marc', '6 av 6 Juin', '39000', 'DOLE', '548.00'),
+(50, 4, 'Laforge', 'Marc', '5 résid Prairie', '50000', 'SAINT LO', '265.00'),
+(51, 1, 'Millereau', 'Marc', '36 av 6 Juin', '72000', 'LA FERTE BERNARD', '430.00'),
+(52, 2, 'Dauverne', 'Marie-Christine', '69 av Charlemagne', '21000', 'DIJON', '281.00'),
+(53, 5, 'Vittorio', 'Myriam', '3 pl Champlain', '94000', 'BOISSY SAINT LEGER', '356.00'),
+(54, 3, 'Lapasset', 'Nhieu', '31 av 6 Juin', '52000', 'CHAUMONT', '107.00'),
+(55, 4, 'Plantet-Besnier', 'Nicole', '10 av 1ère Armée Française', '86000', 'CHATELLEREAULT', '369.00'),
+(56, 1, 'Chubilleau', 'Pascal', '3 r Hastings', '15000', 'AURRILLAC', '290.00'),
+(57, 2, 'Robert', 'Pascal', '31 r St Jean', '93000', 'BOBIGNY', '162.00'),
+(58, 5, 'Jean', 'Pascale', '114 r Authie', '49100', 'SAUMUR', '375.00'),
+(59, 3, 'Chanteloube', 'Patrice', '14 av Thiès', '13000', 'MARSEILLE', '478.00'),
+(60, 4, 'Lecuirot', 'Patrice', 'résid St Pères 55 r Pigacière', '54000', 'NANCY', '239.00'),
+(61, 1, 'Gandon', 'Patrick', '47 av Robert Schuman', '37000', 'TOURS', '599.00'),
+(62, 2, 'Mirouf', 'Patrick', '22 r Puits Picard', '74000', 'ANNECY', '458.00'),
+(63, 5, 'Boireaux', 'Philippe', '14 av Thiès', '10000', 'CHALON EN CHAMPAGNE', '454.00'),
+(64, 3, 'Cendrier', 'Philippe', '7 pl St Gilles', '12000', 'RODEZ', '164.00'),
+(65, 4, 'Duhamel', 'Philippe', '114 r Authie', '34000', 'MONTPELLIER', '98.00'),
+(66, 1, 'Grigy', 'Philippe', '15 r Mélingue', '44000', 'CLISSON', '285.00'),
+(67, 2, 'Linard', 'Philippe', '1 r Albert de Mun', '81000', 'ALBI', '486.00'),
+(68, 5, 'Lozier', 'Philippe', '8 r Gaillon', '31000', 'TOULOUSE', '48.00'),
+(69, 3, 'Dechâtre', 'Pierre', '63 av Thiès', '23000', 'MONTLUCON', '253.00'),
+(70, 4, 'Goessens', 'Pierre', '22 r Jean Romain', '40000', 'MONT DE MARSAN', '426.00'),
+(71, 1, 'Leménager', 'Pierre', '39 av 6 Juin', '57000', 'METZ', '118.00'),
+(72, 2, 'Née', 'Pierre', '39 av 6 Juin', '82000', 'MONTAUBAN', '72.00'),
+(73, 5, 'Guyot', 'Pierre-Laurent', '43 bd Gén Vanier', '48000', 'MENDE', '352.00'),
+(74, 3, 'Chauchard', 'Roger', '9 r Vaucelles', '13000', 'MARSEILLE', '552.00'),
+(75, 4, 'Mabire', 'Roland', '11 r Boutiques', '67000', 'STRASBOURG', '422.00'),
+(76, 1, 'Leroy', 'Soazig', '45 r Boutiques', '61000', 'ALENCON', '570.00'),
+(77, 2, 'Guyot', 'Stéphane', '26 r Hérouville', '46000', 'FIGEAC', '28.00'),
+(78, 5, 'Delposen', 'Sylvain', '39 av 6 Juin', '27000', 'DREUX', '292.00'),
+(79, 3, 'Rault', 'Sylvie', '15 bd Richemond', '02000', 'SOISSON', '526.00'),
+(80, 4, 'Renouf', 'Sylvie', '98 bd Mar Lyautey', '88000', 'EPINAL', '425.00'),
+(81, 1, 'Alliet-Grach', 'Thierry', '14 av Thiès', '07000', 'PRIVAS', '451.00'),
+(82, 2, 'Bayard', 'Thierry', '92 r Falaise', '42000', 'SAINT ETIENNE', '271.00'),
+(83, 5, 'Gauchet', 'Thierry', '7 r Desmoueux', '38100', 'GRENOBLE', '406.00'),
+(84, 3, 'Bobichon', 'Tristan', '219 r Caponière', '09000', 'FOIX', '218.00'),
+(85, 4, 'Duchemin-Laniel', 'Véronique', '130 r St Jean', '33000', 'LIBOURNE', '265.00'),
+(86, 1, 'Laurent', 'Younès', '34 r Demolombe', '53000', 'MAYENNE', '496.00');
 
 -- --------------------------------------------------------
 
@@ -1047,7 +1055,7 @@ CREATE TABLE `visiteur` (
 INSERT INTO `visiteur` (`id_visiteur`, `id_laboratoire`, `id_secteur`, `nom_visiteur`, `prenom_visiteur`, `adresse_visiteur`, `cp_visiteur`, `ville_visiteur`, `date_embauche`, `login_visiteur`, `pwd_visiteur`, `type_visiteur`) VALUES
 (1, 3, 2, 'Villechalane', 'Louis', '8 cours Lafontaine', '29000', 'BREST', '1992-12-11', 'Villechalane', 'secret', 'V'),
 (2, 2, 2, 'Andre', 'David', '1 r Aimon de Chissée', '38100', 'GRENOBLE', '1991-08-26', 'Andre', 'secret', 'V'),
-(3, 2, 2, 'Bedos', 'Christian', '1 r Bénédictins', '65000', 'TARBES', '1987-07-17', 'Bedos', 'secret', 'V'),
+(3, 2, 2, 'Bedos', 'Christian', '1 r Bénédictins', '38100', 'GRENOBLE', '1987-07-17', 'Bedos', 'secret', 'V'),
 (4, 3, 2, 'Tusseau', 'Louis', '22 r Renou', '86000', 'POITIERS', '1999-01-02', 'TusseauL', 'secret', 'V'),
 (5, 2, 2, 'Bentot', 'Pascal', '11 av 6 Juin', '67000', 'STRASBOURG', '1996-03-11', 'Bentot', 'secret', 'V'),
 (6, 3, 2, 'Bioret', 'Luc', '1 r Linne', '35000', 'RENNES', '1997-03-21', 'Bioret', 'secret', 'V'),
@@ -1363,7 +1371,7 @@ ALTER TABLE `famille`
 -- AUTO_INCREMENT pour la table `frais`
 --
 ALTER TABLE `frais`
-  MODIFY `id_frais` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_frais` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT pour la table `fraisforfait`
@@ -1375,7 +1383,7 @@ ALTER TABLE `fraisforfait`
 -- AUTO_INCREMENT pour la table `fraishorsforfait`
 --
 ALTER TABLE `fraishorsforfait`
-  MODIFY `id_fraishorsforfait` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_fraishorsforfait` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT pour la table `laboratoire`
@@ -1441,7 +1449,7 @@ ALTER TABLE `type_praticien`
 -- AUTO_INCREMENT pour la table `visiteur`
 --
 ALTER TABLE `visiteur`
-  MODIFY `id_visiteur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `id_visiteur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- Contraintes pour les tables déchargées
@@ -1574,14 +1582,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-
-
-INSERT INTO fraishorsforfait (id_fraishorsforfait, id_frais, date_fraishorsforfait, montant_fraishorsforfait, lib_fraishorsforfait)
-VALUES
-  (10, 1, '2023-10-22', 18.75, 'Frais de déjeuner'),
-  (11, 1, '2023-10-23', 24.50, 'Frais de taxi'),
-  (12, 1, '2023-10-24', 31.20, 'Frais de stationnement'),
-  (7, 5, '2023-10-19', 35.25, 'Frais de carburant'),
-  (8, 6, '2023-10-20', 42.60, 'Frais de déplacement'),
-  (9, 7, '2023-10-21', 28.90, 'Frais de repas d\'affaires');
