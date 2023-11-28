@@ -43,7 +43,16 @@
 <div class="col-md-6 col-md-offset-3">
     @php
         $erreur = session('erreur');
+        $erreurSuppression = session('erreurSuppression');
+        session()->forget('erreurSuppression');
     @endphp
+
+    @if ($erreurSuppression)
+        <div class="alert alert-danger" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            {{ $erreurSuppression }}
+        </div>
+    @endif
 
     @if ($erreur)
         <div class="alert alert-danger" role="alert">
