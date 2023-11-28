@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="{{ asset('assets/css/monStyle.css') }}">
     <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
 
-    <!-- Fonts -->
     <link href="//fonts.googleapis.com/css?family=Roboto:400,300" rel="stylesheet" type="text/css">
 </head>
 <body class="body">

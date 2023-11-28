@@ -48,20 +48,19 @@ class ServiceFraisHors
         }
     }
 
-    /*public function insertFraisHors($id_frais, $libelle, $date, $montant)
+    public function insertFraisHors($id_frais, $date, $montant, $libelle)
     {
         try {
-            DB::table('frais')->insert(
-                ['anneemois' => $anneemois,
-                    'nbjustificatifs' => $nbjustificatifs,
-                    'id_etat' => 2,
-                    'id_visiteur' => $id_visiteur,
-                    'montantvalide' => 0]
+            DB::table('fraishorsforfait')->insert(
+                ['id_frais' => $id_frais,
+                    'date_fraishorsforfait' => $date,
+                    'montant_fraishorsforfait' => $montant,
+                    'lib_fraishorsforfait' => $libelle]
             );
         } catch (QueryException $e) {
             throw new MonException($e->getMessage(), 5);
         }
-    }*/
+    }
 
     public function calculerMontantTotalFraisHorsForfait($fraisHorsForfait, $id_frais)
     {
