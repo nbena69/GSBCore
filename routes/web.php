@@ -29,14 +29,24 @@ Route::get('/getLogout', [VisiteurController::class, 'signOut']);
 
 
 Route::get('/getListeFrais', [FraisController::class, 'getFraisVisiteur']);
+Route::get('/listerFrais', [FraisController::class, 'getFraisVisiteur']);
+
+
 Route::get('/modifierFrais/{id}', [FraisController::class, 'updateFrais']);
-Route::get('/validerFrais', [FraisController::class, 'validateFrais']);
+Route::post('/validerFrais', [FraisController::class, 'validateFrais']);
+
+
 Route::get('/ajouterFrais', [FraisController::class, 'addFrais']);
+Route::post('/validerFrais', [FraisController::class, 'validateFrais']);
+
 Route::get('/supprimerFrais/{id}', [FraisController::class, 'supprimeFrais']);
 
+//Frais Hors Forfait
+Route::get('/listeFraisHorsForfait/{id}', [FraisHorsController::class, 'getFraisVisiteurHorsForfait']);
 
-Route::get('/getListeFraisHors/{id}', [FraisHorsController::class, 'getFraisHors']);
-Route::get('/ajouterFraisHors/{id}',  [FraisHorsController::class, 'addFraisHors']);
+Route::get('/modifierFraisHorsForfait/{id}', [FraisHorsController::class, 'updateFraisHosForfait']);
+Route::post('/validerFraisHorsForfait', [FraisHorsController::class, 'validateFraisHorsForfait']);
+
+Route::get('/ajouterFraisHorsForfait/{id}', [FraisHorsController::class, 'addFraisHorsForfait']);
+Route::post('/validerFraisHorsForfait/{id}', [FraisHorsController::class, 'validateFraisHorsForfait']);
 Route::get('/supprimerFraisHors/{id}',  [FraisHorsController::class, 'supprimeFraisHors']);
-Route::get('/validerFraisHors/{id}', [FraisHorsController::class, 'validateFraisHors']);
-

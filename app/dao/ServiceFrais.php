@@ -2,19 +2,22 @@
 
 namespace App\dao;
 
-use App\metier\Frais;
+use App\Exceptions\MonException;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\DB;
-use App\Exceptions\MonException;
+use Illuminate\Support\Facades\Request;
+use App\Exceptions;
+use App\metier\Frais;
 use Illuminate\Support\Facades\Session;
 
 class ServiceFrais
 {
+
     public function getFrais($id_visiteur)
     {
         try {
-            $lesFrais = Db::table('frais')
-                ->Select()
+            $lesFrais = DB::table('frais')
+                ->select()
                 ->where('frais.id_visiteur', '=', $id_visiteur)
                 ->get();
             return $lesFrais;
@@ -23,52 +26,68 @@ class ServiceFrais
         }
     }
 
+
+
+
+
     public function updateFrais($id_frais, $anneemois, $nbjustificatifs)
     {
         try {
             $dateJour = date("Y-m-d");
             DB::table('frais')
                 ->where('id_frais', '=', $id_frais)
-                ->update(['anneemois' => $anneemois, 'nbjustificatifs' => $nbjustificatifs, 'datemodification' => $dateJour]);
+                ->update(['anneemois' => $anneemois,
+                    'nbjustificatifs' => $nbjustificatifs,
+                    'datemodification' => $dateJour]);
         } catch (QueryException $e) {
             throw new MonException($e->getMessage(), 5);
+
         }
     }
 
-    public function getById($id_frais)
-    {
+
+
+    public function getById($id_frais){
         try {
-            $frais = DB::table('frais')
+            $fraisById = DB::table('frais')
                 ->select()
                 ->where('id_frais', '=', $id_frais)
                 ->first();
-            return $frais;
+
         } catch (QueryException $e) {
             throw new MonException($e->getMessage(), 5);
         }
+        return $fraisById;
     }
 
-    public function insertFrais($anneemois, $nbjustificatifs, $id_visiteur)
+    public function insertFrais($anneemois, $nbjustificatifs, $id_visiteur, $montant)
     {
         try {
-            DB::table('frais')->insert(
-                ['anneemois' => $anneemois,
+            $dateJour = date("Y-m-d");
+            DB::table('frais')
+                ->insert(['anneemois' => $anneemois,
                     'nbjustificatifs' => $nbjustificatifs,
                     'id_etat' => 2,
                     'id_visiteur' => $id_visiteur,
-                    'montantvalide' => 0]
-            );
+                    'montantvalide' => $montant]);
         } catch (QueryException $e) {
             throw new MonException($e->getMessage(), 5);
+
         }
     }
 
-    public function deleteFrais($id_frais)
-    {
+
+    public function deleteFrais($id_frais){
         try {
+            DB::table('fraishorsforfait')->where('id_frais', '=', $id_frais)->delete();
             DB::table('frais')->where('id_frais', '=', $id_frais)->delete();
-        } catch (QueryException $e) {
+        }catch (QueryException $e){
             throw new MonException($e->getMessage(), 5);
         }
+
+
+
     }
+
+
 }

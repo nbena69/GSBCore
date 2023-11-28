@@ -2,31 +2,46 @@
 
 namespace App\Http\Controllers;
 
-use App\dao\ServiceFrais;
-use App\Exceptions\MonException;
-use App\metier\FraisHors;
-use App\Models\User;
 use App\dao\ServiceFraisHors;
-use Exception;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Session;
-
+use App\metier\FraisHors;
+use App\Exceptions;
+use App\Exceptions\MonException;
+use function MongoDB\BSON\toRelaxedExtendedJSON;
 
 class FraisHorsController extends Controller
 {
-    public function getFraisHors($id_fraisHors)
+    public function getFraisVisiteurHorsForfait($id_frais)
     {
         try {
-            $unServiceFraisHors = new ServiceFraisHors();
+            $erreur = "";
+            $monErreur = Session::get('monErreur');
+            Session::forget('monErreur');
+            $unServiceFrais = new ServiceFraisHors();
+            $id_visiteur = Session::get('id');
+            $mesFrais = $unServiceFrais->getFraisHorsForfait($id_frais);
+            $montantTotal = $unServiceFrais->getMontantTotalFraisHorsForfait($id_frais);
+            return view('vues/listeFraisHorsForfait', compact('mesFrais', 'montantTotal', 'erreur'));
+        } catch (MonException$e) {
+            $erreur = $e->getMessage();
+            return view('vues/error', compact('erreur'));
+        } catch (Exception$e) {
+            $erreur = $e->getMessage();
+            return view('vues/error', compact('erreur'));
+        }
+    }
 
-            $fraisHorsForfait = FraisHors::all();
 
-            $montantTotal = $unServiceFraisHors->calculerMontantTotalFraisHorsForfait($fraisHorsForfait, $id_fraisHors);
-
-            $mesFraisHors = $fraisHorsForfait->where('id_frais', $id_fraisHors);
-
-            return view('vues/listeFraisHors', compact('mesFraisHors', 'montantTotal'));
+    public function updateFraisHorsForfait($id_fraisfraishorsforfait)
+    {
+        try {
+            $monErreur = "";
+            $erreur = "";
+            $unServiceFrais = new ServiceFraisHors;
+            $unFrais = $unServiceFrais->getByIdFraisHorsForfait($id_fraisfraishorsforfait);
+            $titrevue = "Modification d'une fiche de frais hors Forfait";
+            return view('vues/formFraisHorsForfait', compact('unFrais', 'titrevue', 'erreur'));
         } catch (MonException $e) {
             $erreur = $e->getMessage();
             return view('vues/error', compact('erreur'));
@@ -37,14 +52,51 @@ class FraisHorsController extends Controller
     }
 
 
-    public function addFraisHors($id_frais)
+    public function validateFraisHorsForfait()
     {
         try {
-            $erreur = '';
-            $unFraisHors = "";
+            $erreur = "";
+            //$id_frais = Session::get('id_frais');
+            $id_frais = 1;
+            $id_fraishorsforfait = Request::input('id_fraishorsforfait');
+            //$id_frais = Request::input('id_frais');
+            $lib_fraishorsforfait = Request::input('lib_fraishorsforfait');
+            $date_fraishorsforfait = Request::input('date_fraishorsforfait');
+            $montant_fraishorsforfait = Request::input('montant_fraishorsforfait');
 
-            $titreVue = "Ajout d'une fiche de Frais Hors Forfait";
-            return view('vues/formFraisHors', compact('unFraisHors', 'titreVue', 'erreur', 'id_frais'));
+            $unServiceFrais = new ServiceFraisHors();
+            if ($id_fraishorsforfait > 0) {
+                $unServiceFrais->updateFraisHorsForfait($id_frais, $date_fraishorsforfait, $montant_fraishorsforfait, $lib_fraishorsforfait);
+            } else {
+                $montant = Request::input('montant');
+                $id_visiteur = Session::get('id');
+                $unServiceFrais->insertFraisHorsForfait($id_frais, $date_fraishorsforfait, $montant_fraishorsforfait, $lib_fraishorsforfait);
+            }
+
+            $montant_fraishorsforfait = Request::input('montant_fraishorsforfait');
+
+            $mesFrais = $unServiceFrais->getFraisHorsForfait($id_frais);
+            return view('/home', compact('mesFrais', 'montant_fraishorsforfait'));
+        } catch (MonException $e) {
+            $erreur = $e->getMessage();
+            return view('vues/error', compact('erreur'));
+        } catch (Exception $e) {
+            $monErreur = $e->getMessage();
+            return view('vues/error', compact('erreur'));
+        }
+    }
+
+
+    public function addFraisHorsForfait($id_frais)
+    {
+        try {
+            $erreur = "";
+            $titrevue = "Ajout d'une fiche de Frais";
+            $id_visiteur = Session::get('id');
+
+            $unServiceFrais = new ServiceFraisHors;
+            $mesFrais = $unServiceFrais->getFraisHorsForfait($id_frais);
+            return view('vues/formFraisHorsForfait', compact('mesFrais', 'titrevue', 'erreur', 'id_visiteur'));
         } catch (MonException $e) {
             $erreur = $e->getMessage();
             return view('vues/error', compact('erreur'));
@@ -53,6 +105,7 @@ class FraisHorsController extends Controller
             return view('vues/error', compact('erreur'));
         }
     }
+
 
     public function supprimeFraisHors($id_fraisHors)
     {
@@ -72,22 +125,9 @@ class FraisHorsController extends Controller
         }
     }
 
-    public function validateFraisHors($id_frais)
+
+    public function __construct()
     {
-        try {
-            $id_frais = Request::input('id_frais');
-            $date = Request::input('date_fraishorsforfait');
-            $montant = Request::input('montant_fraishorsforfait');
-            $libelle = Request::input('lib_fraishorsforfait');
-            $unServiceFraisHors = new ServiceFraisHors();
-            $unServiceFraisHors->insertFraisHors($id_frais, $date, $montant, $libelle);
-            return redirect($this->getFraisHors($id_frais));
-        } catch (MonException $e) {
-            $erreur = $e->getMessage();
-            return view('vues/error', compact('erreur'));
-        } catch (Exception $e) {
-            $erreur = $e->getMessage();
-            return view('vues/error', compact('erreur'));
-        }
+        $this->id_frais = 0;
     }
 }

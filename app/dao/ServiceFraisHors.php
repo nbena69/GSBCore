@@ -2,77 +2,87 @@
 
 namespace App\dao;
 
-use App\metier\FraisHors;
+use App\Exceptions\MonException;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\DB;
-use App\Exceptions\MonException;
+use Illuminate\Support\Facades\Request;
+use App\Exceptions;
+use App\metier\FraisHors;
 use Illuminate\Support\Facades\Session;
 
 class ServiceFraisHors
 {
-    public function getByIds($id_fraisHors, $id_frais)
+    public function getFraisHorsForfait($id_frais)
     {
         try {
-            $frais = DB::table('fraishorsforfait')
-                ->where('id_fraishorsforfait', $id_fraisHors)
-                ->where('id_frais', $id_frais)
-                ->first();
-            return $frais;
-        } catch (QueryException $e) {
-            throw new MonException($e->getMessage(), 5);
-        }
-    }
-
-    public function getById($id_frais)
-    {
-        try {
-            $frais = DB::table('fraishorsforfait')
-                ->where('id_frais', $id_frais)
-                ->first();
-            return $frais;
-        } catch (QueryException $e) {
-            throw new MonException($e->getMessage(), 5);
-        }
-    }
-
-    public function getFraisHors($id_frais)
-    {
-        try {
-            $lesFraisHors = Db::table('fraishorsforfait')
-                ->Select()
-                ->where('fraishorsforfait.id_frais', '=', $id_frais)
+            $lesFrais = DB::table('fraishorsforfait')
+                ->select()
+                ->where('id_frais', '=', $id_frais)
                 ->get();
-            return $lesFraisHors;
+            return $lesFrais;
         } catch (QueryException $e) {
             throw new MonException($e->getMessage(), 5);
         }
     }
-
-    public function insertFraisHors($id_frais, $date, $montant, $libelle)
+    public function getMontantTotalFraisHorsForfait($id_frais)
     {
         try {
-            DB::table('fraishorsforfait')->insert(
-                ['id_frais' => $id_frais,
-                    'date_fraishorsforfait' => $date,
-                    'montant_fraishorsforfait' => $montant,
-                    'lib_fraishorsforfait' => $libelle]
-            );
+            $montantTotal = DB::table('fraishorsforfait')
+                ->where('id_frais', '=', $id_frais)
+                ->sum('montant_fraishorsforfait');
+            return $montantTotal;
         } catch (QueryException $e) {
             throw new MonException($e->getMessage(), 5);
         }
     }
 
-    public function calculerMontantTotalFraisHorsForfait($fraisHorsForfait, $id_frais)
-    {
-        $montantTotal = 0;
 
-        foreach ($fraisHorsForfait as $frais) {
-            if ($frais->id_frais === $id_frais) {
-                $montantTotal += $frais->montant_fraishorsforfait;
-            }
+    public function updateFraisHorsForfait($id_fraishorsforfait, $date_fraishorsforfait, $montant_fraishorsforfait, $lib_fraishorsforfait)
+    {
+        try {
+            $dateJour = date("Y-m-d");
+            DB::table('frais')
+                ->where('id_fraishorsforfait', '=', $id_fraishorsforfait)
+                ->update([
+                    'date_fraishorsforfait' => $date_fraishorsforfait,
+                    'montant_fraishorsforfait' => $montant_fraishorsforfait,
+                    'lib_fraishorsforfait' => $lib_fraishorsforfait]);
+        } catch (QueryException $e) {
+            throw new MonException($e->getMessage(), 5);
         }
-        return $montantTotal;
     }
+
+
+    public function getByIdFraisHorsForfait($id_fraisHorsForfait){
+        try {
+            $fraisById = DB::table('fraishorsforfait')
+                ->select()
+                ->where('id_fraisHorsForfait', '=', $id_fraisHorsForfait)
+                ->first();
+
+        } catch (QueryException $e) {
+            throw new MonException($e->getMessage(), 5);
+        }
+        return $fraisById;
+    }
+
+
+    public function insertFraisHorsForfait($id_frais, $date_fraishorsforfait, $montant_fraishorsforfait, $lib_fraishorsforfait)
+    {
+        try {
+            $dateJour = date("Y-m-d");
+            DB::table('fraishorsforfait')
+                ->insert([
+                    'id_frais' => $id_frais,
+                    'date_fraishorsforfait' => $date_fraishorsforfait,
+                    'montant_fraishorsforfait' => $montant_fraishorsforfait,
+                    'lib_fraishorsforfait' => $lib_fraishorsforfait]);
+        } catch (QueryException $e) {
+            throw new MonException($e->getMessage(), 5);
+
+        }
+    }
+
 
     public function deleteFraisHors($id_fraisHors)
     {
