@@ -57,12 +57,7 @@ class FraisHorsController extends Controller
         try {
             $erreur = "";
             $id_fraishorsforfait = Request::input('id_fraishorsforfait');
-            if(Request::input('id_frais') != null || Request::input('id_frais') != "null") {
-                $id_frais = 1;
-            } else{
-                $id_frais = Request::input('id_frais');
-
-            }
+            $id_frais = Request::input('id_frais');
             $lib_fraishorsforfait = Request::input('lib_fraishorsforfait');
             $date_fraishorsforfait = Request::input('date_fraishorsforfait');
             $montant_fraishorsforfait = Request::input('montant_fraishorsforfait');
@@ -99,7 +94,8 @@ class FraisHorsController extends Controller
 
             $unServiceFrais = new ServiceFraisHors;
             $mesFrais = $unServiceFrais->getFraisHorsForfait($id_frais);
-            return view('vues/formAjoutFraisHorsForfait', compact('mesFrais', 'titrevue', 'erreur', 'id_visiteur'));
+            $unFrais = $id_frais;
+            return view('vues/formAjoutFraisHorsForfait', compact('mesFrais', 'unFrais', 'titrevue', 'erreur', 'id_visiteur'));
         } catch (MonException $e) {
             $erreur = $e->getMessage();
             return view('vues/error', compact('erreur'));
