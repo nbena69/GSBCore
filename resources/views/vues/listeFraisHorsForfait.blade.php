@@ -21,7 +21,7 @@
                         <td>  {{ $unFrais->lib_fraishorsforfait }}</td>
                         <td>  {{ $unFrais->montant_fraishorsforfait }}</td>
                         <td style="text-align: center;"><a
-                                href="{{ url('/modifierFrais') }}/{{ $unFrais->id_fraishorsforfait }}"><span
+                                href="{{ url('/modifierFraisHorsForfait') }}/{{ $unFrais->id_fraishorsforfait }}"><span
                                     class="glyphicon glyphicon-pencil" data-toggle="tootltip" data-olacement="top"
                                     title=""></span> </a></td>
                         <td style="text-align:center;">
@@ -57,7 +57,7 @@
             </div>
 
             <div class="col-md-6 col-md-offset-3">
-                @include('Vues/error')
+                @include('vues/error')
             </div>
 
         </div>

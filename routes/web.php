@@ -44,9 +44,8 @@ Route::get('/supprimerFrais/{id}', [FraisController::class, 'supprimeFrais']);
 //Frais Hors Forfait
 Route::get('/listeFraisHorsForfait/{id}', [FraisHorsController::class, 'getFraisVisiteurHorsForfait']);
 
-Route::get('/modifierFraisHorsForfait/{id}', [FraisHorsController::class, 'updateFraisHosForfait']);
-Route::post('/validerFraisHorsForfait', [FraisHorsController::class, 'validateFraisHorsForfait']);
+Route::get('/modifierFraisHorsForfait/{id}', [FraisHorsController::class, 'updateFraisHorsForfait']);
 
 Route::get('/ajouterFraisHorsForfait/{id}', [FraisHorsController::class, 'addFraisHorsForfait']);
-Route::post('/validerFraisHorsForfait/{id}', [FraisHorsController::class, 'validateFraisHorsForfait']);
+Route::post('/validerFraisHorsForfait', [FraisHorsController::class, 'validateFraisHorsForfait']);
 Route::get('/supprimerFraisHors/{id}',  [FraisHorsController::class, 'supprimeFraisHors']);

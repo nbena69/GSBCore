@@ -96,7 +96,7 @@ class FraisHorsController extends Controller
 
             $unServiceFrais = new ServiceFraisHors;
             $mesFrais = $unServiceFrais->getFraisHorsForfait($id_frais);
-            return view('vues/formFraisHorsForfait', compact('mesFrais', 'titrevue', 'erreur', 'id_visiteur'));
+            return view('vues/formAjoutFraisHorsForfait', compact('mesFrais', 'titrevue', 'erreur', 'id_visiteur'));
         } catch (MonException $e) {
             $erreur = $e->getMessage();
             return view('vues/error', compact('erreur'));

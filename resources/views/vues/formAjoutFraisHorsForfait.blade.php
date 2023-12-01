@@ -11,20 +11,20 @@
             <div class="form-group">
                 <label class="col-md-3 col-sm-3 control-label">Action : </label>
                 <div class="col-md-6 col-sm-3">
-                    <input type="text" name="lib_fraishorsforfait" value="{{ $unFrais->lib_fraishorsforfait }}" class="form-control" placeholder="Action réalisée" required autofocus>
+                    <input type="text" name="lib_fraishorsforfait" value="" class="form-control" placeholder="Action réalisée" required autofocus>
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="col-md-3 col-sm-3 control-label">Date : </label>
                 <div class="col-md-2 col-sm-2">
-                    <input type="date" name="date_fraishorsforfait" value="{{ $unFrais->date_fraishorsforfait }}"  class="form-control" placeholder="Date frais hors forfait" required>
+                    <input type="date" name="date_fraishorsforfait" value=""  class="form-control" placeholder="Date frais hors forfait" required>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-md-3 col-sm-3 control-label">Montant : </label>
                 <div class="col-md-2 col-sm-2">
-                    <input type="currency" class="form-control"  name="montant_fraishorsforfait" value="{{ $unFrais->montant_fraishorsforfait }}" placeholder="Montant engagé" required>
+                    <input type="currency" class="form-control"  name="montant_fraishorsforfait" value="" placeholder="Montant engagé" required>
                 </div>
             </div>
             <div class="form-group">
