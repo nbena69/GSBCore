@@ -6,7 +6,7 @@
         <center><h1> </h1></center>
         <div class="form-horizontal">
 
-            <input type="hidden" name="id_fraishorsforfait" value=""/>
+            <input type="hidden" name="id_fraishorsforfait" value="$unFrais->id_fraishorsforfait"/>
             <input type="hidden" name="id_frais" value="{{ $unFrais->id_frais }}  }}"/>
             <div class="form-group">
                 <label class="col-md-3 col-sm-3 control-label">Action : </label>
