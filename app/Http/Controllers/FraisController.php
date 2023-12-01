@@ -108,7 +108,6 @@ class FraisController extends Controller
             $unServiceFrais = new ServiceFrais;
             $mesFrais = $unServiceFrais->getFrais($id_visiteur);
             return view('vues/listeFrais', compact('mesFrais', 'erreur', 'id_visiteur'));
-            //return redirect('/getListeFrais', compact('erreur'));
         } catch (MonException $e) {
             $id_visiteur = Session::get('id');
             $unServiceFrais = new ServiceFrais;

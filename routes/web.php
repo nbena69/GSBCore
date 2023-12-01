@@ -48,4 +48,5 @@ Route::get('/modifierFraisHorsForfait/{id}', [FraisHorsController::class, 'updat
 
 Route::get('/ajouterFraisHorsForfait/{id}', [FraisHorsController::class, 'addFraisHorsForfait']);
 Route::post('/validerFraisHorsForfait', [FraisHorsController::class, 'validateFraisHorsForfait']);
+
 Route::get('/supprimerFraisHors/{id}',  [FraisHorsController::class, 'supprimeFraisHors']);

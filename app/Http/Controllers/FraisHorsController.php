@@ -56,10 +56,13 @@ class FraisHorsController extends Controller
     {
         try {
             $erreur = "";
-            //$id_frais = Session::get('id_frais');
-            $id_frais = 1;
             $id_fraishorsforfait = Request::input('id_fraishorsforfait');
-            //$id_frais = Request::input('id_frais');
+            if(Request::input('id_frais') != null || Request::input('id_frais') != "null") {
+                $id_frais = 1;
+            } else{
+                $id_frais = Request::input('id_frais');
+
+            }
             $lib_fraishorsforfait = Request::input('lib_fraishorsforfait');
             $date_fraishorsforfait = Request::input('date_fraishorsforfait');
             $montant_fraishorsforfait = Request::input('montant_fraishorsforfait');
