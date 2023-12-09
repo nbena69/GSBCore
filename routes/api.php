@@ -46,4 +46,4 @@ Route::prefix('visiteur')->group(function () {
 Route::post('getConnexion', [VisiteurWSController::class, "getConnexion"]);
 Route::get('updatePassword', [VisiteurWSController::class,"updatePassword"]);
 Route::post('login', [VisiteurWSController::class, "login"]);
-Route::get('/logout', [VisiteurWSController::class, "logout"])->middleware('auth:sanctum');
+Route::get('logout', [VisiteurWSController::class, "logout"])->middleware('auth:sanctum');
