@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : ven. 08 déc. 2023 à 11:03
+-- Généré le : ven. 08 déc. 2023 à 15:08
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -28,11 +28,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `activite_compl` (
-  `id_activite_compl` int(11) NOT NULL,
-  `date_activite` date DEFAULT NULL,
-  `lieu_activite` varchar(200) DEFAULT NULL,
-  `theme_activite` varchar(100) DEFAULT NULL,
-  `motif_activite` varchar(100) DEFAULT NULL
+                                  `id_activite_compl` int(11) NOT NULL,
+                                  `date_activite` date DEFAULT NULL,
+                                  `lieu_activite` varchar(200) DEFAULT NULL,
+                                  `theme_activite` varchar(100) DEFAULT NULL,
+                                  `motif_activite` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -42,8 +42,8 @@ CREATE TABLE `activite_compl` (
 --
 
 CREATE TABLE `composant` (
-  `id_composant` int(11) NOT NULL,
-  `lib_composant` varchar(100) DEFAULT NULL
+                             `id_composant` int(11) NOT NULL,
+                             `lib_composant` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -51,35 +51,35 @@ CREATE TABLE `composant` (
 --
 
 INSERT INTO `composant` (`id_composant`, `lib_composant`) VALUES
-(1, 'Amoxicilline'),
-(2, 'Triamcinolone'),
-(3, 'Néomycine'),
-(4, 'Nystatine'),
-(5, 'Tyrothricine'),
-(6, 'Tétracaïne'),
-(7, 'Acide ascorbique'),
-(8, 'Erythromycine'),
-(9, 'Dextropropoxyphène'),
-(10, 'Paracétamol'),
-(11, 'Acide acétylsalicylique'),
-(12, 'Clarithromycine'),
-(13, 'Clomipramine'),
-(14, 'Mirtazapine'),
-(15, 'Doxylamine'),
-(16, 'Méclozine'),
-(17, 'Adrafinil'),
-(18, 'Diphénydramine'),
-(19, 'Josamycine'),
-(20, 'Oxytétracycline'),
-(21, 'Lidocaïne'),
-(22, 'Lithium'),
-(23, 'Sulbutiamine'),
-(24, 'Pyrazinamide'),
-(25, 'Bacitracine'),
-(26, 'Paroxétine'),
-(27, 'Fosfomycine trométamol'),
-(28, 'Acide clavulanique'),
-(29, 'Codéine');
+                                                              (1, 'Amoxicilline'),
+                                                              (2, 'Triamcinolone'),
+                                                              (3, 'Néomycine'),
+                                                              (4, 'Nystatine'),
+                                                              (5, 'Tyrothricine'),
+                                                              (6, 'Tétracaïne'),
+                                                              (7, 'Acide ascorbique'),
+                                                              (8, 'Erythromycine'),
+                                                              (9, 'Dextropropoxyphène'),
+                                                              (10, 'Paracétamol'),
+                                                              (11, 'Acide acétylsalicylique'),
+                                                              (12, 'Clarithromycine'),
+                                                              (13, 'Clomipramine'),
+                                                              (14, 'Mirtazapine'),
+                                                              (15, 'Doxylamine'),
+                                                              (16, 'Méclozine'),
+                                                              (17, 'Adrafinil'),
+                                                              (18, 'Diphénydramine'),
+                                                              (19, 'Josamycine'),
+                                                              (20, 'Oxytétracycline'),
+                                                              (21, 'Lidocaïne'),
+                                                              (22, 'Lithium'),
+                                                              (23, 'Sulbutiamine'),
+                                                              (24, 'Pyrazinamide'),
+                                                              (25, 'Bacitracine'),
+                                                              (26, 'Paroxétine'),
+                                                              (27, 'Fosfomycine trométamol'),
+                                                              (28, 'Acide clavulanique'),
+                                                              (29, 'Codéine');
 
 -- --------------------------------------------------------
 
@@ -88,9 +88,9 @@ INSERT INTO `composant` (`id_composant`, `lib_composant`) VALUES
 --
 
 CREATE TABLE `constituer` (
-  `id_composant` int(11) NOT NULL,
-  `id_medicament` int(11) NOT NULL,
-  `qte_composant` decimal(11,2) DEFAULT NULL
+                              `id_composant` int(11) NOT NULL,
+                              `id_medicament` int(11) NOT NULL,
+                              `qte_composant` decimal(11,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -98,46 +98,46 @@ CREATE TABLE `constituer` (
 --
 
 INSERT INTO `constituer` (`id_composant`, `id_medicament`, `qte_composant`) VALUES
-(1, 2, 200.00),
-(1, 3, 400.00),
-(1, 4, 100.00),
-(2, 1, 50.00),
-(2, 28, 400.00),
-(3, 1, 100.00),
-(4, 1, 100.00),
-(5, 1, 500.00),
-(6, 5, 100.00),
-(6, 6, 300.00),
-(6, 7, 40.00),
-(7, 8, 200.00),
-(8, 8, 100.00),
-(9, 9, 200.00),
-(9, 10, 50.00),
-(10, 7, 200.00),
-(10, 10, 100.00),
-(10, 11, 300.00),
-(11, 12, 200.00),
-(12, 13, 500.00),
-(13, 14, 200.00),
-(14, 7, 100.00),
-(14, 10, 20.00),
-(14, 11, 100.00),
-(15, 15, 200.00),
-(16, 16, 400.00),
-(17, 17, 200.00),
-(18, 18, 100.00),
-(19, 19, 200.00),
-(20, 20, 200.00),
-(20, 21, 300.00),
-(21, 22, 200.00),
-(22, 10, 30.00),
-(23, 23, 300.00),
-(24, 24, 200.00),
-(25, 25, 300.00),
-(26, 26, 300.00),
-(27, 5, 400.00),
-(27, 7, 50.00),
-(28, 27, 100.00);
+                                                                                (1, 2, 200.00),
+                                                                                (1, 3, 400.00),
+                                                                                (1, 4, 100.00),
+                                                                                (2, 1, 50.00),
+                                                                                (2, 28, 400.00),
+                                                                                (3, 1, 100.00),
+                                                                                (4, 1, 100.00),
+                                                                                (5, 1, 500.00),
+                                                                                (6, 5, 100.00),
+                                                                                (6, 6, 300.00),
+                                                                                (6, 7, 40.00),
+                                                                                (7, 8, 200.00),
+                                                                                (8, 8, 100.00),
+                                                                                (9, 9, 200.00),
+                                                                                (9, 10, 50.00),
+                                                                                (10, 7, 200.00),
+                                                                                (10, 10, 100.00),
+                                                                                (10, 11, 300.00),
+                                                                                (11, 12, 200.00),
+                                                                                (12, 13, 500.00),
+                                                                                (13, 14, 200.00),
+                                                                                (14, 7, 100.00),
+                                                                                (14, 10, 20.00),
+                                                                                (14, 11, 100.00),
+                                                                                (15, 15, 200.00),
+                                                                                (16, 16, 400.00),
+                                                                                (17, 17, 200.00),
+                                                                                (18, 18, 100.00),
+                                                                                (19, 19, 200.00),
+                                                                                (20, 20, 200.00),
+                                                                                (20, 21, 300.00),
+                                                                                (21, 22, 200.00),
+                                                                                (22, 10, 30.00),
+                                                                                (23, 23, 300.00),
+                                                                                (24, 24, 200.00),
+                                                                                (25, 25, 300.00),
+                                                                                (26, 26, 300.00),
+                                                                                (27, 5, 400.00),
+                                                                                (27, 7, 50.00),
+                                                                                (28, 27, 100.00);
 
 -- --------------------------------------------------------
 
@@ -146,9 +146,9 @@ INSERT INTO `constituer` (`id_composant`, `id_medicament`, `qte_composant`) VALU
 --
 
 CREATE TABLE `dosage` (
-  `id_dosage` int(11) NOT NULL,
-  `qte_dosage` int(11) DEFAULT NULL,
-  `unite_dosage` char(10) DEFAULT NULL
+                          `id_dosage` int(11) NOT NULL,
+                          `qte_dosage` int(11) DEFAULT NULL,
+                          `unite_dosage` char(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -156,16 +156,16 @@ CREATE TABLE `dosage` (
 --
 
 INSERT INTO `dosage` (`id_dosage`, `qte_dosage`, `unite_dosage`) VALUES
-(1, 1, 'Heure'),
-(2, 2, 'Heure'),
-(3, 1, 'Jour'),
-(4, 2, 'Jour'),
-(5, 3, 'Jour'),
-(6, 4, 'Jour'),
-(7, 1, 'Semaine'),
-(8, 2, 'Semaine'),
-(9, 3, 'Semaine'),
-(10, 4, 'Semaine');
+                                                                     (1, 1, 'Heure'),
+                                                                     (2, 2, 'Heure'),
+                                                                     (3, 1, 'Jour'),
+                                                                     (4, 2, 'Jour'),
+                                                                     (5, 3, 'Jour'),
+                                                                     (6, 4, 'Jour'),
+                                                                     (7, 1, 'Semaine'),
+                                                                     (8, 2, 'Semaine'),
+                                                                     (9, 3, 'Semaine'),
+                                                                     (10, 4, 'Semaine');
 
 -- --------------------------------------------------------
 
@@ -174,8 +174,8 @@ INSERT INTO `dosage` (`id_dosage`, `qte_dosage`, `unite_dosage`) VALUES
 --
 
 CREATE TABLE `etat` (
-  `id_etat` int(11) NOT NULL,
-  `lib_etat` varchar(120) DEFAULT NULL
+                        `id_etat` int(11) NOT NULL,
+                        `lib_etat` varchar(120) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -183,10 +183,10 @@ CREATE TABLE `etat` (
 --
 
 INSERT INTO `etat` (`id_etat`, `lib_etat`) VALUES
-(1, 'Saisie clôturée'),
-(2, 'Fiche créée, saisie en cours'),
-(3, 'Remboursée'),
-(4, 'Validée et mise en paiement');
+                                               (1, 'Saisie clôturée'),
+                                               (2, 'Fiche créée, saisie en cours'),
+                                               (3, 'Remboursée'),
+                                               (4, 'Validée et mise en paiement');
 
 -- --------------------------------------------------------
 
@@ -195,13 +195,13 @@ INSERT INTO `etat` (`id_etat`, `lib_etat`) VALUES
 --
 
 CREATE TABLE `failed_jobs` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `uuid` varchar(255) NOT NULL,
-  `connection` text NOT NULL,
-  `queue` text NOT NULL,
-  `payload` longtext NOT NULL,
-  `exception` longtext NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
+                               `id` bigint(20) UNSIGNED NOT NULL,
+                               `uuid` varchar(255) NOT NULL,
+                               `connection` text NOT NULL,
+                               `queue` text NOT NULL,
+                               `payload` longtext NOT NULL,
+                               `exception` longtext NOT NULL,
+                               `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -211,8 +211,8 @@ CREATE TABLE `failed_jobs` (
 --
 
 CREATE TABLE `famille` (
-  `id_famille` int(11) NOT NULL,
-  `lib_famille` varchar(100) DEFAULT NULL
+                           `id_famille` int(11) NOT NULL,
+                           `lib_famille` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -220,9 +220,9 @@ CREATE TABLE `famille` (
 --
 
 INSERT INTO `famille` (`id_famille`, `lib_famille`) VALUES
-(1, 'Antalgiques en association'),
-(2, 'Antalgiques antipyrétiques en association'),
-(3, 'Antidépresseur d\'action centrale'),
+                                                        (1, 'Antalgiques en association'),
+                                                        (2, 'Antalgiques antipyrétiques en association'),
+                                                        (3, 'Antidépresseur d\'action centrale'),
 (4, 'Antivertigineux antihistaminique H1'),
 (5, 'Antibiotique antituberculeux'),
 (6, 'Antibiotique antiacnéique local'),
@@ -492,10 +492,10 @@ CREATE TABLE `medicament` (
 INSERT INTO `medicament` (`id_medicament`, `id_famille`, `depot_legal`, `nom_commercial`, `effets`, `contre_indication`, `prix_echantillon`) VALUES
 (1, 18, '3MYC7', 'TRIMYCINE', 'Ce médicament est un corticoïde à  activité forte ou très forte associé à  un antibiotique et un antifongique, utilisé en application locale dans certaines atteintes cutanées surinfectées.', 'Ce médicament est contre-indiqué en cas d\'allergie à  l\'un des constituants, d\'infections de la peau ou de parasitisme non traités, d\'acné. Ne pas appliquer sur une plaie, ni sous un pansement occlusif.', 8.00),
 (2, 7, 'ADIMOL9', 'ADIMOL', 'Ce médicament, plus puissant que les pénicillines simples, est utilisé pour traiter des infections bactériennes spécifiques.', 'Ce médicament est contre-indiqué en cas d\'allergie aux pénicillines ou aux céphalosporines.', 9.00),
-(3, 7, 'AMOPIL7', 'AMOPIL', 'Ce médicament, plus puissant que les pénicillines simples, est utilisé pour traiter des infections bactériennes spécifiques.', 'Ce médicament est contre-indiqué en cas d\'allergie aux pénicillines. Il doit être administré avec prudence en cas d\'allergie aux céphalosporines.', 5.00),
-(4, 7, 'AMOX45', 'AMOXAR', 'Ce médicament, plus puissant que les pénicillines simples, est utilisé pour traiter des infections bactériennes spécifiques.', 'La prise de ce médicament peut rendre positifs les tests de dépistage du dopage.', NULL),
-(5, 7, 'AMOXIG12', 'AMOXI Gé', 'Ce médicament, plus puissant que les pénicillines simples, est utilisé pour traiter des infections bactériennes spécifiques.', 'Ce médicament est contre-indiqué en cas d\'allergie aux pénicillines. Il doit être administré avec prudence en cas d\'allergie aux céphalosporines.', 8.00),
-(6, 13, 'APATOUX22', 'APATOUX Vitamine C', 'Ce médicament est utilisé pour traiter les affections de la bouche et de la gorge.', 'Ce médicament est contre-indiqué en cas d\'allergie à  l\'un des constituants, en cas de phénylcétonurie et chez l\'enfant de moins de 6 ans.', 5.00),
+                                                        (3, 7, 'AMOPIL7', 'AMOPIL', 'Ce médicament, plus puissant que les pénicillines simples, est utilisé pour traiter des infections bactériennes spécifiques.', 'Ce médicament est contre-indiqué en cas d\'allergie aux pénicillines. Il doit être administré avec prudence en cas d\'allergie aux céphalosporines.', 5.00),
+                                                        (4, 7, 'AMOX45', 'AMOXAR', 'Ce médicament, plus puissant que les pénicillines simples, est utilisé pour traiter des infections bactériennes spécifiques.', 'La prise de ce médicament peut rendre positifs les tests de dépistage du dopage.', NULL),
+                                                        (5, 7, 'AMOXIG12', 'AMOXI Gé', 'Ce médicament, plus puissant que les pénicillines simples, est utilisé pour traiter des infections bactériennes spécifiques.', 'Ce médicament est contre-indiqué en cas d\'allergie aux pénicillines. Il doit être administré avec prudence en cas d\'allergie aux céphalosporines.', 8.00),
+                                                        (6, 13, 'APATOUX22', 'APATOUX Vitamine C', 'Ce médicament est utilisé pour traiter les affections de la bouche et de la gorge.', 'Ce médicament est contre-indiqué en cas d\'allergie à  l\'un des constituants, en cas de phénylcétonurie et chez l\'enfant de moins de 6 ans.', 5.00),
 (7, 6, 'BACTIG10', 'BACTIGEL', 'Ce médicament est utilisé en application locale pour traiter l\'acné et les infections cutanées bactériennes associées.', 'Ce médicament est contre-indiqué en cas d\'allergie aux antibiotiques de la famille des macrolides ou des lincosanides.', 6.00),
 (8, 9, 'BACTIV13', 'BACTIVIL', 'Ce médicament est utilisé pour traiter des infections bactériennes spécifiques.', 'Ce médicament est contre-indiqué en cas d\'allergie aux macrolides (dont le chef de file est l\'érythromycine).', 7.00),
 (9, 2, 'BITALV', 'BIVALIC', 'Ce médicament est utilisé pour traiter les douleurs d\'intensité modérée ou intense.', 'Ce médicament est contre-indiqué en cas d\'allergie aux médicaments de cette famille, d\'insuffisance hépatique ou d\'insuffisance rénale.', 4.00),
@@ -539,7 +539,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '2014_10_12_000000_create_users_table', 1),
 (2, '2014_10_12_100000_create_password_reset_tokens_table', 1),
 (3, '2019_08_19_000000_create_failed_jobs_table', 1),
-(4, '2019_12_14_000001_create_personal_access_tokens_table', 1);
+(4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(5, '2023_12_08_081410_alter_visiteur_table', 2);
 
 -- --------------------------------------------------------
 
@@ -604,7 +605,8 @@ CREATE TABLE `personal_access_tokens` (
 INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `name`, `token`, `abilities`, `last_used_at`, `expires_at`, `created_at`, `updated_at`) VALUES
 (1, 'App\\Models\\User', 2, 'auth_token', 'd22bfb302150b6fda4769657823c8a4dbc3c008dc7b2522a7c9d965677e9ed60', '[\"*\"]', NULL, NULL, '2023-11-30 14:42:12', '2023-11-30 14:42:12'),
 (2, 'App\\Models\\User', 2, 'auth_token', '1be21d03046e1b6182b782e2e5db4f46f008a29ff6b81ce006dcc6a0d715a312', '[\"*\"]', NULL, NULL, '2023-11-30 14:46:19', '2023-11-30 14:46:19'),
-(3, 'App\\Models\\User', 2, 'auth_token', '83a44d8cd2814e5c85bef864b5ae649b34c89c01164a73337c079cea2b407f40', '[\"*\"]', NULL, NULL, '2023-11-30 14:46:28', '2023-11-30 14:46:28');
+(3, 'App\\Models\\User', 2, 'auth_token', '83a44d8cd2814e5c85bef864b5ae649b34c89c01164a73337c079cea2b407f40', '[\"*\"]', NULL, NULL, '2023-11-30 14:46:28', '2023-11-30 14:46:28'),
+(4, 'App\\Models\\User', 2, 'auth_token', '094c594b28fa0860f22134ea589ae5ff5e8a42760cd07bab12ecde6e444a9530', '[\"*\"]', NULL, NULL, '2023-12-08 07:42:05', '2023-12-08 07:42:05');
 
 -- --------------------------------------------------------
 
@@ -1126,7 +1128,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Villechalane', 'Villechalane@free.fr', NULL, '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', NULL, NULL, NULL),
-(2, 'Andre', 'Andre@free.fr', NULL, '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', '3|eeG3xeARLvSfFDq57DVc8qzhYttVBFngAUIBlxUS8bae4529', NULL, '2023-11-30 14:46:28');
+(2, 'Andre', 'Andre@free.fr', NULL, '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', '4|eE6v8fab3LPvG3w3O9Xom3MgnLyDC2d5k1JI8ypl27076d3d', NULL, '2023-12-08 07:42:05');
 
 -- --------------------------------------------------------
 
@@ -1146,86 +1148,89 @@ CREATE TABLE `visiteur` (
   `date_embauche` date DEFAULT NULL,
   `login_visiteur` varchar(50) DEFAULT NULL,
   `pwd_visiteur` varchar(200) DEFAULT NULL,
-  `type_visiteur` char(1) DEFAULT NULL
+  `type_visiteur` char(1) DEFAULT NULL,
+  `remember_token` varchar(100) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Déchargement des données de la table `visiteur`
 --
 
-INSERT INTO `visiteur` (`id_visiteur`, `id_laboratoire`, `id_secteur`, `nom_visiteur`, `prenom_visiteur`, `adresse_visiteur`, `cp_visiteur`, `ville_visiteur`, `date_embauche`, `login_visiteur`, `pwd_visiteur`, `type_visiteur`) VALUES
-(1, 3, 2, 'Villechalane', 'Louis', '8 cours Lafontaine', '29000', 'BREST', '1992-12-11', 'Villechalane', '$2y$10$oliwgYQr08tfj5t4Ws4Ob.l8OPV/WVZ4yK/TFrhKpx0e0aLb3TIMu', 'V'),
-(2, 2, 2, 'Andre', 'David', '1 r Aimon de Chissée', '38100', 'GRENOBLE', '1991-08-26', 'Andre', '$2y$10$RmK7Us1AnIs5P9KJW2QsIuCxN3nqoBWHoefkKbPEKJY0iOauO/FXi', 'V'),
-(3, 2, 2, 'Bedos', 'Christian', '1 r Bénédictins', '65000', 'TARBES', '1987-07-17', 'Bedos', '$2y$10$leH1B8ijslT3MR6EVZFttOYZp9.wAXl8Gyy766Lbjkme.ywueupG2', 'V'),
-(4, 3, 2, 'Tusseau', 'Louis', '22 r Renou', '86000', 'POITIERS', '1999-01-02', 'TusseauL', '$2y$10$BBS3HjL3tIOYWcWGgZbLwuoBe7I4MBeGECpdJjwvnBCC0biaWxsw6', 'V'),
-(5, 2, 2, 'Bentot', 'Pascal', '11 av 6 Juin', '67000', 'STRASBOURG', '1996-03-11', 'Bentot', '$2y$10$H6z/qpcaM0G55in2hk.94uBUDmLpY4/NVcYma.OGI.kfgy1BQPri2', 'V'),
-(6, 3, 2, 'Bioret', 'Luc', '1 r Linne', '35000', 'RENNES', '1997-03-21', 'Bioret', '$2y$10$arGaZeDzEpvGMZIHG1NyhuchZHAgBN9KyxAmtgVes5LZUDRS20kx6', 'V'),
-(7, 2, 2, 'Bunisset', 'Francis', '10 r Nicolas Chorier', '85000', 'LA ROCHE SUR YON', '1999-01-31', 'BunissetF', '$2y$10$Q32mKYf35VBLf/X1gUDksOzFKeKGqPNQdLDKUoOKoM151/qWu51KS', 'V'),
-(8, 3, 2, 'Bunisset', 'Denise', '1 r Lionne', '49100', 'ANGERS', '1994-07-03', 'BunissetD', '$2y$10$VsiEqXx258tfRYkS0zkvxeSLIltm/jfjDbBZ4sQ3ONf49QrKCzzNe', 'V'),
-(9, 2, 2, 'Cacheux', 'Bernard', '114 r Authie', '34000', 'MONTPELLIER', '2000-08-02', 'Cacheux', '$2y$10$c9rSN0Juxqec.62ouxHX8.e8BFdAHFNTmnQlQGBOCoCgQZbHcL5x.', 'V'),
-(10, 2, 3, 'Cadic', 'Eric', '123 r Caponière', '41000', 'BLOIS', '1993-12-06', 'Cadic', '$2y$10$LrES..SzlW2X2yzxIAmHS.Ea/renNu52bZ95t3xt.54EwNMKkJJPO', 'V'),
-(11, 3, 2, 'Charoze', 'Catherine', '100 pl Géants', '33000', 'BORDEAUX', '1997-09-25', 'Charoze', '$2y$10$.y7cw6dEYSYS5psrjnw7zuDGp.uqRj8pdgHEfIvxx9Xd43qTLrpqm', 'V'),
-(12, 2, 2, 'Clepkens', 'Christophe', '12 r Fédérico Garcia Lorca', '13000', 'MARSEILLE', '1998-01-18', 'Clepkens', '$2y$10$ydB4UmbF90At9keBol7NnuY/Js4pxEbDxZ1v9ll/lLxKbkguCh/4a', 'V'),
-(13, 2, 2, 'Cottin', 'Vincenne', '36 sq Capucins', '05000', 'GAP', '1995-10-21', 'Cottin', '$2y$10$FXQz9noj0AIfqBCkNNP4S.jpWbTOhho9aRZ7pWia/pUqibXhoUkdW', 'V'),
-(14, 3, 3, 'Daburon', 'François', '13 r Champs Elysées', '06000', 'NICE', '1989-02-01', 'Daburon', '$2y$10$2W2p7UOIH5m4rurFz0/JbOuubXdo8hrWWaob5J2BNs8kMrOencWTq', 'V'),
-(15, 2, 2, 'De', 'Philippe', '13 r Charles Peguy', '10000', 'TROYES', '1992-05-05', 'De', '$2y$10$BmG1YDB0eMpJ.Z0mEv9hOeqPVE3khA/LH4fQu017QbSWUnDAenHf6', 'V'),
-(16, 3, 2, 'Debelle', 'Michel', '181 r Caponière', '88000', 'EPINAL', '1991-04-09', 'DebelleM', '$2y$10$GGCWM6oCqGioeDOqHC4jI.rPWa.LB.KhL2TlSCw.l.vAb7hKRDBrW', 'V'),
-(17, 3, 2, 'Debelle', 'Jeanne', '134 r Stalingrad', '44000', 'NANTES', '1991-12-05', 'DebelleJ', '$2y$10$V0XtZ2RlJQUovy9Sfdiu6.l1wKfujb5wHEOOLlrOvyQoX/eNBi1.q', 'V'),
-(18, 2, 1, 'Debroise', 'Michel', '2 av 6 Juin', '70000', 'VESOUL', '1997-11-18', 'Debroise', '$2y$10$MC8deT8uCHgJWoUW3yBk6uEuUed8Zh6OQUk7ZvnHLT5.gVZ4H7NqG', 'V'),
-(19, 2, 1, 'Desmarquest', 'Nathalie', '14 r Fédérico Garcia Lorca', '54000', 'NANCY', '1989-03-24', 'Desmarquest', '$2y$10$sNlkA.XemEBdbQ4IpbArBuqbXbxljon5vYc9n1rTiOc02nEO1Kd0e', 'V'),
-(20, 2, 1, 'Desnost', 'Pierre', '16 r Barral de Montferrat', '55000', 'VERDUN', '1993-05-17', 'Desnost', '$2y$10$x8fnTrJbWijDnBUTWV32xeBWlxVpGoa1zXwBeD.CeNVLn409/v2Hi', 'V'),
-(21, 2, 1, 'Dudouit', 'Frédéric', '18 quai Xavier Jouvin', '75000', 'PARIS', '1988-04-26', 'Dudouit', '$2y$10$JcbuR7vO4IqXI0GUz1hDzOtWSvPZCmJHj2i8aIXN5xhl/wvTCqf12', 'V'),
-(22, 2, 1, 'Duncombe', 'Claude', '19 av Alsace Lorraine', '09000', 'FOIX', '1996-02-19', 'Duncombe', '$2y$10$D0mw7xNQapKEQ9V20uScUOC/1C9qf3jEJBfQ8.hPlIQgu7i8kHkYi', 'V'),
-(23, 3, 2, 'Enault-Pascreau', 'Céline', '25B r Stalingrad', '40000', 'MONT DE MARSAN', '1990-11-27', 'Enault-Pascreau', '$2y$10$2jESiMuU2kU0mE0YE5BTVO1sPms1WX1CWIZ.VdWpwQSsdbUdpeNkq', 'V'),
-(24, 2, 1, 'Eynde', 'Valérie', '3 r Henri Moissan', '76000', 'ROUEN', '1991-10-31', 'Eynde', '$2y$10$8dKnK3tUL8YJ/qNNEIRL7OPX3LMd2M410eGQKTEb7QKx38dtTBppW', 'V'),
-(25, 3, 2, 'Finck', 'Jacques', 'rte Montreuil Bellay', '74000', 'ANNECY', '1993-06-08', 'Finck', '$2y$10$3KcL23quetCvsZ6pXsoDCu7IcxdSK4yPw/x4BGoI8dwCVxTBlixsG', 'V'),
-(26, 3, 2, 'Frémont', 'Fernande', '4 r Jean Giono', '69000', 'LYON', '1997-02-15', 'Frémont', '$2y$10$rCRSkDzIR/37o/gulY.Fa.jy2R5LultdQWJLSm9DmQ0mMbZ3GR7pa', 'V'),
-(27, 2, 1, 'Gest', 'Alain', '30 r Authie', '46000', 'FIGEAC', '1994-05-03', 'Gest', '$2y$10$5NXKgP0ABetPSLwPLm06YuCSkCVV/1oGV742rISrfMIT.IeyPKMzm', 'V'),
-(28, 3, 2, 'Gheysen', 'Galassus', '32 bd Mar Foch', '75000', 'PARIS', '1996-01-18', 'Gheysen', '$2y$10$nVy3cYNcfYDF2WCqQVwRjOUwbjpOoopHOMLsIV6BR/UD3NmFQFEsu', 'V'),
-(29, 2, 2, 'Girard', 'Yvon', '31 av 6 Juin', '80000', 'AMIENS', '1999-03-27', 'Girard', '$2y$10$.dF/kBSQcANDEAD465eeMeI7QOwdNo6okrcNxJe3f/1WfoSUuQh2S', 'V'),
-(30, 2, 1, 'Gombert', 'Luc', '32 r Emile Gueymard', '56000', 'VANNES', '1985-10-02', 'Gombert', '$2y$10$eIo/auItn4V0EmEOXURmR.Qgjpf/leYxPyThwb4u0c4pF0c4vZ7j2', 'V'),
-(31, 2, 1, 'Guindon', 'Caroline', '40 r Mar Montgomery', '87000', 'LIMOGES', '1996-01-13', 'GuindonC', '$2y$10$FMc8tsQSOrF9Zq3Xdgr63uXYFHpCBT7DXxYkS7anL4H2EaMLFX7Za', 'V'),
-(32, 3, 2, 'Guindon', 'François', '44 r Picotière', '19000', 'TULLE', '1993-05-08', 'GuindonF', '$2y$10$xQJgFprJf6H1sccet.d5SOPLlpRGRvFOyL.un2w9fWaLJqUCFeZI2', 'V'),
-(33, 3, 2, 'Igigabel', 'Guy', '33 gal Arlequin', '94000', 'CRETEIL', '1998-04-26', 'Igigabel', '$2y$10$rph/xmPDD7V/EYkQkzMwJubFFkV99ndpOdM0mrSokm.cDf4mGqjN.', 'V'),
-(34, 2, 1, 'Jourdren', 'Pierre', '34 av Jean Perrot', '15000', 'AURRILLAC', '1993-08-26', 'Jourdren', '$2y$10$bvfPuntwv1GFtvSDNdnxDehvxPJSrgiF6LmG30l2JBSKnBnWoTwb.', 'V'),
-(35, 2, 1, 'Juttard', 'Pierre-Raoul', '34 cours Jean Jaurès', '08000', 'SEDAN', '1992-11-01', 'Juttard', '$2y$10$lJPWsjwKg8lXfp6QG4yeG.CCRZNe/PghWZ1rmlxspfPZKGj0qfcPq', 'V'),
-(36, 3, 2, 'Labouré-Morel', 'Saout', '38 cours Berriat', '52000', 'CHAUMONT', '1998-02-25', 'Labouré-Morel', '$2y$10$yiezpEGDApQ9L16syBktSO4nIiUnXPRh2.GseYD.ZeTnjW.IfRpfq', 'V'),
-(37, 2, 1, 'Landré', 'Philippe', '4 av Gén Laperrine', '59000', 'LILLE', '1992-12-16', 'Landré', '$2y$10$o5fxIoDw.wBZfDc.DqUFdeR8xfq51UB9nnDkNIq5hgUKcZvuuzcI6', 'V'),
-(38, 2, 2, 'Langeard', 'Hugues', '39 av Jean Perrot', '93000', 'BAGNOLET', '1998-06-18', 'Langeard', '$2y$10$i2sGMOIgvvQ98fBrWWra2Oue5LGZFMCcYnR8zjHO6MRae6pvyEeC.', 'V'),
-(39, 3, 2, 'Lanne', 'Bernard', '4 r Bayeux', '30000', 'NIMES', '0000-00-00', 'Lanne', '$2y$10$7y./LSaIZ8ROw22zMSMRWepLTt6BmAbp5w9xijAEC/PRDVA6eykfK', 'V'),
-(40, 3, 2, 'Le', 'Noël', '4 av Beauvert', '68000', 'MULHOUSE', '0000-00-00', 'LeN', '$2y$10$lBfj3BZM4ScE6EtFikDN1OQiBzM9cMMoWSX7VxfoVzEapi8nEgY5O', 'V'),
-(41, 3, 2, 'Le', 'Jean', '39 r Raspail', '53000', 'LAVAL', '1995-02-02', 'LeJ', '$2y$10$QVbjB3QZlN6NTDQ6BN2Aeu2d0CEU7Kh0WLbz1P5l1c8UoFaiKwJw6', 'V'),
-(42, 3, 2, 'Leclercq', 'Servane', '11 r Quinconce', '18000', 'BOURGES', '1995-06-05', 'Leclercq', '$2y$10$5kDAbYgkPy.FaJSIeVbLEuM3OuRehKHv/q8PSryzB1FKdDYUJdgaC', 'V'),
-(43, 2, 3, 'Lecornu', 'Jean-Bernard', '4 bd Mar Foch', '72000', 'LA FERTE BERNARD', '1997-01-24', 'LecornuJ', '$2y$10$lE5yt1b88fDq68nX7CgLpuha9EDRCDLuRhtG0jsW.lNhfkq77cZca', 'V'),
-(44, 3, 2, 'Lecornu', 'Ludovic', '4 r Abel Servien', '25000', 'BESANCON', '1996-02-27', 'LecornuL', '$2y$10$3/IVW4F1H8vhDebl81nJiuxmN9Ex1..JxPFUu8dMdsGhXDjLxrTiS', 'V'),
-(45, 3, 2, 'Lejard', 'Agnès', '4 r Anthoard', '82000', 'MONTAUBAN', '1987-10-06', 'Lejard', '$2y$10$a2DvRbrYkNFpzKKQ.mz9f.MpPeGXmYZJiejOtdyrQE5swCHTLkQFS', 'V'),
-(46, 2, 2, 'Lesaulnier', 'Pascal', '47 r Thiers', '57000', 'METZ', '1990-10-13', 'Lesaulnier', '$2y$10$QZqZfsZgiRSn1BvGqKTBUeKJgRW8kjLXP9b8OMusnHpu7slRufhuO', 'V'),
-(47, 2, 3, 'Letessier', 'Stéphane', '5 chem Capuche', '27000', 'EVREUX', '1996-03-06', 'Letessier', '$2y$10$B29vreYQnEdPHZnSyb3QhOcs9mPpgitLMldbycBTheOMexiWjYGd.', 'V'),
-(48, 2, 3, 'Loirat', 'Didier', 'Les Pêchers cité Bourg la Croix', '45000', 'ORLEANS', '1992-08-30', 'Loirat', '$2y$10$Ek27AdomVx0aPNlpZ3aY3eIiFAT2JNsWVbJV3T9F5tLIbeCaIxzJ.', 'V'),
-(49, 2, 2, 'Maffezzoli', 'Thibaud', '5 r Chateaubriand', '02000', 'LAON', '1994-12-19', 'Maffezzoli', '$2y$10$OfjxRlI9qzfLOdP3I6v5Dem0QH.be5cZuxViyAMiPCa7JRXz5bBM2', 'V'),
-(50, 2, 3, 'Mancini', 'Anne', '5 r D\'Agier', '48000', 'MENDE', '1995-01-05', 'Mancini', '$2y$10$xzjrKC0cnbq4Okyh0IvOKe21kX4ejkkqADGYdHnS9PWWH22Y7iUli', 'V'),
-(51, 3, 3, 'Marcouiller', 'Gérard', '7 pl St Gilles', '91000', 'ISSY LES MOULINEAUX', '1992-12-24', 'Marcouiller', '$2y$10$yr//n71PmpTjC/810aUnnuVz8QRh9ThixEWOMKXx.8CkORiqfVoE6', 'V'),
-(52, 3, 3, 'Michel', 'Jean-Claude', '5 r Gabriel Péri', '61000', 'FLERS', '1992-12-14', 'Michel', '$2y$10$NmRk8Tr.hg56edd1VK8ps.dcVCIlisvc5OHpiLhmZYWOpia873SfW', 'V'),
-(53, 2, 2, 'Montecot', 'Françoise', '6 r Paul Valéry', '17000', 'SAINTES', '1998-07-27', 'Montecot', '$2y$10$Wa3KcpE1vK3zmkpo2EjzYOW6N5rv1dg87Vjc0So8cXFuAJdcZru/G', 'V'),
-(54, 3, 2, 'Notini', 'Veronique', '5 r Lieut Chabal', '60000', 'BEAUVAIS', '1994-12-12', 'Notini', '$2y$10$w1sU/ZcOllPvkdxRsq4a7u2xzzhXKj6.gx26fcjVfMYhbw6Hgn1x2', 'V'),
-(55, 2, 2, 'Onfroy', 'Den', '5 r Sidonie Jacolin', '37000', 'TOURS', '1977-10-03', 'Onfroy', '$2y$10$.X4bc1zGWemMVf5wBOcDtOVHbIt10.J.LJ2K6.7wsNJhA.Z5NjfUe', 'V'),
-(56, 3, 2, 'Pascreau', 'Charles', '57 bd Mar Foch', '64000', 'PAU', '1997-03-30', 'Pascreau', '$2y$10$yizsG2Qc9jdyvPmFpR/k4u9jTQZOv8Idg4ugKiY8acw/ergY1khwy', 'V'),
-(57, 2, 2, 'Pernot', 'Claude-Noël', '6 r Alexandre 1 de Yougoslavie', '11000', 'NARBONNE', '1990-03-01', 'Pernot', '$2y$10$8IRKIoiz/QMDALzbsG/UnOCGH5XWS0TFQqwSugsMJyI5CUopdNbLe', 'V'),
-(58, 2, 2, 'Perrier', 'Maître', '6 r Aubert Dubayet', '71000', 'CHALON SUR SAONE', '1991-06-23', 'Perrier', '$2y$10$V2XhvRiaFPZjXdR3/b26neNGI2LwGPoBqqWaUdkc46nSMUg4/8rjK', 'V'),
-(59, 2, 2, 'Petit', 'Jean-Louis', '7 r Ernest Renan', '50000', 'SAINT LO', '1997-09-06', 'Petit', '$2y$10$h/yXdt/7374CNel9fBiUQ.Vj46Bz5GJnTMkpo1nM0TgyOuaUC4OcO', 'V'),
-(60, 2, 3, 'Piquery', 'Patrick', '9 r Vaucelles', '14000', 'CAEN', '1984-07-29', 'Piquery', '$2y$10$Wwkx6lXpMKLjohhI4SFKHu1GMNph7zvC4xk1yulcQaIEQb0X2Ws0K', 'V'),
-(61, 2, 2, 'Quiquandon', 'Joël', '7 r Ernest Renan', '29000', 'QUIMPER', '1990-06-30', 'Quiquandon', '$2y$10$qJRURyTXJ1Ip15DrSvKVO.QufygMxTHHgTjr1oPmamsUVOKk84F1K', 'V'),
-(62, 3, 2, 'Retailleau', 'Josselin', '88Bis r Saumuroise', '39000', 'DOLE', '1995-11-14', 'RetailleauJ', '$2y$10$0Zb1f62WkkI8kERARI2nKeEuWHVzyktajlaIWsc.6lUpJFBtVdRwK', 'V'),
-(63, 3, 2, 'Retailleau', 'Pascal', '32 bd Ayrault', '23000', 'MONTLUCON', '1992-09-25', 'RetailleauP', '$2y$10$fX8NHSBSrjcugQQu.m3fmu220iEiPCEAclZmHAFFMd6ASMY0Ymef2', 'V'),
-(64, 3, 2, 'Souron', 'Maryse', '7B r Gay Lussac', '21000', 'DIJON', '1995-03-09', 'Souron', '$2y$10$MzOOIJdyXP/tXy8yk9XCIOAlURguoqbEsIOs.P.r6hMUFhs9TaeM2', 'V'),
-(65, 3, 2, 'Tiphagne', 'Patrick', '7B r Gay Lussac', '62000', 'ARRAS', '1997-08-29', 'Tiphagne', '$2y$10$KrhuvJRp5XMArMRFt/Y04OAkIYNmfHqWP9ielB.7aTfsppIovHxW2', 'V'),
-(66, 3, 2, 'Tréhet', 'Alain', '7D chem Barral', '12000', 'RODEZ', '1994-11-29', 'Tréhet', '$2y$10$nBjXARXxllTejRJxT367BeUumittTncVhnn/hGuVY4/gF6Qo/wWZy', 'V'),
-(67, 2, 2, 'Tusseau', 'Josselin', '63 r Bon Repos', '28000', 'CHARTRES', '1991-03-29', 'TusseauJ', '$2y$10$2TkiBHXQOt1Ubezlv.X5TuokEdTKKQUTN5RmE4bNJ.kt28HlDrL3q', 'V'),
-(68, 1, 2, 'swiss', 'bourdin', '', '', '', '2003-06-18', 'swiss', '$2y$10$O6nQA7tpNcs5yFgzHToENeT27tN0iQY1fvUfc9Vl0R.QrQpHDst5q', 'V'),
-(69, 1, 3, 'Auchon', 'Paul', '', '', '', '2014-01-01', 'auchon', '$2y$10$.iP5MrsY/GBPjF/rOQp5eu5QuFZauycCFs2v/jiGtVxxGVM8mka8m', 'P'),
-(70, 1, 1, 'Gathor', 'Ali', '', '', '', '2014-01-01', 'gathor', '$2y$10$0tAbiQu2HFGF7FBgMwgoMOZLkoD37UJFeZ1SbFyyTN0VRQdeNdhpK', 'C'),
-(71, 1, 2, 'Zhette', 'Annie', '', '', '', '2014-01-01', 'zhette', '$2y$10$SjkdCHv8WFgT0x7vvjxS8OZIw00Mu/LmlQw2pWFWzTbpwb9Vx4bZi', 'A'),
-(72, 1, 1, 'Khyroul', 'Pierre', '', '', '', '2014-01-01', 'khyroul', '$2y$10$gceKy5TVdCQ6o7A/cfIIYeEa6FZOrcMGrmkWBjq7tXtCCnPPEJVne', 'G');
+INSERT INTO `visiteur` (`id_visiteur`, `id_laboratoire`, `id_secteur`, `nom_visiteur`, `prenom_visiteur`, `adresse_visiteur`, `cp_visiteur`, `ville_visiteur`, `date_embauche`, `login_visiteur`, `pwd_visiteur`, `type_visiteur`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 3, 2, 'Villechalane', 'Louis', '8 cours Lafontaine', '29000', 'BREST', '1992-12-11', 'Villechalane', '$2y$10$oliwgYQr08tfj5t4Ws4Ob.l8OPV/WVZ4yK/TFrhKpx0e0aLb3TIMu', 'V', '6|CDBwo9cjiME2iebXlJc4LpiwGBa8ECUHOKfleYro2cb90e33', '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(2, 2, 2, 'Andre', 'David', '1 r Aimon de Chissée', '38100', 'GRENOBLE', '1991-08-26', 'Andre', '$2y$10$RmK7Us1AnIs5P9KJW2QsIuCxN3nqoBWHoefkKbPEKJY0iOauO/FXi', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(3, 2, 2, 'Bedos', 'Christian', '1 r Bénédictins', '65000', 'TARBES', '1987-07-17', 'Bedos', '$2y$10$leH1B8ijslT3MR6EVZFttOYZp9.wAXl8Gyy766Lbjkme.ywueupG2', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(4, 3, 2, 'Tusseau', 'Louis', '22 r Renou', '86000', 'POITIERS', '1999-01-02', 'TusseauL', '$2y$10$BBS3HjL3tIOYWcWGgZbLwuoBe7I4MBeGECpdJjwvnBCC0biaWxsw6', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(5, 2, 2, 'Bentot', 'Pascal', '11 av 6 Juin', '67000', 'STRASBOURG', '1996-03-11', 'Bentot', '$2y$10$H6z/qpcaM0G55in2hk.94uBUDmLpY4/NVcYma.OGI.kfgy1BQPri2', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(6, 3, 2, 'Bioret', 'Luc', '1 r Linne', '35000', 'RENNES', '1997-03-21', 'Bioret', '$2y$10$arGaZeDzEpvGMZIHG1NyhuchZHAgBN9KyxAmtgVes5LZUDRS20kx6', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(7, 2, 2, 'Bunisset', 'Francis', '10 r Nicolas Chorier', '85000', 'LA ROCHE SUR YON', '1999-01-31', 'BunissetF', '$2y$10$Q32mKYf35VBLf/X1gUDksOzFKeKGqPNQdLDKUoOKoM151/qWu51KS', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(8, 3, 2, 'Bunisset', 'Denise', '1 r Lionne', '49100', 'ANGERS', '1994-07-03', 'BunissetD', '$2y$10$VsiEqXx258tfRYkS0zkvxeSLIltm/jfjDbBZ4sQ3ONf49QrKCzzNe', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(9, 2, 2, 'Cacheux', 'Bernard', '114 r Authie', '34000', 'MONTPELLIER', '2000-08-02', 'Cacheux', '$2y$10$c9rSN0Juxqec.62ouxHX8.e8BFdAHFNTmnQlQGBOCoCgQZbHcL5x.', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(10, 2, 3, 'Cadic', 'Eric', '123 r Caponière', '41000', 'BLOIS', '1993-12-06', 'Cadic', '$2y$10$LrES..SzlW2X2yzxIAmHS.Ea/renNu52bZ95t3xt.54EwNMKkJJPO', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(11, 3, 2, 'Charoze', 'Catherine', '100 pl Géants', '33000', 'BORDEAUX', '1997-09-25', 'Charoze', '$2y$10$.y7cw6dEYSYS5psrjnw7zuDGp.uqRj8pdgHEfIvxx9Xd43qTLrpqm', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(12, 2, 2, 'Clepkens', 'Christophe', '12 r Fédérico Garcia Lorca', '13000', 'MARSEILLE', '1998-01-18', 'Clepkens', '$2y$10$ydB4UmbF90At9keBol7NnuY/Js4pxEbDxZ1v9ll/lLxKbkguCh/4a', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(13, 2, 2, 'Cottin', 'Vincenne', '36 sq Capucins', '05000', 'GAP', '1995-10-21', 'Cottin', '$2y$10$FXQz9noj0AIfqBCkNNP4S.jpWbTOhho9aRZ7pWia/pUqibXhoUkdW', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(14, 3, 3, 'Daburon', 'François', '13 r Champs Elysées', '06000', 'NICE', '1989-02-01', 'Daburon', '$2y$10$2W2p7UOIH5m4rurFz0/JbOuubXdo8hrWWaob5J2BNs8kMrOencWTq', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(15, 2, 2, 'De', 'Philippe', '13 r Charles Peguy', '10000', 'TROYES', '1992-05-05', 'De', '$2y$10$BmG1YDB0eMpJ.Z0mEv9hOeqPVE3khA/LH4fQu017QbSWUnDAenHf6', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(16, 3, 2, 'Debelle', 'Michel', '181 r Caponière', '88000', 'EPINAL', '1991-04-09', 'DebelleM', '$2y$10$GGCWM6oCqGioeDOqHC4jI.rPWa.LB.KhL2TlSCw.l.vAb7hKRDBrW', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(17, 3, 2, 'Debelle', 'Jeanne', '134 r Stalingrad', '44000', 'NANTES', '1991-12-05', 'DebelleJ', '$2y$10$V0XtZ2RlJQUovy9Sfdiu6.l1wKfujb5wHEOOLlrOvyQoX/eNBi1.q', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(18, 2, 1, 'Debroise', 'Michel', '2 av 6 Juin', '70000', 'VESOUL', '1997-11-18', 'Debroise', '$2y$10$MC8deT8uCHgJWoUW3yBk6uEuUed8Zh6OQUk7ZvnHLT5.gVZ4H7NqG', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(19, 2, 1, 'Desmarquest', 'Nathalie', '14 r Fédérico Garcia Lorca', '54000', 'NANCY', '1989-03-24', 'Desmarquest', '$2y$10$sNlkA.XemEBdbQ4IpbArBuqbXbxljon5vYc9n1rTiOc02nEO1Kd0e', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(20, 2, 1, 'Desnost', 'Pierre', '16 r Barral de Montferrat', '55000', 'VERDUN', '1993-05-17', 'Desnost', '$2y$10$x8fnTrJbWijDnBUTWV32xeBWlxVpGoa1zXwBeD.CeNVLn409/v2Hi', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(21, 2, 1, 'Dudouit', 'Frédéric', '18 quai Xavier Jouvin', '75000', 'PARIS', '1988-04-26', 'Dudouit', '$2y$10$JcbuR7vO4IqXI0GUz1hDzOtWSvPZCmJHj2i8aIXN5xhl/wvTCqf12', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(22, 2, 1, 'Duncombe', 'Claude', '19 av Alsace Lorraine', '09000', 'FOIX', '1996-02-19', 'Duncombe', '$2y$10$D0mw7xNQapKEQ9V20uScUOC/1C9qf3jEJBfQ8.hPlIQgu7i8kHkYi', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(23, 3, 2, 'Enault-Pascreau', 'Céline', '25B r Stalingrad', '40000', 'MONT DE MARSAN', '1990-11-27', 'Enault-Pascreau', '$2y$10$2jESiMuU2kU0mE0YE5BTVO1sPms1WX1CWIZ.VdWpwQSsdbUdpeNkq', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(24, 2, 1, 'Eynde', 'Valérie', '3 r Henri Moissan', '76000', 'ROUEN', '1991-10-31', 'Eynde', '$2y$10$8dKnK3tUL8YJ/qNNEIRL7OPX3LMd2M410eGQKTEb7QKx38dtTBppW', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(25, 3, 2, 'Finck', 'Jacques', 'rte Montreuil Bellay', '74000', 'ANNECY', '1993-06-08', 'Finck', '$2y$10$3KcL23quetCvsZ6pXsoDCu7IcxdSK4yPw/x4BGoI8dwCVxTBlixsG', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(26, 3, 2, 'Frémont', 'Fernande', '4 r Jean Giono', '69000', 'LYON', '1997-02-15', 'Frémont', '$2y$10$rCRSkDzIR/37o/gulY.Fa.jy2R5LultdQWJLSm9DmQ0mMbZ3GR7pa', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(27, 2, 1, 'Gest', 'Alain', '30 r Authie', '46000', 'FIGEAC', '1994-05-03', 'Gest', '$2y$10$5NXKgP0ABetPSLwPLm06YuCSkCVV/1oGV742rISrfMIT.IeyPKMzm', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(28, 3, 2, 'Gheysen', 'Galassus', '32 bd Mar Foch', '75000', 'PARIS', '1996-01-18', 'Gheysen', '$2y$10$nVy3cYNcfYDF2WCqQVwRjOUwbjpOoopHOMLsIV6BR/UD3NmFQFEsu', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(29, 2, 2, 'Girard', 'Yvon', '31 av 6 Juin', '80000', 'AMIENS', '1999-03-27', 'Girard', '$2y$10$.dF/kBSQcANDEAD465eeMeI7QOwdNo6okrcNxJe3f/1WfoSUuQh2S', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(30, 2, 1, 'Gombert', 'Luc', '32 r Emile Gueymard', '56000', 'VANNES', '1985-10-02', 'Gombert', '$2y$10$eIo/auItn4V0EmEOXURmR.Qgjpf/leYxPyThwb4u0c4pF0c4vZ7j2', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(31, 2, 1, 'Guindon', 'Caroline', '40 r Mar Montgomery', '87000', 'LIMOGES', '1996-01-13', 'GuindonC', '$2y$10$FMc8tsQSOrF9Zq3Xdgr63uXYFHpCBT7DXxYkS7anL4H2EaMLFX7Za', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(32, 3, 2, 'Guindon', 'François', '44 r Picotière', '19000', 'TULLE', '1993-05-08', 'GuindonF', '$2y$10$xQJgFprJf6H1sccet.d5SOPLlpRGRvFOyL.un2w9fWaLJqUCFeZI2', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(33, 3, 2, 'Igigabel', 'Guy', '33 gal Arlequin', '94000', 'CRETEIL', '1998-04-26', 'Igigabel', '$2y$10$rph/xmPDD7V/EYkQkzMwJubFFkV99ndpOdM0mrSokm.cDf4mGqjN.', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(34, 2, 1, 'Jourdren', 'Pierre', '34 av Jean Perrot', '15000', 'AURRILLAC', '1993-08-26', 'Jourdren', '$2y$10$bvfPuntwv1GFtvSDNdnxDehvxPJSrgiF6LmG30l2JBSKnBnWoTwb.', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(35, 2, 1, 'Juttard', 'Pierre-Raoul', '34 cours Jean Jaurès', '08000', 'SEDAN', '1992-11-01', 'Juttard', '$2y$10$lJPWsjwKg8lXfp6QG4yeG.CCRZNe/PghWZ1rmlxspfPZKGj0qfcPq', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(36, 3, 2, 'Labouré-Morel', 'Saout', '38 cours Berriat', '52000', 'CHAUMONT', '1998-02-25', 'Labouré-Morel', '$2y$10$yiezpEGDApQ9L16syBktSO4nIiUnXPRh2.GseYD.ZeTnjW.IfRpfq', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(37, 2, 1, 'Landré', 'Philippe', '4 av Gén Laperrine', '59000', 'LILLE', '1992-12-16', 'Landré', '$2y$10$o5fxIoDw.wBZfDc.DqUFdeR8xfq51UB9nnDkNIq5hgUKcZvuuzcI6', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(38, 2, 2, 'Langeard', 'Hugues', '39 av Jean Perrot', '93000', 'BAGNOLET', '1998-06-18', 'Langeard', '$2y$10$i2sGMOIgvvQ98fBrWWra2Oue5LGZFMCcYnR8zjHO6MRae6pvyEeC.', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(39, 3, 2, 'Lanne', 'Bernard', '4 r Bayeux', '30000', 'NIMES', '0000-00-00', 'Lanne', '$2y$10$7y./LSaIZ8ROw22zMSMRWepLTt6BmAbp5w9xijAEC/PRDVA6eykfK', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(40, 3, 2, 'Le', 'Noël', '4 av Beauvert', '68000', 'MULHOUSE', '0000-00-00', 'LeN', '$2y$10$lBfj3BZM4ScE6EtFikDN1OQiBzM9cMMoWSX7VxfoVzEapi8nEgY5O', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(41, 3, 2, 'Le', 'Jean', '39 r Raspail', '53000', 'LAVAL', '1995-02-02', 'LeJ', '$2y$10$QVbjB3QZlN6NTDQ6BN2Aeu2d0CEU7Kh0WLbz1P5l1c8UoFaiKwJw6', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(42, 3, 2, 'Leclercq', 'Servane', '11 r Quinconce', '18000', 'BOURGES', '1995-06-05', 'Leclercq', '$2y$10$5kDAbYgkPy.FaJSIeVbLEuM3OuRehKHv/q8PSryzB1FKdDYUJdgaC', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(43, 2, 3, 'Lecornu', 'Jean-Bernard', '4 bd Mar Foch', '72000', 'LA FERTE BERNARD', '1997-01-24', 'LecornuJ', '$2y$10$lE5yt1b88fDq68nX7CgLpuha9EDRCDLuRhtG0jsW.lNhfkq77cZca', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(44, 3, 2, 'Lecornu', 'Ludovic', '4 r Abel Servien', '25000', 'BESANCON', '1996-02-27', 'LecornuL', '$2y$10$3/IVW4F1H8vhDebl81nJiuxmN9Ex1..JxPFUu8dMdsGhXDjLxrTiS', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(45, 3, 2, 'Lejard', 'Agnès', '4 r Anthoard', '82000', 'MONTAUBAN', '1987-10-06', 'Lejard', '$2y$10$a2DvRbrYkNFpzKKQ.mz9f.MpPeGXmYZJiejOtdyrQE5swCHTLkQFS', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(46, 2, 2, 'Lesaulnier', 'Pascal', '47 r Thiers', '57000', 'METZ', '1990-10-13', 'Lesaulnier', '$2y$10$QZqZfsZgiRSn1BvGqKTBUeKJgRW8kjLXP9b8OMusnHpu7slRufhuO', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(47, 2, 3, 'Letessier', 'Stéphane', '5 chem Capuche', '27000', 'EVREUX', '1996-03-06', 'Letessier', '$2y$10$B29vreYQnEdPHZnSyb3QhOcs9mPpgitLMldbycBTheOMexiWjYGd.', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(48, 2, 3, 'Loirat', 'Didier', 'Les Pêchers cité Bourg la Croix', '45000', 'ORLEANS', '1992-08-30', 'Loirat', '$2y$10$Ek27AdomVx0aPNlpZ3aY3eIiFAT2JNsWVbJV3T9F5tLIbeCaIxzJ.', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(49, 2, 2, 'Maffezzoli', 'Thibaud', '5 r Chateaubriand', '02000', 'LAON', '1994-12-19', 'Maffezzoli', '$2y$10$OfjxRlI9qzfLOdP3I6v5Dem0QH.be5cZuxViyAMiPCa7JRXz5bBM2', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(50, 2, 3, 'Mancini', 'Anne', '5 r D\'Agier', '48000', 'MENDE', '1995-01-05', 'Mancini', '$2y$10$xzjrKC0cnbq4Okyh0IvOKe21kX4ejkkqADGYdHnS9PWWH22Y7iUli', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(51, 3, 3, 'Marcouiller', 'Gérard', '7 pl St Gilles', '91000', 'ISSY LES MOULINEAUX', '1992-12-24', 'Marcouiller', '$2y$10$yr//n71PmpTjC/810aUnnuVz8QRh9ThixEWOMKXx.8CkORiqfVoE6', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(52, 3, 3, 'Michel', 'Jean-Claude', '5 r Gabriel Péri', '61000', 'FLERS', '1992-12-14', 'Michel', '$2y$10$NmRk8Tr.hg56edd1VK8ps.dcVCIlisvc5OHpiLhmZYWOpia873SfW', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(53, 2, 2, 'Montecot', 'Françoise', '6 r Paul Valéry', '17000', 'SAINTES', '1998-07-27', 'Montecot', '$2y$10$Wa3KcpE1vK3zmkpo2EjzYOW6N5rv1dg87Vjc0So8cXFuAJdcZru/G', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(54, 3, 2, 'Notini', 'Veronique', '5 r Lieut Chabal', '60000', 'BEAUVAIS', '1994-12-12', 'Notini', '$2y$10$w1sU/ZcOllPvkdxRsq4a7u2xzzhXKj6.gx26fcjVfMYhbw6Hgn1x2', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(55, 2, 2, 'Onfroy', 'Den', '5 r Sidonie Jacolin', '37000', 'TOURS', '1977-10-03', 'Onfroy', '$2y$10$.X4bc1zGWemMVf5wBOcDtOVHbIt10.J.LJ2K6.7wsNJhA.Z5NjfUe', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(56, 3, 2, 'Pascreau', 'Charles', '57 bd Mar Foch', '64000', 'PAU', '1997-03-30', 'Pascreau', '$2y$10$yizsG2Qc9jdyvPmFpR/k4u9jTQZOv8Idg4ugKiY8acw/ergY1khwy', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(57, 2, 2, 'Pernot', 'Claude-Noël', '6 r Alexandre 1 de Yougoslavie', '11000', 'NARBONNE', '1990-03-01', 'Pernot', '$2y$10$8IRKIoiz/QMDALzbsG/UnOCGH5XWS0TFQqwSugsMJyI5CUopdNbLe', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(58, 2, 2, 'Perrier', 'Maître', '6 r Aubert Dubayet', '71000', 'CHALON SUR SAONE', '1991-06-23', 'Perrier', '$2y$10$V2XhvRiaFPZjXdR3/b26neNGI2LwGPoBqqWaUdkc46nSMUg4/8rjK', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(59, 2, 2, 'Petit', 'Jean-Louis', '7 r Ernest Renan', '50000', 'SAINT LO', '1997-09-06', 'Petit', '$2y$10$h/yXdt/7374CNel9fBiUQ.Vj46Bz5GJnTMkpo1nM0TgyOuaUC4OcO', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(60, 2, 3, 'Piquery', 'Patrick', '9 r Vaucelles', '14000', 'CAEN', '1984-07-29', 'Piquery', '$2y$10$Wwkx6lXpMKLjohhI4SFKHu1GMNph7zvC4xk1yulcQaIEQb0X2Ws0K', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(61, 2, 2, 'Quiquandon', 'Joël', '7 r Ernest Renan', '29000', 'QUIMPER', '1990-06-30', 'Quiquandon', '$2y$10$qJRURyTXJ1Ip15DrSvKVO.QufygMxTHHgTjr1oPmamsUVOKk84F1K', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(62, 3, 2, 'Retailleau', 'Josselin', '88Bis r Saumuroise', '39000', 'DOLE', '1995-11-14', 'RetailleauJ', '$2y$10$0Zb1f62WkkI8kERARI2nKeEuWHVzyktajlaIWsc.6lUpJFBtVdRwK', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(63, 3, 2, 'Retailleau', 'Pascal', '32 bd Ayrault', '23000', 'MONTLUCON', '1992-09-25', 'RetailleauP', '$2y$10$fX8NHSBSrjcugQQu.m3fmu220iEiPCEAclZmHAFFMd6ASMY0Ymef2', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(64, 3, 2, 'Souron', 'Maryse', '7B r Gay Lussac', '21000', 'DIJON', '1995-03-09', 'Souron', '$2y$10$MzOOIJdyXP/tXy8yk9XCIOAlURguoqbEsIOs.P.r6hMUFhs9TaeM2', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(65, 3, 2, 'Tiphagne', 'Patrick', '7B r Gay Lussac', '62000', 'ARRAS', '1997-08-29', 'Tiphagne', '$2y$10$KrhuvJRp5XMArMRFt/Y04OAkIYNmfHqWP9ielB.7aTfsppIovHxW2', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(66, 3, 2, 'Tréhet', 'Alain', '7D chem Barral', '12000', 'RODEZ', '1994-11-29', 'Tréhet', '$2y$10$nBjXARXxllTejRJxT367BeUumittTncVhnn/hGuVY4/gF6Qo/wWZy', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(67, 2, 2, 'Tusseau', 'Josselin', '63 r Bon Repos', '28000', 'CHARTRES', '1991-03-29', 'TusseauJ', '$2y$10$2TkiBHXQOt1Ubezlv.X5TuokEdTKKQUTN5RmE4bNJ.kt28HlDrL3q', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(68, 1, 2, 'swiss', 'bourdin', '', '', '', '2003-06-18', 'swiss', '$2y$10$O6nQA7tpNcs5yFgzHToENeT27tN0iQY1fvUfc9Vl0R.QrQpHDst5q', 'V', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(69, 1, 3, 'Auchon', 'Paul', '', '', '', '2014-01-01', 'auchon', '$2y$10$.iP5MrsY/GBPjF/rOQp5eu5QuFZauycCFs2v/jiGtVxxGVM8mka8m', 'P', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(70, 1, 1, 'Gathor', 'Ali', '', '', '', '2014-01-01', 'gathor', '$2y$10$0tAbiQu2HFGF7FBgMwgoMOZLkoD37UJFeZ1SbFyyTN0VRQdeNdhpK', 'C', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(71, 1, 2, 'Zhette', 'Annie', '', '', '', '2014-01-01', 'zhette', '$2y$10$SjkdCHv8WFgT0x7vvjxS8OZIw00Mu/LmlQw2pWFWzTbpwb9Vx4bZi', 'A', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06'),
+(72, 1, 1, 'Khyroul', 'Pierre', '', '', '', '2014-01-01', 'khyroul', '$2y$10$gceKy5TVdCQ6o7A/cfIIYeEa6FZOrcMGrmkWBjq7tXtCCnPPEJVne', 'G', NULL, '2023-12-08 08:30:14', '2023-12-08 08:34:06');
 
 --
 -- Index pour les tables déchargées
@@ -1542,13 +1547,13 @@ ALTER TABLE `medicament`
 -- AUTO_INCREMENT pour la table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT pour la table `praticien`
