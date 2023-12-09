@@ -6,7 +6,6 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
-        "benaissa/test-montant-frais": "dev-master",
         "dipeshsukhia/laravel-html-minify": "^3.3",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.10",
