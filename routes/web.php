@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FraisController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VisiteurController;
 use App\Http\Controllers\FraisHorsController;
@@ -17,7 +18,6 @@ use App\Http\Controllers\FraisHorsController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 
 Route::get('/', function () {
     return view('home');
