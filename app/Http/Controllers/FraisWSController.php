@@ -14,6 +14,11 @@ class FraisWSController extends Controller
         return response()->json(Frais::all());
     }
 
+    function detail($id)
+    {
+        return response()->json(Frais::find($id));
+    }
+
     function fraisVisiteur($id_visiteur)
     {
         return response()->json(Visiteur::find($id_visiteur)->Frais()->get());
