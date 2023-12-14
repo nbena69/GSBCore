@@ -23,6 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // http://localhost:8000/api/
 Route::prefix('frais')->group(function () {
     Route::get('', [FraisWSController::class, "liste"]);
+    Route::get('getUnFrais', [FraisWSController::class, "detail"]);
     Route::get('visiteur/{id_visiteur}', [FraisWSController::class, "fraisVisiteur"]);
     Route::post('ajoutFrais', [FraisWSController::class, "ajoutFrais"]);
     Route::put('updateFrais/{id}', [FraisWSController::class, 'updateFrais']);
