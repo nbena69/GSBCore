@@ -11,7 +11,9 @@ class FraisWSController extends Controller
 {
     function liste()
     {
-        return response()->json(Frais::all());
+        return response()->json(Frais::join('etat', 'frais.id_etat', '=', 'etat.id_etat')
+            ->select('frais.*', 'etat.lib_etat')
+            ->get());
     }
 
     function detail($id)
@@ -21,7 +23,12 @@ class FraisWSController extends Controller
 
     function fraisVisiteur($id_visiteur)
     {
-        return response()->json(Visiteur::find($id_visiteur)->Frais()->get());
+        return response()->json(Visiteur::find($id_visiteur)
+            ->Frais()
+            ->join('etat', 'frais.id_etat', '=', 'etat.id_etat')
+            ->select('frais.*', 'etat.lib_etat')
+            ->get()
+        );
     }
 
     function ajoutFrais(Request $request)
