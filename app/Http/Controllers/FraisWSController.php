@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Etat;
 use App\Models\Frais;
 use App\Models\Visiteur;
 use Illuminate\Http\Request;
@@ -14,6 +15,11 @@ class FraisWSController extends Controller
         return response()->json(Frais::join('etat', 'frais.id_etat', '=', 'etat.id_etat')
             ->select('frais.*', 'etat.lib_etat')
             ->get());
+    }
+
+    function listeEtats()
+    {
+        return response()->json(Etat::all());
     }
 
     function detail($id)
