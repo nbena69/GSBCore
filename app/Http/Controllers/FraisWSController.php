@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Etat;
 use App\Models\Frais;
+use App\Models\Laboratoire;
+use App\Models\Secteur;
 use App\Models\Visiteur;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -20,6 +22,16 @@ class FraisWSController extends Controller
     function listeEtats()
     {
         return response()->json(Etat::all());
+    }
+
+    function listeLaboratoire()
+    {
+        return response()->json(Laboratoire::all());
+    }
+
+    function listeSecteur()
+    {
+        return response()->json(Secteur::all());
     }
 
     function detail($id)

@@ -24,8 +24,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::prefix('frais')->group(function () {
     Route::get('', [FraisWSController::class, "liste"]);
     Route::get('etats', [FraisWSController::class, "listeEtats"]);
-    //Route::get('etats', [FraisWSController::class, "listeEtats"]);
-    //Route::get('etats', [FraisWSController::class, "listeEtats"]);
+    Route::get('laboratoire', [FraisWSController::class, "listeLaboratoire"]);
+    Route::get('secteur', [FraisWSController::class, "listeSecteur"]);
     Route::get('getUnFrais/{id}', [FraisWSController::class, "detail"]);
     Route::get('visiteur/{id_visiteur}', [FraisWSController::class, "fraisVisiteur"]);
     Route::post('ajoutFrais', [FraisWSController::class, "ajoutFrais"]);
