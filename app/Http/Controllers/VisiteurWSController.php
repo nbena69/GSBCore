@@ -38,7 +38,7 @@ class VisiteurWSController extends Controller
         $ville_visiteur = $request->ville_visiteur;
         $date_embauche = $request->date_embauche;
         $login_visiteur = $request->login_visiteur;
-        $pwd_visiteur = $request->pwd_visiteur;
+        $pwd_visiteur = Hash::make($request->pwd_visiteur);
         $type_visiteur = $request->type_visiteur;
 
         $visiteur = new Visiteur();
