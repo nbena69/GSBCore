@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\metier\FraisHors;
 use App\Models\Frais;
+use App\Models\Fraishorsforfait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -11,16 +11,16 @@ class FraisHorsForfaitWSController extends Controller
 {
     function liste()
     {
-        return response()->json(FraisHors::all());
+        return response()->json(Fraishorsforfait::all());
     }
 
     function detail($id)
     {
-        return response()->json(FraisHors::find($id));
+        return response()->json(Fraishorsforfait::find($id));
     }
 
     function listeParFrais($id) {
-        $fraisHorsForfait = FraisHors::where('id_frais', $id)->get();
+        $fraisHorsForfait = Fraishorsforfait::where('id_frais', "=", $id)->get();
 
         return response()->json($fraisHorsForfait);
     }
@@ -32,7 +32,7 @@ class FraisHorsForfaitWSController extends Controller
         $montant_fraishorsforfait = $request->montant_fraishorsforfait;
         $lib_fraishorsforfait = $request->lib_fraishorsforfait;
 
-        $fraisHorsForfait = new FraisHors();
+        $fraisHorsForfait = new Fraishorsforfait();
 
         $fraisHorsForfait->id_frais = $id_frais;
         $fraisHorsForfait->date_fraishorsforfait = $date_fraishorsforfait;
@@ -48,7 +48,7 @@ class FraisHorsForfaitWSController extends Controller
     {
         $idFraisHorsForfait = $request->id;
 
-        $fraisHorsForfait = FraisHors::find($idFraisHorsForfait);
+        $fraisHorsForfait = Fraishorsforfait::find($idFraisHorsForfait);
 
         if (!$fraisHorsForfait) {
             return response()->json(['status' => "Frais Hors Forfait non trouvé", 'data' => null]);
@@ -66,7 +66,7 @@ class FraisHorsForfaitWSController extends Controller
 
     function deleteFraisHorsForfait($id)
     {
-        FraisHors::destroy($id);
+        Fraishorsforfait::destroy($id);
         return response()->json(['status' => "Frais Hors Forfait supprimée"]);
     }
 }

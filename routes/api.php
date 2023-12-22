@@ -38,7 +38,7 @@ Route::middleware('auth:sanctum')->prefix('frais')->group(function () {
 Route::middleware('auth:sanctum')->prefix('fraishorsforfait')->group(function () {
     Route::get('', [FraisHorsForfaitWSController::class, "liste"]);
     Route::get('getUnFraisHorsForfait/{id}', [FraisHorsForfaitWSController::class, "detail"]);
-    Route::get('/{$id_frais}', [FraisHorsForfaitWSController::class, "listeParFrais"]);
+    Route::get('/{id_frais}', [FraisHorsForfaitWSController::class, "listeParFrais"]);
     Route::post('ajoutFraisHorsForfait', [FraisHorsForfaitWSController::class, "ajoutFraisHorsForfait"]);
     Route::put('updateFraisHorsForfait/{id}', [FraisHorsForfaitWSController::class, "updateFraisHorsForfait"]);
     Route::delete('deleteFraisHorsForfait/{$id}', [FraisHorsForfaitWSController::class, "deleteFraisHorsForfait"]);
