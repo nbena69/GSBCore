@@ -22,6 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 // http://localhost:8000/api/
+// api
 Route::middleware('auth:sanctum')->prefix('frais')->group(function () {
     Route::get('', [FraisWSController::class, "liste"]);
     Route::get('getUnFrais/{id}', [FraisWSController::class, "detail"]);
