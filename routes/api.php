@@ -36,6 +36,15 @@ Route::middleware('auth:sanctum')->prefix('frais')->group(function () {
     Route::get('nombreFraisHF', [FraisWSController::class, 'nombreFraisHF']);
 });
 
+Route::middleware('auth:sanctum')->prefix('activite')->group(function () {
+    Route::get('', [ActiviteWSController::class, "liste"]);
+    Route::get('getUneActivite/{id}', [ActiviteWSController::class, "detail"]);
+    Route::post('ajoutActivite', [ActiviteWSController::class, "ajoutActivite"]);
+    Route::put('updateActivite/{id}', [ActiviteWSController::class, 'updateActivite']);
+    Route::delete('deleteActivite/{id}', [ActiviteWSController::class, 'deleteActivite']);
+});
+
+
 Route::middleware('auth:sanctum')->prefix('fraishorsforfait')->group(function () {
     Route::get('', [FraisHorsForfaitWSController::class, "liste"]);
     Route::get('getUnFraisHorsForfait/{id}', [FraisHorsForfaitWSController::class, "detail"]);
