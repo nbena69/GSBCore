@@ -12,8 +12,15 @@ class ActiviteWSController extends Controller
     {
         return response()->json(ActiviteCompl::all());
     }
+
     function detail($id)
     {
         return response()->json(ActiviteCompl::find($id));
+    }
+
+    function deleteFrais($id)
+    {
+        ActiviteCompl::destroy($id);
+        return response()->json(['status' => "Activité supprimée"]);
     }
 }
