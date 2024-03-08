@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/monStyle.css') }}">
     <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="//fonts.googleapis.com/css?family=Roboto:400,300" rel="stylesheet" type="text/css">
     <style>
         body {
@@ -55,6 +56,7 @@
 
     </style>
 </head>
+
 <body class="body">
 <div class="container">
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -80,10 +82,36 @@
             @if (Session::get('id') > 0)
                 <div class="collapse navbar-collapse" id="navbar-collapse-target">
                     <ul class="nav navbar-nav">
-                        <li><a href="{{ url('/getListeFrais') }}" data-toggle="collapse"
-                               data-target=".navbar-collapse.in">Lister</a></li>
-                        <li><a href="{{ url('/ajouterFrais') }}" data-toggle="collapse"
-                               data-target=".navbar-collapse.in">Ajouter</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="{{ url('/') }}" id="navbarDropdownMenuLink"
+                               data-toggle="dropdown" aria-labelledby="navbarDropdown" aria-haspopup="true"
+                               aria-expanded="false">
+                                Frais
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown"><ul>
+                                <li><a class="dropdown-item" href="{{ url('/getListeFrais') }}"
+                                   data-toggle="collapse" data-target=".navbar-collapse.in">Liste</a></li>
+                                <li><a class="dropdown-item" href="{{ url('/ajouterFrais') }}"
+                                   data-toggle="collapse" data-target=".navbar-collapse.in">Ajout</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="{{ url('/') }}" id="navbarDropdownMenuLink"
+                               data-toggle="dropdown" aria-labelledby="navbarDropdown" aria-haspopup="true"
+                               aria-expanded="false">
+                                Activité
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown"><ul>
+                                    <li><a class="dropdown-item" href="{{ url('/getListeFrais') }}"
+                                           data-toggle="collapse" data-target=".navbar-collapse.in">Liste</a></li>
+                                    <li><a class="dropdown-item" href="{{ url('/ajouterFrais') }}"
+                                           data-toggle="collapse" data-target=".navbar-collapse.in">Ajout</a></li>
+                                </ul>
+                            </div>
+                        </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="{{ url('/getLogout') }}" data-toggle="collapse"
@@ -101,6 +129,5 @@
     © 2023 Tous droits réservés à la société GSB Frais
 </footer>
 <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('assets/js/bootstrap.js') }}"></script>
 </body>
 </html>
