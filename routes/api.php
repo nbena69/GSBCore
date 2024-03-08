@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActiviteWSController;
 use App\Http\Controllers\FraisHorsForfaitWSController;
 use App\Http\Controllers\FraisWSController;
 use App\Http\Controllers\VisiteurWSController;
@@ -44,7 +45,6 @@ Route::middleware('auth:sanctum')->prefix('activite')->group(function () {
     Route::delete('deleteActivite/{id}', [ActiviteWSController::class, 'deleteActivite']);
 });
 
-
 Route::middleware('auth:sanctum')->prefix('fraishorsforfait')->group(function () {
     Route::get('', [FraisHorsForfaitWSController::class, "liste"]);
     Route::get('getUnFraisHorsForfait/{id}', [FraisHorsForfaitWSController::class, "detail"]);
@@ -69,6 +69,7 @@ Route::get('updatePassword', [VisiteurWSController::class,"updatePassword"]);
 Route::post('login', [VisiteurWSController::class, "login"]);
 Route::get('logout', [VisiteurWSController::class, "logout"])->middleware('auth:sanctum');
 
+//divers
 Route::get('frais/etats', [FraisWSController::class, "listeEtats"]);
 Route::get('frais/laboratoire', [FraisWSController::class, "listeLaboratoire"]);
 Route::get('frais/secteur', [FraisWSController::class, "listeSecteur"]);

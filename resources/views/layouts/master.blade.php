@@ -90,9 +90,9 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown"><ul>
                                 <li><a class="dropdown-item" href="{{ url('/getListeFrais') }}"
-                                   data-toggle="collapse" data-target=".navbar-collapse.in">Liste</a></li>
+                                   data-toggle="collapse" data-target=".navbar-collapse.in">Mes Frais</a></li>
                                 <li><a class="dropdown-item" href="{{ url('/ajouterFrais') }}"
-                                   data-toggle="collapse" data-target=".navbar-collapse.in">Ajout</a></li>
+                                   data-toggle="collapse" data-target=".navbar-collapse.in">Ajouter un Frais</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -106,9 +106,9 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown"><ul>
                                     <li><a class="dropdown-item" href="{{ url('/getListeFrais') }}"
-                                           data-toggle="collapse" data-target=".navbar-collapse.in">Liste</a></li>
+                                           data-toggle="collapse" data-target=".navbar-collapse.in">Liste des Activités</a></li>
                                     <li><a class="dropdown-item" href="{{ url('/ajouterFrais') }}"
-                                           data-toggle="collapse" data-target=".navbar-collapse.in">Ajout</a></li>
+                                           data-toggle="collapse" data-target=".navbar-collapse.in">Ajouter une Activité</a></li>
                                 </ul>
                             </div>
                         </li>
