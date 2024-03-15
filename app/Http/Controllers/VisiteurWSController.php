@@ -180,4 +180,33 @@ class VisiteurWSController extends Controller
             'message' => 'Succesfully logged out'
         ]);
     }
+
+    function rechercheVisiteur(Request $request)
+    {
+        $nom = $request->nom;
+        $idSecteur = $request->id_secteur;
+        $idLaboratoire = $request->id_laboratoire;
+
+        if (!$nom && !$idSecteur && !$idLaboratoire) {
+            return response()->json(['error' => 'Au moins un paramètre est requis pour effectuer la recherche.'], 400);
+        }
+
+        $query = Visiteur::query();
+
+        if ($nom) {
+            $query->where('nom_visiteur', 'like', "%$nom%");
+        }
+
+        if ($idSecteur) {
+            $query->where('id_secteur', $idSecteur);
+        }
+
+        if ($idLaboratoire) {
+            $query->where('id_laboratoire', $idLaboratoire);
+        }
+
+        $resultats = $query->get();
+
+        return response()->json($resultats);
+    }
 }

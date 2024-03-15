@@ -4,6 +4,7 @@ use App\Http\Controllers\ActiviteWSController;
 use App\Http\Controllers\FraisHorsForfaitWSController;
 use App\Http\Controllers\FraisWSController;
 use App\Http\Controllers\VisiteurWSController;
+use App\Http\Controllers\WorkWSController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -61,6 +62,14 @@ Route::middleware('auth:sanctum')->prefix('visiteur')->group(function () {
     Route::post('ajoutVisiteur', [VisiteurWSController::class, "ajoutVisiteur"]);
     Route::delete('deleteVisiteur/{id}', [VisiteurWSController::class, 'deleteVisiteur']);
     Route::put('updateVisiteur/{id}', [VisiteurWSController::class, 'updateVisiteur']);
+    Route::post('filtreVisiteur', [VisiteurWSController::class, "rechercheVisiteur"]);
+});
+
+Route::middleware('auth:sanctum')->prefix('work')->group(function () {
+    Route::get('', [WorkWSController::class, "liste"]);
+    Route::post('affectationVisiteur', [WorkWSController::class, "affectationVisiteur"]);
+    Route::delete('deleteRegSec/{id}', [WorkWSController::class, 'deleteRegSec']);
+    Route::put('updateRegSect/{id}', [WorkWSController::class, 'updateRegSect']);
 });
 
 //auth
