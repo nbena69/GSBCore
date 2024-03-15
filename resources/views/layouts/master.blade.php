@@ -105,7 +105,7 @@
                                 Activité
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown"><ul>
-                                    <li><a class="dropdown-item" href="{{ url('/getListeFrais') }}"
+                                    <li><a class="dropdown-item" href="{{ url('/getFiltre') }}"
                                            data-toggle="collapse" data-target=".navbar-collapse.in">Liste des Activités</a></li>
                                     <li><a class="dropdown-item" href="{{ url('/ajouterFrais') }}"
                                            data-toggle="collapse" data-target=".navbar-collapse.in">Ajouter une Activité</a></li>

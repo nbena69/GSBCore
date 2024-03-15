@@ -9,5 +9,11 @@ use App\Exceptions\MonException;
 
 class ActiviteController extends Controller
 {
+    public function filtreVisiteur()
+    {
 
+    }
 }
+
+
+

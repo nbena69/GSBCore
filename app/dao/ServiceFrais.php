@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Session;
 
 class ServiceFrais
 {
-
     public function getFrais($id_visiteur)
     {
         try {
@@ -26,10 +25,6 @@ class ServiceFrais
         }
     }
 
-
-
-
-
     public function updateFrais($id_frais, $anneemois, $nbjustificatifs)
     {
         try {
@@ -41,13 +36,11 @@ class ServiceFrais
                     'datemodification' => $dateJour]);
         } catch (QueryException $e) {
             throw new MonException($e->getMessage(), 5);
-
         }
     }
 
-
-
-    public function getById($id_frais){
+    public function getById($id_frais)
+    {
         try {
             $fraisById = DB::table('frais')
                 ->select()
@@ -72,22 +65,16 @@ class ServiceFrais
                     'montantvalide' => $montant]);
         } catch (QueryException $e) {
             throw new MonException($e->getMessage(), 5);
-
         }
     }
 
-
-    public function deleteFrais($id_frais){
+    public function deleteFrais($id_frais)
+    {
         try {
             DB::table('fraishorsforfait')->where('id_frais', '=', $id_frais)->delete();
             DB::table('frais')->where('id_frais', '=', $id_frais)->delete();
-        }catch (QueryException $e){
+        } catch (QueryException $e) {
             throw new MonException($e->getMessage(), 5);
         }
-
-
-
     }
-
-
 }

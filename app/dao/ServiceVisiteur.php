@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 
-class ServiceVisiteur {
-
+class ServiceVisiteur
+{
     public function login($login, $pwd)
     {
         $connected = false;
@@ -32,7 +32,8 @@ class ServiceVisiteur {
     }
 
 
-    public function logout(){
+    public function logout()
+    {
         Session::put('id', 0);
     }
 }
