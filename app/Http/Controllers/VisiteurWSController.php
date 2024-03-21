@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\AuthVisiteur;
 use App\Models\Frais;
+use App\Models\Laboratoire;
+use App\Models\Secteur;
 use App\Models\User;
 use App\Models\Visiteur;
 use Illuminate\Http\Request;
@@ -204,6 +206,29 @@ class VisiteurWSController extends Controller
         if ($idLaboratoire) {
             $query->where('id_laboratoire', $idLaboratoire);
         }
+
+        $resultats = $query->get();
+
+        return response()->json($resultats);
+    }
+
+    function rechercheAvancee(Request $request)
+    {
+        $nom = $request->nom;
+
+        if (!$nom) {
+            return response()->json(['error' => 'Au moins un paramètre est requis pour effectuer la recherche.'], 400);
+        }
+
+        $query = Visiteur::query();
+
+        $query->where('nom_visiteur', 'like', "%$nom%")
+            ->orWhereHas('laboratoire', function ($query) use ($nom) {
+                $query->where('nom_laboratoire', 'like', "%$nom%");
+            })
+            ->orWhereHas('secteur', function ($query) use ($nom) {
+                $query->where('lib_secteur', 'like', "%$nom%");
+            });
 
         $resultats = $query->get();
 
