@@ -62,8 +62,7 @@
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse"
-                        data-target="#navbar-collapse-target">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-target">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -71,57 +70,40 @@
                 </button>
                 <a class="navbar-brand" href="{{ url('/') }}">GSB Frais</a>
             </div>
-            @if (Session::get('id') == 0)
-                <div class="collapse navbar-collapse navbar-right">
+
+            <div class="collapse navbar-collapse" id="navbar-collapse-target">
+                @if (Session::get('id') > 0)
                     <ul class="nav navbar-nav">
-                        <li><a href="{{ url('/formLogin') }}" data-toggle="collapse"
-                               data-target=".navbar-collapse.in">Se connecter</a></li>
-                    </ul>
-                </div>
-            @endif
-            @if (Session::get('id') > 0)
-                <div class="collapse navbar-collapse" id="navbar-collapse-target">
-                    <ul class="nav navbar-nav">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="{{ url('/') }}" id="navbarDropdownMenuLink"
-                               data-toggle="dropdown" aria-labelledby="navbarDropdown" aria-haspopup="true"
-                               aria-expanded="false">
-                                Frais
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown"><ul>
-                                <li><a class="dropdown-item" href="{{ url('/getListeFrais') }}"
-                                   data-toggle="collapse" data-target=".navbar-collapse.in">Mes Frais</a></li>
-                                <li><a class="dropdown-item" href="{{ url('/ajouterFrais') }}"
-                                   data-toggle="collapse" data-target=".navbar-collapse.in">Ajouter un Frais</a></li>
-                                </ul>
-                            </div>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Frais <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ url('/getListeFrais') }}">Mes Frais</a></li>
+                                <li><a href="{{ url('/ajouterFrais') }}">Ajouter un Frais</a></li>
+                            </ul>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="{{ url('/') }}" id="navbarDropdownMenuLink"
-                               data-toggle="dropdown" aria-labelledby="navbarDropdown" aria-haspopup="true"
-                               aria-expanded="false">
-                                Activité
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown"><ul>
-                                    <li><a class="dropdown-item" href="{{ url('/getFiltre') }}"
-                                           data-toggle="collapse" data-target=".navbar-collapse.in">Liste des Activités</a></li>
-                                    <li><a class="dropdown-item" href="{{ url('/ajouterFrais') }}"
-                                           data-toggle="collapse" data-target=".navbar-collapse.in">Ajouter une Activité</a></li>
-                                </ul>
-                            </div>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Activité <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ url('/getFiltre') }}">Liste des Activités</a></li>
+                                <li><a href="{{ url('/ajouterActivite') }}">Ajouter une Activité</a></li>
+                            </ul>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="{{ url('/getLogout') }}" data-toggle="collapse"
-                               data-target=".navbar-collapse.in">Se déconnecter</a></li>
+                        <li><a href="{{ url('/getLogout') }}">Se déconnecter</a></li>
                     </ul>
-                </div>
-            @endif
-        </div>
+                @else
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{{ url('/formLogin') }}">Se connecter</a></li>
+                    </ul>
+                @endif
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
     </nav>
 </div>
+
 <div class="container">
     @yield('content')
 </div>
