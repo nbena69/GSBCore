@@ -144,13 +144,11 @@ class VisiteurWSController extends Controller
             // Correspondance pour la validation des données
             $credentials = ['login_visiteur' => $data['login'], 'password' =>
                 $data['password']];
-
             // Auth valide que l'email et le password existe dans la table users
             if (!Auth::attempt($credentials)) {
                 return response()->json(['error' => 'The provided credentials are
                 incorrect.'], 401);
             }
-
             // on récupère les infos du user
             $visiteur = $request->user();
             // Création et sauvegarde du token user
