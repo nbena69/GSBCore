@@ -271,8 +271,9 @@ class VisiteurWSController extends Controller
         $response = [
             'nom_visiteur' => $visiteur->nom_visiteur,
             'prenom_visiteur' => $visiteur->prenom_visiteur,
-            'secteur' => $visiteur->secteur ? $visiteur->secteur->lib_secteur : null,
-            'region' => $travailler->region ? $travailler->region->nom_region : null,
+            'id_secteur' => $visiteur->id_secteur,
+            'id_laboratoire' => $visiteur->id_laboratoire,
+            'id_region' => $travailler->id_region,
         ];
 
         return response()->json($response);

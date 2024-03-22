@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\ActiviteController;
 use App\Http\Controllers\FraisController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VisiteurController;
 use App\Http\Controllers\FraisHorsController;

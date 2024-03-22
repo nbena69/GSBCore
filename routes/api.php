@@ -66,6 +66,7 @@ Route::middleware('auth:sanctum')->prefix('visiteur')->group(function () {
     Route::get('filtreVisiteur', [VisiteurWSController::class, "rechercheVisiteur"]);
     Route::get('filtreAvancee', [VisiteurWSController::class, "rechercheAvancee"]);
     Route::get('updatePartielle/{id}', [VisiteurWSController::class, "updatePartielle"]);
+    Route::get('obtenirInfosVisiteur/{id}', [VisiteurWSController::class, "obtenirInfosVisiteur"]);
 });
 
 Route::middleware('auth:sanctum')->prefix('work')->group(function () {
@@ -86,4 +87,3 @@ Route::get('etats', [ShortWSController::class, "listeEtats"]);
 Route::get('laboratoire', [ShortWSController::class, "listeLaboratoire"]);
 Route::get('secteur', [ShortWSController::class, "listeSecteur"]);
 Route::get('region', [ShortWSController::class, "listeRegion"]);
-Route::get('obtenirInfosVisiteur/{id}', [VisiteurWSController::class, "obtenirInfosVisiteur"]);
