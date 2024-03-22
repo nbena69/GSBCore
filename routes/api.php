@@ -3,6 +3,7 @@
 use App\Http\Controllers\ActiviteWSController;
 use App\Http\Controllers\FraisHorsForfaitWSController;
 use App\Http\Controllers\FraisWSController;
+use App\Http\Controllers\ShortWSController;
 use App\Http\Controllers\VisiteurWSController;
 use App\Http\Controllers\WorkWSController;
 use Illuminate\Http\Request;
@@ -64,6 +65,7 @@ Route::middleware('auth:sanctum')->prefix('visiteur')->group(function () {
     Route::put('updateVisiteur/{id}', [VisiteurWSController::class, 'updateVisiteur']);
     Route::get('filtreVisiteur', [VisiteurWSController::class, "rechercheVisiteur"]);
     Route::get('filtreAvancee', [VisiteurWSController::class, "rechercheAvancee"]);
+    Route::get('updatePartielle/{id}', [VisiteurWSController::class, "updatePartielle"]);
 });
 
 Route::middleware('auth:sanctum')->prefix('work')->group(function () {
@@ -80,6 +82,8 @@ Route::post('login', [VisiteurWSController::class, "login"]);
 Route::get('logout', [VisiteurWSController::class, "logout"])->middleware('auth:sanctum');
 
 //divers
-Route::get('frais/etats', [FraisWSController::class, "listeEtats"]);
-Route::get('frais/laboratoire', [FraisWSController::class, "listeLaboratoire"]);
-Route::get('frais/secteur', [FraisWSController::class, "listeSecteur"]);
+Route::get('etats', [ShortWSController::class, "listeEtats"]);
+Route::get('laboratoire', [ShortWSController::class, "listeLaboratoire"]);
+Route::get('secteur', [ShortWSController::class, "listeSecteur"]);
+Route::get('region', [ShortWSController::class, "listeRegion"]);
+Route::get('obtenirInfosVisiteur/{id}', [VisiteurWSController::class, "obtenirInfosVisiteur"]);

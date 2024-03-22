@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AuthVisiteur;
-use App\Models\Frais;
-use App\Models\Laboratoire;
+use App\Models\Region;
 use App\Models\Secteur;
-use App\Models\User;
+use App\Models\Travailler;
 use App\Models\Visiteur;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -133,7 +131,6 @@ class VisiteurWSController extends Controller
 
     public function login(Request $request)
     {
-        // Vérifiez si la requête est en JSON
         if ($request->isJson()) {
             $data = $request->json()->all();
             // Validation des données reçues, il faut un login et un password
@@ -172,7 +169,8 @@ class VisiteurWSController extends Controller
         return response()->json(['error' => 'Request must be JSON.'], 415);
     }
 
-    public function logout(Request $request){
+    public function logout(Request $request)
+    {
         $visiteur = $request->user();
         $visiteur->tokens()->delete();
 
@@ -231,5 +229,52 @@ class VisiteurWSController extends Controller
         $resultats = $query->get();
 
         return response()->json($resultats);
+    }
+
+    public function updatePartielle(Request $request, $idVisiteur)
+    {
+        $visiteur = Visiteur::find($idVisiteur);
+
+        if (!$visiteur) {
+            return response()->json(['error' => 'Visiteur non trouvé'], 404);
+        }
+
+        $travailler = Travailler::where('id_visiteur', $idVisiteur)->first();
+
+        if (!$travailler) {
+            return response()->json(['error' => 'Aucune information de travail trouvée pour ce visiteur'], 404);
+        }
+
+        $region = $travailler->region;
+
+        $visiteur->region()->associate($region);
+        $visiteur->save();
+
+        return response()->json(['message' => 'Région mise à jour avec succès', 'data' => $visiteur]);
+    }
+
+
+    public function obtenirInfosVisiteur($idVisiteur)
+    {
+        $visiteur = Visiteur::with('secteur')->find($idVisiteur);
+
+        if (!$visiteur) {
+            return response()->json(['error' => 'Visiteur non trouvé'], 404);
+        }
+
+        $travailler = Travailler::where('id_visiteur', $idVisiteur)->first();
+
+        if (!$travailler) {
+            return response()->json(['error' => 'Aucune information sur la région trouvée pour ce visiteur'], 404);
+        }
+
+        $response = [
+            'nom_visiteur' => $visiteur->nom_visiteur,
+            'prenom_visiteur' => $visiteur->prenom_visiteur,
+            'secteur' => $visiteur->secteur ? $visiteur->secteur->lib_secteur : null,
+            'region' => $travailler->region ? $travailler->region->nom_region : null,
+        ];
+
+        return response()->json($response);
     }
 }
