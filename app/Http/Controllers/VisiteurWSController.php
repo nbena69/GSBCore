@@ -143,8 +143,7 @@ class VisiteurWSController extends Controller
                 $data['password']];
             // Auth valide que l'email et le password existe dans la table users
             if (!Auth::attempt($credentials)) {
-                return response()->json(['error' => 'The provided credentials are
-                incorrect.'], 401);
+                return response()->json(['error' => 'Les données fournis sont incorrect.'], 401);
             }
             // on récupère les infos du user
             $visiteur = $request->user();
@@ -166,7 +165,7 @@ class VisiteurWSController extends Controller
             ]);
         }
         // Gestion des erreurs si la requête n'est pas en JSON
-        return response()->json(['error' => 'Request must be JSON.'], 415);
+        return response()->json(['error' => 'La requête n\'est pas en JSON.'], 415);
     }
 
     public function logout(Request $request)
@@ -175,7 +174,7 @@ class VisiteurWSController extends Controller
         $visiteur->tokens()->delete();
 
         return response()->json([
-            'message' => 'Succesfully logged out'
+            'message' => 'Succès de la deconnexion'
         ]);
     }
 
@@ -205,6 +204,10 @@ class VisiteurWSController extends Controller
 
         $resultats = $query->get();
 
+        if ($resultats->isEmpty()) {
+            return response()->json(['error' => 'Aucun visiteur trouvé.'], 404);
+        }
+
         return response()->json($resultats);
     }
 
@@ -227,6 +230,10 @@ class VisiteurWSController extends Controller
             });
 
         $resultats = $query->get();
+
+        if ($resultats->isEmpty()) {
+            return response()->json(['error' => 'Aucun visiteur trouvé.'], 404);
+        }
 
         return response()->json($resultats);
     }
