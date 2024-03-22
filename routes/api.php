@@ -62,8 +62,8 @@ Route::middleware('auth:sanctum')->prefix('visiteur')->group(function () {
     Route::post('ajoutVisiteur', [VisiteurWSController::class, "ajoutVisiteur"]);
     Route::delete('deleteVisiteur/{id}', [VisiteurWSController::class, 'deleteVisiteur']);
     Route::put('updateVisiteur/{id}', [VisiteurWSController::class, 'updateVisiteur']);
-    Route::post('filtreVisiteur', [VisiteurWSController::class, "rechercheVisiteur"]);
-    Route::post('filtreAvancee', [VisiteurWSController::class, "rechercheAvancee"]);
+    Route::get('filtreVisiteur', [VisiteurWSController::class, "rechercheVisiteur"]);
+    Route::get('filtreAvancee', [VisiteurWSController::class, "rechercheAvancee"]);
 });
 
 Route::middleware('auth:sanctum')->prefix('work')->group(function () {

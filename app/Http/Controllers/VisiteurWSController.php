@@ -183,9 +183,9 @@ class VisiteurWSController extends Controller
 
     function rechercheVisiteur(Request $request)
     {
-        $nom = $request->nom;
-        $idSecteur = $request->id_secteur;
-        $idLaboratoire = $request->id_laboratoire;
+        $nom = $request->query('nom');
+        $idSecteur = $request->query('id_secteur');
+        $idLaboratoire = $request->query('id_laboratoire');
 
         if (!$nom && !$idSecteur && !$idLaboratoire) {
             return response()->json(['error' => 'Au moins un paramètre est requis pour effectuer la recherche.'], 400);
@@ -212,7 +212,7 @@ class VisiteurWSController extends Controller
 
     function rechercheAvancee(Request $request)
     {
-        $nom = $request->nom;
+        $nom = $request->query('nom');
 
         if (!$nom) {
             return response()->json(['error' => 'Au moins un paramètre est requis pour effectuer la recherche.'], 400);
