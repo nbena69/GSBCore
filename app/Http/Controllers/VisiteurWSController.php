@@ -273,22 +273,44 @@ class VisiteurWSController extends Controller
             return response()->json(['error' => 'Visiteur non trouvé'], 404);
         }
 
-        $travailler = Travailler::where('id_visiteur', $idVisiteur)->get();
+        // Récupérer toutes les entrées travailler pour le visiteur donné
+        $travaux = Travailler::where('id_visiteur', $idVisiteur)->get();
 
-        $regions = $travailler->map(function ($item) {
-            return [
-                'id_region' => $item->region->id_region,
-                'id_secteur' => $item->region->id_secteur,
-            ];
-        });
+        // Créer un tableau pour stocker les informations sur chaque région avec leurs jjmmaa associés
+        $regions = [];
+
+        foreach ($travaux as $travail) {
+            $region = $travail->region;
+
+            // Créer une clé unique pour cette affectation basée sur l'id_region et jjmmaa
+            $cleAffectation = $region->id_region . '_' . $travail->jjmmaa->format('Y-m-d');
+
+            // Vérifier si l'affectation existe déjà dans le tableau
+            if (!isset($regions[$cleAffectation])) {
+                // Si l'affectation n'existe pas, ajouter les informations dans le tableau
+                $regions[$cleAffectation] = [
+                    'id_region' => $region->id_region,
+                    'nom_region' => $region->nom_region,
+                    'id_secteur' => $region->id_secteur,
+                    'jjmmaa' => $travail->jjmmaa->format('Y-m-d'),
+                ];
+            }
+        }
+
+        // Convertir le tableau associatif en tableau indexé pour la réponse JSON
+        $regions = array_values($regions);
 
         return response()->json([
+            'id_visiteur' => $visiteur->id_visiteur,
             'nom_visiteur' => $visiteur->nom_visiteur,
             'prenom_visiteur' => $visiteur->prenom_visiteur,
             'id_laboratoire' => $visiteur->id_laboratoire,
             'regions' => $regions,
         ]);
     }
+
+
+
 
     public function updateAffectation(Request $request, $idVisiteur)
     {
