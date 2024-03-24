@@ -205,7 +205,7 @@ class VisiteurWSController extends Controller
         ]);
     }
 
-    function rechercheVisiteur(Request $request)
+    function filtreAffectation(Request $request)
     {
         $nom = $request->query('nom');
         $idSecteur = $request->query('id_secteur');
@@ -238,7 +238,7 @@ class VisiteurWSController extends Controller
         return response()->json($resultats);
     }
 
-    function rechercheAvancee(Request $request)
+    function filtreAffectAvancee(Request $request)
     {
         $nom = $request->query('nom');
 
@@ -265,7 +265,7 @@ class VisiteurWSController extends Controller
         return response()->json($resultats);
     }
 
-    public function obtenirInfosVisiteur($idVisiteur)
+    public function obtenirInfosAffectation($idVisiteur)
     {
         $visiteur = Visiteur::with('secteur')->find($idVisiteur);
 
