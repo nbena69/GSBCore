@@ -60,13 +60,14 @@ Route::middleware('auth:sanctum')->prefix('visiteur')->group(function () {
     Route::get('', [VisiteurWSController::class, "liste"]);
     Route::get('ville/{ville_visiteur}', [VisiteurWSController::class, "visiteurVille"]);
     Route::get('nom/{nom_visiteur}', [VisiteurWSController::class, "visiteurNom"]);
-    Route::post('ajoutVisiteur', [VisiteurWSController::class, "ajoutVisiteur"]);
     Route::delete('deleteVisiteur/{id}', [VisiteurWSController::class, 'deleteVisiteur']);
     Route::put('updateVisiteur/{id}', [VisiteurWSController::class, 'updateVisiteur']);
     Route::get('filtreVisiteur', [VisiteurWSController::class, "rechercheVisiteur"]);
     Route::get('filtreAvancee', [VisiteurWSController::class, "rechercheAvancee"]);
-    Route::get('updatePartielle/{id}', [VisiteurWSController::class, "updatePartielle"]);
     Route::get('obtenirInfosVisiteur/{id}', [VisiteurWSController::class, "obtenirInfosVisiteur"]);
+    Route::put('updateAffectation/{id}', [VisiteurWSController::class, "updateAffectation"]);
+    Route::post('affectation', [VisiteurWSController::class, "affectation"]);
+    Route::delete('deleteAffectation', [VisiteurWSController::class, "deleteAffectation"]);
 });
 
 Route::middleware('auth:sanctum')->prefix('work')->group(function () {
@@ -81,6 +82,7 @@ Route::post('getConnexion', [VisiteurWSController::class, "getConnexion"]);
 Route::get('updatePassword', [VisiteurWSController::class,"updatePassword"]);
 Route::post('login', [VisiteurWSController::class, "login"]);
 Route::get('logout', [VisiteurWSController::class, "logout"])->middleware('auth:sanctum');
+Route::post('ajoutVisiteur', [VisiteurWSController::class, "ajoutVisiteur"]);
 
 //divers
 Route::get('etats', [ShortWSController::class, "listeEtats"]);
