@@ -70,5 +70,4 @@
         color: #1e90ff;
         margin-top: 20px;
     }
-
 </style>
