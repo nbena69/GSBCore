@@ -309,9 +309,6 @@ class VisiteurWSController extends Controller
         ]);
     }
 
-
-
-
     public function updateAffectation(Request $request, $idVisiteur)
     {
         $visiteur = Visiteur::find($idVisiteur);
