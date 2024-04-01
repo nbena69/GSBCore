@@ -12,4 +12,6 @@ class WorkWSController extends Controller
     {
         return response()->json(Travailler::all());
     }
+
+
 }
