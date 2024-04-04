@@ -1,19 +1,1 @@
-Route .env sur xampp :
-
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=nb_gsb
-DB_USERNAME=usersio
-DB_PASSWORD=sio
-
-Route .env sur ISPCONFIG :
-
-DB_CONNECTION=mysql
-DB_HOST=localhost
-DB_PORT=3306
-DB_DATABASE=etu59gsb
-DB_USERNAME=etu59gsb
-DB_PASSWORD=Sio2023.
-
 Sur iSPCONFIG, index.php, il faut ajouter private/ pour les routes.
