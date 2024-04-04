@@ -1,7 +1,5 @@
 @extends('layouts.master')
 @section('content')
-    <img src="{{ asset('assets/img/gsbFraisLogo.png') }}" alt="Logo GSB Frais" class="gsb-logo">
-
     <div class="gsb-container">
         <h1 class="gsb-title"> Gestion des frais de déplacements à l'hôpital GSB</h1>
         <p class="gsb-intro">Bienvenue dans le système de gestion des frais de déplacements de l'hôpital GSB. Ce système
@@ -25,9 +23,7 @@
         @endif
         <p class="gsb-info">Si vous avez des questions ou des problèmes techniques, veuillez contacter le service
             informatique de l'hôpital GSB.</p>
-
     </div>
-
 @stop
 <style>
     .gsb-container {
