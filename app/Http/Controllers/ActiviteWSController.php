@@ -10,7 +10,19 @@ class ActiviteWSController extends Controller
 {
     function liste()
     {
-        return response()->json(ActiviteCompl::all());
+        $activite_compl = ActiviteCompl::all();
+
+        $formattedactivite_compl = $activite_compl->map(function ($activite_compl) {
+            return [
+                'id_activite_compl' => $activite_compl->id_activite_compl,
+                'date_activite' => $activite_compl->date_activite->format('Y-m-d'),
+                'lieu_activite' => $activite_compl->lieu_activite,
+                'theme_activite' => $activite_compl->theme_activite,
+                'motif_activite' => $activite_compl->motif_activite,
+            ];
+        });
+
+        return response()->json($formattedactivite_compl);
     }
 
     function detail($id)

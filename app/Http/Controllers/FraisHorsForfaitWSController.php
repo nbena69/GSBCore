@@ -11,7 +11,18 @@ class FraisHorsForfaitWSController extends Controller
 {
     function liste()
     {
-        return response()->json(Fraishorsforfait::all());
+        $fraishorsforfaits = Fraishorsforfait::all();
+
+        $formattedFraishorsforfaits = $fraishorsforfaits->map(function ($fraishorsforfait) {
+            return [
+                'id_frais' => $fraishorsforfait->id_frais,
+                'date_fraishorsforfait' => $fraishorsforfait->date_fraishorsforfait->format('Y-m-d'),
+                'montant_fraishorsforfait' => $fraishorsforfait->montant_fraishorsforfait,
+                'lib_fraishorsforfait' => $fraishorsforfait->lib_fraishorsforfait,
+            ];
+        });
+
+        return response()->json($formattedFraishorsforfaits);
     }
 
     function detail($id)
