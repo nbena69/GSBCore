@@ -6,7 +6,6 @@ use App\Models\Travailler;
 use App\Models\Visiteur;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 
@@ -22,25 +21,9 @@ class AffectationWSController extends Controller
         return response()->json(Travailler::where('id_visiteur', $id_visiteur)->get());
     }
 
-    public function affectationUnique(Request $request, $id_visiteur)
+    public function affectationUnique($id_travail)
     {
-        $jjmmaa = $request->input('jjmmaa');
-        $id_region = $request->input('id_region');
-
-        try {
-            $affectation = Travailler::where('id_visiteur', $id_visiteur)
-                ->where('jjmmaa', $jjmmaa)
-                ->where('id_region', $id_region)
-                ->first();
-
-            if ($affectation) {
-                return response()->json(['affectation' => $affectation]);
-            } else {
-                return response()->json(['message' => 'Aucune affectation correspondante trouvée'], 404);
-            }
-        } catch (\Exception $e) {
-            return response()->json(['error' => 'Une erreur est survenue lors de la recherche de l\'affectation'], 500);
-        }
+        return response()->json(Travailler::where('id_travail', $id_travail)->get());
     }
 
 

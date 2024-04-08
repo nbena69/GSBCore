@@ -33,6 +33,7 @@ class Travailler extends Model
 	public $timestamps = false;
 
 	protected $casts = [
+        'id_travail' => 'int',
 		'id_visiteur' => 'int',
 		'jjmmaa' => 'datetime',
 		'id_region' => 'int'

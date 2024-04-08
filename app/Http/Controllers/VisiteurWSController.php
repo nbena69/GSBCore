@@ -17,6 +17,11 @@ class VisiteurWSController extends Controller
         return response()->json(Visiteur::all());
     }
 
+    function details($id_visiteur)
+    {
+        return response()->json(Visiteur::where('id_visiteur', $id_visiteur)->get());
+    }
+
     function visiteurVille($ville_visiteur)
     {
         return response()->json(Visiteur::where('ville_visiteur', $ville_visiteur)->select('id_visiteur', 'nom_visiteur')->get());
@@ -289,7 +294,7 @@ class VisiteurWSController extends Controller
             if (!isset($regions[$cleAffectation])) {
                 // Si l'affectation n'existe pas, ajouter les informations dans le tableau
                 $regions[$cleAffectation] = [
-                    'id_visiteur' => $travail->id_visiteur,
+                    'id_travail' => $travail->id_travail,
                     'jjmmaa' => $travail->jjmmaa->format('d-m-Y'),
                     'id_region' => $region->id_region,
                     'nom_region' => $region->nom_region,

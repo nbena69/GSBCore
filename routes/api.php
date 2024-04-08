@@ -59,6 +59,7 @@ Route::middleware('auth:sanctum')->prefix('fraishorsforfait')->group(function ()
 
 Route::middleware('auth:sanctum')->prefix('visiteur')->group(function () {
     Route::get('', [VisiteurWSController::class, "liste"]);
+    Route::get('getUnVisiteur/{id_visiteur}', [VisiteurWSController::class, "details"]);
     Route::get('ville/{ville_visiteur}', [VisiteurWSController::class, "visiteurVille"]);
     Route::get('nom/{nom_visiteur}', [VisiteurWSController::class, "visiteurNom"]);
     Route::delete('deleteVisiteur/{id}', [VisiteurWSController::class, 'deleteVisiteur']);
