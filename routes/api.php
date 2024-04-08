@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ActiviteWSController;
+use App\Http\Controllers\AffectationWSController;
 use App\Http\Controllers\FraisHorsForfaitWSController;
 use App\Http\Controllers\FraisWSController;
 use App\Http\Controllers\ShortWSController;
@@ -67,14 +68,21 @@ Route::middleware('auth:sanctum')->prefix('visiteur')->group(function () {
     Route::get('obtenirInfosAffectation/{id}', [VisiteurWSController::class, "obtenirInfosAffectation"]);
     Route::put('updateAffectation/{id}', [VisiteurWSController::class, "updateAffectation"]);
     Route::post('affectation', [VisiteurWSController::class, "affectation"]);
-    Route::delete('deleteAffectation', [VisiteurWSController::class, "deleteAffectation"]);
 });
 
 Route::middleware('auth:sanctum')->prefix('work')->group(function () {
     Route::get('', [WorkWSController::class, "liste"]);
     Route::post('affectationVisiteur', [WorkWSController::class, "affectationVisiteur"]);
-    Route::post('deleteRegSec/{id_visiteur}', [WorkWSController::class, 'deleteAffectation']);
+    Route::post('deleteRegSec/{id_visiteur}', [WorkWSController::class, 'deleteActivite']);
     Route::put('updateRegSect/{id}', [WorkWSController::class, 'updateRegSect']);
+});
+
+Route::middleware('auth:sanctum')->prefix('affectation')->group(function () {
+    Route::get('', [AffectationWSController::class, "liste"]);
+    Route::get('affectationVisiteur/{id_visiteur}', [AffectationWSController::class, "affectationVisiteur"]);
+    Route::post('affectationUnique/{id_visiteur}', [AffectationWSController::class, "affectationUnique"]);
+    Route::put('updateAffectation/{id}', [AffectationWSController::class, "updateAffectation"]);
+    Route::delete('deleteAffectation', [AffectationWSController::class, "deleteAffectation"]);
 });
 
 //auth

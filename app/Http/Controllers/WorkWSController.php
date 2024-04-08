@@ -13,7 +13,7 @@ class WorkWSController extends Controller
         return response()->json(Travailler::all());
     }
 
-    public function deleteAffectation(Request $request, $id_visiteur)
+    public function deleteActivite(Request $request, $id_visiteur)
     {
         $jjmmaa = $request->input('jjmmaa');
         $id_region = $request->input('id_region');
