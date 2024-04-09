@@ -16,9 +16,35 @@ class AffectationWSController extends Controller
         return response()->json(Travailler::all());
     }
 
-    function affectationVisiteur($id_visiteur)
+    public function affectationVisiteur($id_visiteur)
     {
-        return response()->json(Travailler::where('id_visiteur', $id_visiteur)->get());
+        try {
+            // Récupérer toutes les affectations du visiteur donné
+            $travaux = Travailler::where('id_visiteur', $id_visiteur)->get();
+
+            // Vérifier si des travaux ont été trouvés
+            if ($travaux->isEmpty()) {
+                return response()->json(['message' => 'Aucune affectation trouvée pour ce visiteur'], 404);
+            }
+
+            // Formater les données, notamment la date
+            $travauxFormatted = $travaux->map(function($travail) {
+                return [
+                    'id_travail' => $travail->id_travail,
+                    'id_visiteur' => $travail->id_visiteur,
+                    'jjmmaa' => $travail->jjmmaa->format('d-m-Y'),
+                    'role_visiteur' => $travail->role_visiteur,
+                    'id_region' => $travail->id_region,
+                    'nom_region' => $travail->region->nom_region
+                ];
+            });
+
+            // Retourner les affectations formatées
+            return response()->json($travauxFormatted);
+        } catch (\Exception $e) {
+            // En cas d'erreur, retourner une réponse JSON avec un message d'erreur
+            return response()->json(['error' => 'Une erreur est survenue lors de la récupération des affectations'], 500);
+        }
     }
 
     public function affectationUnique($id_travail)

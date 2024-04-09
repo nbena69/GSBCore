@@ -36,7 +36,7 @@ class Travailler extends Model
         'id_travail' => 'int',
 		'id_visiteur' => 'int',
 		'jjmmaa' => 'datetime',
-		'id_region' => 'int'
+		'id_region' => 'int',
 	];
 
 	protected $fillable = [
