@@ -19,7 +19,7 @@ class VisiteurWSController extends Controller
 
     function details($id_visiteur)
     {
-        return response()->json(Visiteur::where('id_visiteur', $id_visiteur)->get());
+        return response()->json(Visiteur::find($id_visiteur));
     }
 
     function visiteurVille($ville_visiteur)
