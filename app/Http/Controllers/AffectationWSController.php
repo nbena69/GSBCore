@@ -47,37 +47,33 @@ class AffectationWSController extends Controller
         }
     }
 
-    public function affectationUnique($id_travail)
+    public function affectationUnique($id_visiteur)
     {
         try {
-            // Récupérer toutes les affectations du visiteur donné
-            $travaux = Travailler::where('id_travail', $id_travail)->get();
+            // Récupérer l'affectation unique en fonction de l'id_visiteur
+            $travail = Travailler::where('id_visiteur', $id_visiteur)->first();
 
-            // Vérifier si des travaux ont été trouvés
-            if ($travaux->isEmpty()) {
-                return response()->json(['message' => 'Aucune affectation trouvée pour ce visiteur'], 404);
+            // Vérifier si l'affectation a été trouvée
+            if (!$travail) {
+                return response()->json(['message' => 'Aucune affectation trouvée pour cet identifiant de visiteur'], 404);
             }
 
             // Formater les données, notamment la date
-            $travauxFormatted = $travaux->map(function ($travail) {
-                return [
-                    'id_travail' => $travail->id_travail,
-                    'id_visiteur' => $travail->id_visiteur,
-                    'jjmmaa' => $travail->jjmmaa->format('d-m-Y'),
-                    'role_visiteur' => $travail->role_visiteur,
-                    'id_region' => $travail->id_region,
-                    'id_secteur' => $travail->region->id_secteur,
-                    'nom_region' => $travail->region->nom_region
-                ];
-            });
+            $travailFormatted = [
+                'id_travail' => $travail->id_travail,
+                'id_visiteur' => $travail->id_visiteur,
+                'jjmmaa' => $travail->jjmmaa->format('d-m-Y'),
+                'role_visiteur' => $travail->role_visiteur,
+                'id_region' => $travail->id_region,
+                'id_secteur' => $travail->region->id_secteur,
+                'nom_region' => $travail->region->nom_region
+            ];
 
-            // Retourner les affectations formatées
-            return response()->json($travauxFormatted);
+            return response()->json($travailFormatted);
         } catch (\Exception $e) {
-            return response()->json(['error' => 'Une erreur est survenue lors de la récupération des affectations'], 500);
+            return response()->json(['error' => 'Une erreur est survenue lors de la récupération de l\'affectation'], 500);
         }
     }
-
 
     public function updateAffectation(Request $request, $idVisiteur)
     {
