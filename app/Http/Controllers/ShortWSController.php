@@ -34,4 +34,11 @@ class ShortWSController extends Controller {
     {
         return response()->json(Region::all());
     }
+
+    function listeRegionSecteur()
+    {
+        return response()->json(Region::join('secteur', 'region.id_secteur', '=', 'secteur.id_secteur')
+            ->select('region.id_region', 'secteur.id_secteur', 'secteur.lib_secteur', 'region.nom_region')
+            ->get());
+    }
 }

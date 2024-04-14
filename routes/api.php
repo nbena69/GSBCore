@@ -99,3 +99,4 @@ Route::get('laboratoire', [ShortWSController::class, "listeLaboratoire"]);
 Route::get('secteur', [ShortWSController::class, "listeSecteur"]);
 Route::get('region', [ShortWSController::class, "listeRegion"]);
 Route::get('specialite', [ShortWSController::class, "listeSpecialite"]);
+Route::get('region-secteur', [ShortWSController::class, "listeRegionSecteur"]);

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Region;
 use App\Models\Travailler;
 use App\Models\Visiteur;
 use Illuminate\Http\Request;
@@ -47,11 +48,11 @@ class AffectationWSController extends Controller
         }
     }
 
-    public function affectationUnique($id_visiteur)
+    public function affectationUnique($id_travail)
     {
         try {
             // Récupérer l'affectation unique en fonction de l'id_visiteur
-            $travail = Travailler::where('id_visiteur', $id_visiteur)->first();
+            $travail = Travailler::where('id_travail', $id_travail)->first();
 
             // Vérifier si l'affectation a été trouvée
             if (!$travail) {
