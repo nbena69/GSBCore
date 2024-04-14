@@ -83,7 +83,7 @@ Route::middleware('auth:sanctum')->prefix('affectation')->group(function () {
     Route::get('affectationVisiteur/{id_visiteur}', [AffectationWSController::class, "affectationVisiteur"]);
     Route::get('affectationUnique/{id_travail}', [AffectationWSController::class, "affectationUnique"]);
     Route::put('updateAffectation/{id}', [AffectationWSController::class, "updateAffectation"]);
-    Route::delete('deleteAffectation', [AffectationWSController::class, "deleteAffectation"]);
+    Route::delete('deleteAffectation/{id}', [AffectationWSController::class, "deleteAffectation"]);
 });
 
 //auth
