@@ -25,7 +25,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// http://localhost:8000/api/
 // api
 Route::middleware('auth:sanctum')->prefix('frais')->group(function () {
     Route::get('', [FraisWSController::class, "liste"]);
@@ -83,7 +82,7 @@ Route::middleware('auth:sanctum')->prefix('affectation')->group(function () {
     Route::get('affectationVisiteur/{id_visiteur}', [AffectationWSController::class, "affectationVisiteur"]);
     Route::get('affectationUnique/{id_travail}', [AffectationWSController::class, "affectationUnique"]);
     Route::post('ajoutAffectation', [AffectationWSController::class, "ajoutAffectation"]);
-    Route::put('updateAffectation/{id}', [AffectationWSController::class, "updateAffectation"]);
+    Route::put('updateAffectation', [AffectationWSController::class, "updateAffectation"]);
     Route::delete('deleteAffectation/{id}', [AffectationWSController::class, "deleteAffectation"]);
 });
 

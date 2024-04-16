@@ -96,24 +96,36 @@ class AffectationWSController extends Controller
         return response()->json(['status' => "Affectation ajouté", 'data' => $travailler]);
     }
 
-    function updateAffectation(Request $request)
+    public function updateAffectation(Request $request)
     {
-        $idAffectation = $request->id_travail;
+        try {
+            // Récupérer les données de la requête
+            $idAffectation = $request->id_travail;
+            $id_visiteur = $request->id_visiteur;
+            $jjmmaa = $request->jjmmaa;
+            $id_region = $request->id_region;
+            $role_visiteur = $request->role_visiteur;
 
-        $travailler = Travailler::find($idAffectation);
+            // Rechercher l'affectation à mettre à jour
+            $travail = Travailler::where(['id_travail' => $idAffectation])->first();
 
-        if (!$travailler) {
-            return response()->json(['status' => "Affectation non trouvé", 'data' => null]);
+            // Vérifier si l'affectation existe
+            if (!$travail) {
+                return response()->json(['error' => 'Affectation non trouvée'], 404);
+            }
+
+            $travail->update([
+                'id_visiteur' => $id_visiteur,
+                'jjmmaa' => $jjmmaa,
+                'id_region' => $id_region,
+                'role_visiteur' => $role_visiteur
+            ]);
+
+            return response()->json(['status' => "Affectation modifiée", 'data' => $travail]);
+        } catch (\Exception $e) {
+            // En cas d'erreur, retourner une réponse JSON avec un message d'erreur
+            return response()->json(['error' => 'Une erreur est survenue lors de la mise à jour de l\'affectation'], 500);
         }
-
-        $travailler->id_visiteur = $request->id_visiteur;
-        $travailler->jjmmaa = $request->jjmmaa;
-        $travailler->id_region = $request->id_region;
-        $travailler->role_visiteur = $request->role_visiteur;
-
-        $travailler->save();
-
-        return response()->json(['status' => "Affectation modifié", 'data' => $travailler]);
     }
 
     public function deleteAffectation($id)
