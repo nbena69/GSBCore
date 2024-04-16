@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
+use function Laravel\Prompts\error;
 
 class AffectationWSController extends Controller
 {
@@ -76,6 +77,25 @@ class AffectationWSController extends Controller
         }
     }
 
+    function ajoutAffectation(Request $request)
+    {
+        $id_visiteur = $request->id_visiteur;
+        $jjmmaa = $request->jjmmaa;
+        $id_region = $request->id_region;
+        $role_visiteur = $request->role_visiteur;
+
+        $travailler = new Travailler();
+
+        $travailler->id_visiteur = $id_visiteur;
+        $travailler->jjmmaa = $jjmmaa;
+        $travailler->id_region = $id_region;
+        $travailler->role_visiteur = $role_visiteur;
+
+        $travailler->save();
+
+        return response()->json(['status' => "Affectation ajouté", 'data' => $travailler]);
+    }
+
     function updateAffectation(Request $request)
     {
         $idAffectation = $request->id_travail;
@@ -98,7 +118,14 @@ class AffectationWSController extends Controller
 
     public function deleteAffectation($id)
     {
-        Travailler::destroy($id);
-        return response()->json(['status' => "Affectation supprimée"]);
+        try {
+            // Supprimer l'affectation en utilisant la colonne id_travail
+            Travailler::where('id_travail', $id)->delete();
+
+            return response()->json(['status' => "Affectation supprimée"]);
+        } catch (\Exception $e) {
+            // En cas d'erreur, retourner une réponse JSON avec un message d'erreur
+            return response()->json(['error' => 'Une erreur est survenue lors de la suppression de l\'affectation'], 500);
+        }
     }
 }
