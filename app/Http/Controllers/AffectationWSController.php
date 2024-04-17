@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Travailler;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -94,7 +95,12 @@ class AffectationWSController extends Controller
     public function updateAffectation(Request $request, $id)
     {
         try {
-            $data = $request->only(['id_visiteur', 'jjmmaa', 'id_region', 'role_visiteur']);
+            // Récupérer les données du corps de la requête
+            $data = $request->only(['id_visiteur', 'id_region', 'role_visiteur']);
+
+            // Formater la date au format 'Y-m-d'
+            $jjmmaa = Carbon::parse($request->jjmmaa)->format('Y-m-d');
+            $data['jjmmaa'] = $jjmmaa;
 
             $travail = Travailler::where('id_travail', $id)->first();
 
