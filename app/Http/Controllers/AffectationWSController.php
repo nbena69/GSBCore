@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Region;
 use App\Models\Travailler;
-use App\Models\Visiteur;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -24,7 +22,6 @@ class AffectationWSController extends Controller
             // Récupérer toutes les affectations du visiteur donné
             $travaux = Travailler::where('id_visiteur', $id_visiteur)->get();
 
-            // Vérifier si des travaux ont été trouvés
             if ($travaux->isEmpty()) {
                 return response()->json(['message' => 'Aucune affectation trouvée pour ce visiteur'], 404);
             }
@@ -41,10 +38,8 @@ class AffectationWSController extends Controller
                 ];
             });
 
-            // Retourner les affectations formatées
             return response()->json($travauxFormatted);
         } catch (\Exception $e) {
-            // En cas d'erreur, retourner une réponse JSON avec un message d'erreur
             return response()->json(['error' => 'Une erreur est survenue lors de la récupération des affectations'], 500);
         }
     }
@@ -96,47 +91,38 @@ class AffectationWSController extends Controller
         return response()->json(['status' => "Affectation ajouté", 'data' => $travailler]);
     }
 
-    public function updateAffectation(Request $request)
+    public function updateAffectation(Request $request, $id)
     {
         try {
-            // Récupérer les données de la requête
-            $idAffectation = $request->id_travail;
-            $id_visiteur = $request->id_visiteur;
-            $jjmmaa = $request->jjmmaa;
-            $id_region = $request->id_region;
-            $role_visiteur = $request->role_visiteur;
+            $data = $request->only(['id_visiteur', 'jjmmaa', 'id_region', 'role_visiteur']);
 
-            // Rechercher l'affectation à mettre à jour
-            $travail = Travailler::where(['id_travail' => $idAffectation])->first();
+            $travail = Travailler::where('id_travail', $id)->first();
 
-            // Vérifier si l'affectation existe
+            // Vérifier si l'entrée existe
             if (!$travail) {
-                return response()->json(['error' => 'Affectation non trouvée'], 404);
+                return response()->json(['error' => 'L\'entrée n\'existe pas'], 404);
             }
 
-            $travail->update([
-                'id_visiteur' => $id_visiteur,
-                'jjmmaa' => $jjmmaa,
-                'id_region' => $id_region,
-                'role_visiteur' => $role_visiteur
-            ]);
+            // Mettre à jour les valeurs avec les données du corps de la requête
+            Travailler::where('id_travail', $id)->update($data);
 
-            return response()->json(['status' => "Affectation modifiée", 'data' => $travail]);
+            // Rechercher à nouveau l'entrée pour récupérer les données mises à jour
+            $updatedTravail = Travailler::where('id_travail', $id)->first();
+
+            // Retourner la réponse avec les données mises à jour
+            return response()->json(['status' => 'Affectation modifié', 'data' => $updatedTravail]);
         } catch (\Exception $e) {
-            // En cas d'erreur, retourner une réponse JSON avec un message d'erreur
-            return response()->json(['error' => 'Une erreur est survenue lors de la mise à jour de l\'affectation'], 500);
+            return response()->json(['error' => 'Une erreur est survenue lors de la mise à jour'], 500);
         }
     }
 
     public function deleteAffectation($id)
     {
         try {
-            // Supprimer l'affectation en utilisant la colonne id_travail
             Travailler::where('id_travail', $id)->delete();
 
             return response()->json(['status' => "Affectation supprimée"]);
         } catch (\Exception $e) {
-            // En cas d'erreur, retourner une réponse JSON avec un message d'erreur
             return response()->json(['error' => 'Une erreur est survenue lors de la suppression de l\'affectation'], 500);
         }
     }
