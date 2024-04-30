@@ -42,6 +42,7 @@ Route::middleware('auth:sanctum')->prefix('frais')->group(function () {
 Route::middleware('auth:sanctum')->prefix('activite')->group(function () {
     Route::get('', [ActiviteWSController::class, "liste"]);
     Route::get('getUneActivite/{id}', [ActiviteWSController::class, "detail"]);
+    Route::get('visiteur/{id}', [ActiviteWSController::class, "activiteVisiteur"]);
     Route::post('ajoutActivite', [ActiviteWSController::class, "ajoutActivite"]);
     Route::put('updateActivite/{id}', [ActiviteWSController::class, 'updateActivite']);
     Route::delete('deleteActivite/{id}', [ActiviteWSController::class, 'deleteActivite']);
