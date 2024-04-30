@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers;
 use App\Exceptions\MonException;
-use App\metier\Visiteur;
 use App\dao\ServiceVisiteur;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Session;
-
-
 
 class VisiteurController extends Controller
 {
