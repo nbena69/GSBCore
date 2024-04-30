@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
     <div class="gsb-container">
-        <h1 class="gsb-title"> Gestion des frais de déplacements à l'hôpital GSB</h1>
+        <h1 class="gsb-title">Gestion des frais de déplacements à l'hôpital GSB</h1>
         <p class="gsb-intro">Bienvenue dans le système de gestion des frais de déplacements de l'hôpital GSB. Ce système
             vous permet de suivre et de gérer les dépenses liées aux déplacements du personnel médical.</p>
 

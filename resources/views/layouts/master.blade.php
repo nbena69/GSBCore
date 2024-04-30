@@ -86,10 +86,13 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Activité <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="{{ url('/getFiltre') }}">Liste des Activités</a></li>
+                                <li><a href="{{ url('/listeActivite') }}">Liste des Activités</a></li>
                                 <li><a href="{{ url('/ajouterActivite') }}">Ajouter une Activité</a></li>
                             </ul>
                         </li>
+                    </ul>
+                    <ul class="nav navbar-nav">
+                        <li><a href="{{ url('/getFiltre') }}">Rechercher un Visiteur</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="{{ url('/getLogout') }}">Se déconnecter</a></li>
