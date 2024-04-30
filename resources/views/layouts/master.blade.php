@@ -111,7 +111,7 @@
     @yield('content')
 </div>
 <footer class="footer">
-    © 2023 Tous droits réservés à la société GSB
+    © 2024 Tous droits réservés à la société GSB
 </footer>
 <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
 </body>

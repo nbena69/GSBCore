@@ -19,13 +19,14 @@
                     <input type="number" name="nbjustificatifs" value=" "  class="form-control" placeholder="Nombre de justificatifs" required>
                 </div>
             </div>
+
             <div class="form-group">
                 <label class="col-md-3 col-sm-3 control-label">Montant validé :</label>
                 <div class="col-md-3 col-sm-3">
                     <input type="currency" class="form-control"  name="montantvalide" value="" placeholder="Montant engagé" required>
-
                 </div>
             </div>
+
             <div class="form-group">
                 <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
                     <button type="submit" class="btn btn-default btn-primary">

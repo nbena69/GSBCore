@@ -2,6 +2,7 @@
 
 namespace App\dao;
 
+use App\Models\Visiteur;
 use Illuminate\Support\Facades\DB;
 use App\Exceptions\MonException;
 use Illuminate\Support\Facades\Hash;
@@ -31,6 +32,21 @@ class ServiceVisiteur
         return $connected;
     }
 
+    public function filtreVisiteur($nom)
+    {
+        try {
+            $query = Visiteur::query();
+
+            $query->where('nom_visiteur', 'like', "%$nom%")
+                ->orWhereHas('laboratoire', function ($query) use ($nom) {
+                    $query->where('nom_laboratoire', 'like', "%$nom%");
+                });
+            $visiteurs = $query->get();
+            return $visiteurs;
+        } catch (QueryException $e) {
+            throw new MonException($e->getMessage(), 5);
+        }
+    }
 
     public function logout()
     {

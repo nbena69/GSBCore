@@ -26,8 +26,6 @@ class VisiteurController extends Controller
         }
     }
 
-
-
     public function signIn(){
         try {
             $login = Request::input('login');
@@ -54,10 +52,43 @@ class VisiteurController extends Controller
         }
     }
 
-
     public function signOut() {
         $unVisiteur = new ServiceVisiteur();
         $unVisiteur->logout();
         return view('home');
+    }
+
+    public function filtreVisiteurPage()
+    {
+        try {
+            $erreur = "";
+            $monErreur = Session::get('monErreur');
+            Session::forget('monErreur');
+            return view('vues/activite/filtreVisiteur', compact( 'erreur'));
+        } catch (MonException$e) {
+            $erreur = $e->getMessage();
+            return view('vues/error', compact('erreur'));
+        } catch (Exception$e) {
+            $erreur = $e->getMessage();
+            return view('vues/error', compact('erreur'));
+        }
+    }
+
+    public function filtreVisiteur()
+    {
+        try {
+            $nom = Request::input('nom');
+            $serviceVisiteur = new ServiceVisiteur();
+            $visiteurs = $serviceVisiteur->filtreVisiteur($nom);
+
+            // Retourner la vue avec les résultats de la recherche
+            return view('vues/resultatsVisiteur', compact('visiteurs'));
+        } catch (MonException $e) {
+            $erreur = $e->getMessage();
+            return view('vues/error', compact('erreur'));
+        } catch (Exception $e) {
+            $erreur = $e->getMessage();
+            return view('vues/error', compact('erreur'));
+        }
     }
 }
