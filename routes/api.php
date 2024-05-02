@@ -66,16 +66,6 @@ Route::middleware('auth:sanctum')->prefix('visiteur')->group(function () {
     Route::put('updateVisiteur/{id}', [VisiteurWSController::class, 'updateVisiteur']);
     Route::get('filtreAffectation', [VisiteurWSController::class, "filtreAffectation"]);
     Route::get('filtreAffectAvancee', [VisiteurWSController::class, "filtreAffectAvancee"]);
-    Route::get('obtenirInfosAffectation/{id}', [VisiteurWSController::class, "obtenirInfosAffectation"]);
-    Route::put('updateAffectation/{id}', [VisiteurWSController::class, "updateAffectation"]);
-    Route::post('affectation', [VisiteurWSController::class, "affectation"]);
-});
-
-Route::middleware('auth:sanctum')->prefix('work')->group(function () {
-    Route::get('', [WorkWSController::class, "liste"]);
-    Route::post('affectationVisiteur', [WorkWSController::class, "affectationVisiteur"]);
-    Route::post('deleteRegSec/{id_visiteur}', [WorkWSController::class, 'deleteActivite']);
-    Route::put('updateRegSect/{id}', [WorkWSController::class, 'updateRegSect']);
 });
 
 Route::middleware('auth:sanctum')->prefix('affectation')->group(function () {
