@@ -54,23 +54,37 @@ class ServiceActivite
         }
     }
 
-    public function insertActivite($date_activite, $lieu_activite, $theme_activite, $motif_activite)
+    public function insertActivite($id_visiteur, $date_activite, $lieu_activite, $theme_activite, $motif_activite)
     {
         try {
-            DB::table('activite_compl')
-                ->insert(['date_activite' => $date_activite,
+            // Insertion dans la table activite_compl et récupération de l'ID auto-incrémenté
+            $id_activite_compl = DB::table('activite_compl')
+                ->insertGetId([
+                    'date_activite' => $date_activite,
                     'lieu_activite' => $lieu_activite,
                     'theme_activite' => $theme_activite,
-                    'motif_activite' => $motif_activite]);
+                    'motif_activite' => $motif_activite
+                ]);
+
+            // Insertion dans la table realiser en utilisant l'ID récupéré
+            DB::table('realiser')
+                ->insert([
+                    'id_activite_compl' => $id_activite_compl,
+                    'id_visiteur' => $id_visiteur,
+                    'montant_ac' => 0.00
+                ]);
         } catch (QueryException $e) {
             throw new MonException($e->getMessage(), 5);
         }
     }
 
-    public function deleteActivite($id_activite)
+    public function deleteActivite($id_activite, $id_visiteur)
     {
         try {
-            DB::table('activite_compl')->where('id_activite_compl', '=', $id_activite)->delete();
+            DB::table('realiser')
+                ->where('id_activite_compl', '=', $id_activite)
+                ->where('id_visiteur', '=', $id_visiteur)
+                ->delete();
         } catch (QueryException $e) {
             throw new MonException($e->getMessage(), 5);
         }

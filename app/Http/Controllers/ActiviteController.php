@@ -30,7 +30,6 @@ class ActiviteController extends Controller
         }
     }
 
-
     public function addActivite()
     {
         try {
@@ -71,6 +70,7 @@ class ActiviteController extends Controller
     {
         try {
             $erreur = "";
+            $id_visiteur = Session::get('id');
             $id_activite = Request::input('id_activite');
             $date_activite = Request::input('date_activite');
             $lieu_activite = Request::input('lieu_activite');
@@ -80,7 +80,7 @@ class ActiviteController extends Controller
             if ($id_activite > 0) {
                 $unServiceActivite->updateActivite($id_activite, $date_activite, $lieu_activite, $theme_activite, $motif_activite);
             } else {
-                $unServiceActivite->insertActivite($date_activite, $lieu_activite, $theme_activite, $motif_activite);
+                $unServiceActivite->insertActivite($id_visiteur, $date_activite, $lieu_activite, $theme_activite, $motif_activite);
             }
             return redirect('/getListeActivite');
         } catch (MonException $e) {
@@ -96,12 +96,12 @@ class ActiviteController extends Controller
     {
         try {
             $erreur = "";
-            $unServiceActivite = new ServiceActivite();
-            $unServiceActivite->deleteActivite($id_activite);
             $id_visiteur = Session::get('id');
             $unServiceActivite = new ServiceActivite();
-            $mesActivite = $unServiceActivite->getActivite($id_visiteur);
-            return view('vues/activite/listeActivite', compact('mesActivite', 'erreur', 'id_visiteur'));
+            $unServiceActivite->deleteActivite($id_activite, $id_visiteur);
+            $unServiceActivite = new ServiceActivite();
+            $mesActivites = $unServiceActivite->getActivite($id_visiteur);
+            return view('vues/activite/listeActivite', compact('mesActivites', 'erreur', 'id_visiteur'));
         } catch (MonException $e) {
             $erreur = $e->getMessage();
             return view('vues/error', compact('erreur'));
