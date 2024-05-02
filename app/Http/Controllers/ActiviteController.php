@@ -30,6 +30,25 @@ class ActiviteController extends Controller
         }
     }
 
+
+    public function addActivite()
+    {
+        try {
+            $erreur = "";
+            $titrevue = "Ajout d'une Activite";
+            $id_visiteur = Session::get('id');
+            $unServiceActivite = new ServiceActivite();
+            $mesActivites = $unServiceActivite->getActivite($id_visiteur);
+            return view('vues/activite/formAjoutActivite', compact('mesActivites', 'titrevue', 'erreur', 'id_visiteur'));
+        } catch (MonException $e) {
+            $erreur = $e->getMessage();
+            return view('vues/error', compact('erreur'));
+        } catch (Exception $e) {
+            $erreur = $e->getMessage();
+            return view('vues/error', compact('erreur'));
+        }
+    }
+
     public function updateActivite($id_activite)
     {
         try {
