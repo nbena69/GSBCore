@@ -86,7 +86,7 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Activité <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="{{ url('/listeActivite') }}">Liste des Activités</a></li>
+                                <li><a href="{{ url('/getListeActivite') }}">Liste des Activités</a></li>
                                 <li><a href="{{ url('/ajouterActivite') }}">Ajouter une Activité</a></li>
                             </ul>
                         </li>

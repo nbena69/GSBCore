@@ -31,7 +31,7 @@ Route::post('/login', [VisiteurController::class, 'signIn']);
     Route::get('/supprimerFraisHors/{id}',  [FraisHorsController::class, 'supprimeFraisHors']);
 
     //Activite Complémentaire
-    Route::get('/getListeActivite', [ActiviteController::class, 'getFraisActivite']);
+    Route::get('/getListeActivite', [ActiviteController::class, 'getActiviteVisiteur']);
     Route::get('/ajouterActivite', [ActiviteController::class, 'addActivite']);
     Route::get('/modifierActivite/{id}', [ActiviteController::class, 'updateActivite']);
     Route::post('/validerActivite', [ActiviteController::class, 'validateActivite]']);
