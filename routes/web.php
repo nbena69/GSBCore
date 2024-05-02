@@ -32,9 +32,8 @@ Route::post('/login', [VisiteurController::class, 'signIn']);
 
     //Activite Complémentaire
     Route::get('/getListeActivite', [ActiviteController::class, 'getActiviteVisiteur']);
-    Route::get('/ajouterActivite', [ActiviteController::class, 'addActivite']);
     Route::get('/modifierActivite/{id}', [ActiviteController::class, 'updateActivite']);
-    Route::post('/validerActivite', [ActiviteController::class, 'validateActivite]']);
+    Route::post('/validerActivite', [ActiviteController::class, 'validateActivite']);
     Route::get('/supprimerActivite/{id}', [ActiviteController::class, 'supprimeActivite']);
 
     Route::get('/getFiltre', [VisiteurController::class, 'filtreVisiteurPage']);

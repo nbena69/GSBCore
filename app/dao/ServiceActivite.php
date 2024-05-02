@@ -54,6 +54,19 @@ class ServiceActivite
         }
     }
 
+    public function insertActivite($date_activite, $lieu_activite, $theme_activite, $motif_activite)
+    {
+        try {
+            DB::table('activite_compl')
+                ->insert(['date_activite' => $date_activite,
+                    'lieu_activite' => $lieu_activite,
+                    'theme_activite' => $theme_activite,
+                    'motif_activite' => $motif_activite]);
+        } catch (QueryException $e) {
+            throw new MonException($e->getMessage(), 5);
+        }
+    }
+
     public function deleteActivite($id_activite)
     {
         try {
@@ -61,5 +74,19 @@ class ServiceActivite
         } catch (QueryException $e) {
             throw new MonException($e->getMessage(), 5);
         }
+    }
+
+    public function getById($id_activite)
+    {
+        try {
+            $activiteById = DB::table('activite_compl')
+                ->select()
+                ->where('id_activite_compl', '=', $id_activite)
+                ->first();
+
+        } catch (QueryException $e) {
+            throw new MonException($e->getMessage(), 5);
+        }
+        return $activiteById;
     }
 }

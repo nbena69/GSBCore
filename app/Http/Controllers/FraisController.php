@@ -85,7 +85,7 @@ class FraisController extends Controller
             $erreur = "";
             $titrevue = "Ajout d'une fiche de Frais";
             $id_visiteur = Session::get('id');
-            $unServiceFrais = new ServiceFrais;
+            $unServiceFrais = new ServiceFrais();
             $mesFrais = $unServiceFrais->getFrais($id_visiteur);
             return view('vues/formAjoutFrais', compact('mesFrais', 'titrevue', 'erreur', 'id_visiteur'));
         } catch (MonException $e) {
