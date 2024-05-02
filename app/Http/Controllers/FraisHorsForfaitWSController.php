@@ -16,7 +16,7 @@ class FraisHorsForfaitWSController extends Controller
         $formattedFraishorsforfaits = $fraishorsforfaits->map(function ($fraishorsforfait) {
             return [
                 'id_frais' => $fraishorsforfait->id_frais,
-                'date_fraishorsforfait' => $fraishorsforfait->date_fraishorsforfait->format('Y-m-d'),
+                'date_fraishorsforfait' => $fraishorsforfait->date_fraishorsforfait->format('d-m-Y'),
                 'montant_fraishorsforfait' => $fraishorsforfait->montant_fraishorsforfait,
                 'lib_fraishorsforfait' => $fraishorsforfait->lib_fraishorsforfait,
             ];
@@ -27,13 +27,38 @@ class FraisHorsForfaitWSController extends Controller
 
     function detail($id)
     {
-        return response()->json(Fraishorsforfait::find($id));
+        $fraishorsforfait = Fraishorsforfait::find($id);
+
+        if($fraishorsforfait) {
+            $date_formatee = date('d-m-Y', strtotime($fraishorsforfait->date_fraishorsforfait));
+
+            return response()->json([
+                'id_frais' => $fraishorsforfait->id_frais,
+                'id_fraishorsforfait' => $fraishorsforfait->id_fraishorsforfait,
+                'date_fraishorsforfait' => $date_formatee,
+                'montant_fraishorsforfait' => $fraishorsforfait->montant_fraishorsforfait,
+                'lib_fraishorsforfait' => $fraishorsforfait->lib_fraishorsforfait
+            ]);
+        } else {
+            // Retourner une réponse indiquant que le frais hors forfait n'existe pas
+            return response()->json(['message' => 'Frais hors forfait non trouvé.'], 404);
+        }
     }
 
     function listeParFrais($id) {
         $fraisHorsForfait = Fraishorsforfait::where('id_frais', "=", $id)->get();
 
-        return response()->json($fraisHorsForfait);
+        $formattedFraishorsforfaits = $fraisHorsForfait->map(function ($fraishorsforfait) {
+            return [
+                'id_frais' => $fraishorsforfait->id_frais,
+                'id_fraishorsforfait' => $fraishorsforfait->id_fraishorsforfait,
+                'date_fraishorsforfait' => $fraishorsforfait->date_fraishorsforfait->format('d-m-Y'),
+                'montant_fraishorsforfait' => $fraishorsforfait->montant_fraishorsforfait,
+                'lib_fraishorsforfait' => $fraishorsforfait->lib_fraishorsforfait,
+            ];
+        });
+
+        return response()->json($formattedFraishorsforfaits);
     }
 
     function ajoutFraisHorsForfait(Request $request)
