@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ActiviteCompl;
 use App\Models\Realiser;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -56,5 +57,25 @@ class ActiviteWSController extends Controller
 
         // Retourner les données formatées
         return response()->json($formattedActivites);
+    }
+
+    function ajoutActivite(Request $request)
+    {
+        $date_activite = DateTime::createFromFormat('d-m-Y', $request->date_activite)->format('Y-m-d');
+
+        $lieu_activite = $request->lieu_activite;
+        $theme_activite = $request->theme_activite;
+        $motif_activite = $request->motif_activite;
+
+        $activite = new ActiviteCompl();
+
+        $activite->date_activite = $date_activite;
+        $activite->lieu_activite = $lieu_activite;
+        $activite->theme_activite = $theme_activite;
+        $activite->motif_activite = $motif_activite;
+
+        $activite->save();
+
+        return response()->json(['status' => "Activité ajoutée", 'data' => $activite]);
     }
 }
