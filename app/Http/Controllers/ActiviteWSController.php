@@ -66,6 +66,8 @@ class ActiviteWSController extends Controller
         $lieu_activite = $request->lieu_activite;
         $theme_activite = $request->theme_activite;
         $motif_activite = $request->motif_activite;
+        $id_visiteur = $request->id_visiteur;
+        $type_visiteur = $request->type_visiteur;
 
         $activite = new ActiviteCompl();
 
@@ -75,6 +77,18 @@ class ActiviteWSController extends Controller
         $activite->motif_activite = $motif_activite;
 
         $activite->save();
+
+        if($type_visiteur != "A") {
+            $id_activite_compl = $activite->id_activite_compl;
+
+            $realiser = new Realiser();
+
+            $realiser->id_visiteur = $id_visiteur;
+            $realiser->id_activite_compl = $id_activite_compl;
+            $realiser->montant_ac = null;
+
+            $realiser->save();
+        }
 
         return response()->json(['status' => "Activité ajoutée", 'data' => $activite]);
     }
