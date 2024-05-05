@@ -79,10 +79,10 @@ Route::middleware('auth:sanctum')->prefix('affectation')->group(function () {
 
 //auth
 Route::post('getConnexion', [VisiteurWSController::class, "getConnexion"]);
-Route::get('updatePassword', [VisiteurWSController::class,"updatePassword"]);
+Route::post('ajoutVisiteur', [VisiteurWSController::class, "ajoutVisiteur"]);
 Route::post('login', [VisiteurWSController::class, "login"]);
 Route::get('logout', [VisiteurWSController::class, "logout"])->middleware('auth:sanctum');
-Route::post('ajoutVisiteur', [VisiteurWSController::class, "ajoutVisiteur"]);
+Route::get('updatePassword', [VisiteurWSController::class,"updatePassword"])->middleware('auth:sanctum');
 
 //divers
 Route::get('etats', [ShortWSController::class, "listeEtats"]);

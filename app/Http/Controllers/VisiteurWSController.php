@@ -47,7 +47,7 @@ class VisiteurWSController extends Controller
             'pwd_visiteur' => [
                 'required',
                 'string',
-                'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/',
+                'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&.])[A-Za-z\d@$!%*?&.]{8,}$/',
             ],
             'type_visiteur' => 'required|string|max:1',
         ], [
