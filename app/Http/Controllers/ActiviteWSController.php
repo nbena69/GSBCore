@@ -17,7 +17,7 @@ class ActiviteWSController extends Controller
         $formattedactivite_compl = $activite_compl->map(function ($activite_compl) {
             return [
                 'id_activite_compl' => $activite_compl->id_activite_compl,
-                'date_activite' => $activite_compl->date_activite->format('Y-m-d'),
+                'date_activite' => $activite_compl->date_activite->format('d-m-Y'),
                 'lieu_activite' => $activite_compl->lieu_activite,
                 'theme_activite' => $activite_compl->theme_activite,
                 'motif_activite' => $activite_compl->motif_activite,
@@ -29,8 +29,23 @@ class ActiviteWSController extends Controller
 
     function detail($id)
     {
-        return response()->json(ActiviteCompl::find($id));
+        $activite_compl = ActiviteCompl::find($id);
+
+        if (!$activite_compl) {
+            return response()->json(['error' => 'Activité non trouvée'], 404);
+        }
+
+        $formattedActiviteCompl = [
+            'id_activite_compl' => $activite_compl->id_activite_compl,
+            'date_activite' => $activite_compl->date_activite->format('d-m-Y'),
+            'lieu_activite' => $activite_compl->lieu_activite,
+            'theme_activite' => $activite_compl->theme_activite,
+            'motif_activite' => $activite_compl->motif_activite,
+        ];
+
+        return response()->json($formattedActiviteCompl);
     }
+
 
     function deleteActivite($id)
     {
@@ -95,7 +110,7 @@ class ActiviteWSController extends Controller
 
     function updateActivite(Request $request)
     {
-        $id_activite = $request->id_activite;
+        $id_activite = $request->id_activite_compl;
 
         $activite = ActiviteCompl::find($id_activite);
 
