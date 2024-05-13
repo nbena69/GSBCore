@@ -92,4 +92,20 @@ class ActiviteWSController extends Controller
 
         return response()->json(['status' => "Activité ajoutée", 'data' => $activite]);
     }
+
+    function updateActivite(Request $request)
+    {
+        $id_activite = $request->id_activite;
+
+        $activite = ActiviteCompl::find($id_activite);
+
+        $activite->date_activite = DateTime::createFromFormat('d-m-Y', $request->date_activite)->format('Y-m-d');
+        $activite->lieu_activite = $request->lieu_activite;
+        $activite->theme_activite = $request->theme_activite;
+        $activite->motif_activite = $request->motif_activite;
+
+        $activite->save();
+
+        return response()->json(['status' => "Activité modifié", 'data' => $activite]);
+    }
 }
