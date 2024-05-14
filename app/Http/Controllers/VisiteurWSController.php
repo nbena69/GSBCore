@@ -102,17 +102,11 @@ class VisiteurWSController extends Controller
             return response()->json(['status' => "Visiteur non trouvé", 'data' => null]);
         }
 
-        $visiteur->id_laboratoire = $request->id_laboratoire;
-        $visiteur->id_secteur = $request->id_secteur;
-        $visiteur->nom_visiteur = $request->nom_visiteur;
-        $visiteur->prenom_visiteur = $request->prenom_visiteur;
         $visiteur->adresse_visiteur = $request->adresse_visiteur;
         $visiteur->cp_visiteur = $request->cp_visiteur;
         $visiteur->ville_visiteur = $request->ville_visiteur;
-        $visiteur->date_embauche = $request->date_embauche;
-        $visiteur->login_visiteur = $request->login_visiteur;
-        $visiteur->pwd_visiteur = $request->pwd_visiteur;
-        $visiteur->type_visiteur = $request->type_visiteur;
+        $visiteur->id_laboratoire = $request->id_laboratoire;
+        $visiteur->id_secteur = $request->id_secteur;
 
         $visiteur->save();
 
