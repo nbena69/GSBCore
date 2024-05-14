@@ -49,6 +49,7 @@ class ActiviteWSController extends Controller
 
     function deleteActivite($id)
     {
+        Realiser::where('id_activite_compl', $id)->delete();
         ActiviteCompl::destroy($id);
         return response()->json(['status' => "Activité supprimée"]);
     }

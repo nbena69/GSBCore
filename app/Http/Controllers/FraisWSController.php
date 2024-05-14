@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Frais;
+use App\Models\Fraishorsforfait;
 use App\Models\Visiteur;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -78,6 +79,7 @@ class FraisWSController extends Controller
 
     function deleteFrais($id)
     {
+        FraisHorsForfait::where('id_frais', $id)->delete();
         Frais::destroy($id);
         return response()->json(['status' => "Frais supprimée"]);
     }
