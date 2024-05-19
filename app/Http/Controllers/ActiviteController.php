@@ -30,6 +30,24 @@ class ActiviteController extends Controller
         }
     }
 
+    public function getPraticien()
+    {
+        try {
+            $erreur = "";
+            $monErreur = Session::get('monErreur');
+            Session::forget('monErreur');
+            $unServiceActivite = new ServiceActivite();
+            $mesActivites = $unServiceActivite->getAllPraticien();
+            return view('vues/activite/listePraticienInvitation', compact('mesActivites', 'erreur'));
+        } catch (MonException$e) {
+            $erreur = $e->getMessage();
+            return view('vues/error', compact('erreur'));
+        } catch (Exception$e) {
+            $erreur = $e->getMessage();
+            return view('vues/error', compact('erreur'));
+        }
+    }
+
     public function addActivite()
     {
         try {

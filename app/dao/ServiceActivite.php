@@ -24,6 +24,18 @@ class ServiceActivite
         }
     }
 
+    public function getAllPraticien()
+    {
+        try {
+            $lesPraticiens = DB::table('praticien')
+                ->select()
+                ->get();
+            return $lesPraticiens;
+        } catch (QueryException $e) {
+            throw new MonException($e->getMessage(), 5);
+        }
+    }
+
     public function getActivite($id_visiteur)
     {
         try {

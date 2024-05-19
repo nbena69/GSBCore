@@ -38,6 +38,7 @@ Route::post('/login', [VisiteurController::class, 'signIn']);
     Route::get('/supprimerActivite/{id}', [ActiviteController::class, 'supprimeActivite']);
 
     Route::get('/supprimerInviter/{id}', [ActiviteController::class, 'supprimeInviter']);
+    Route::get('/listePraticien', [ActiviteController::class, 'getPraticien']);
 
     Route::get('/getFiltre', [VisiteurController::class, 'filtreVisiteurPage']);
     Route::get('/getResultatFiltre', [VisiteurController::class, 'filtreVisiteur']);
