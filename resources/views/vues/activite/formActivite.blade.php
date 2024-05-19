@@ -49,6 +49,21 @@
                 </div>
             </div>
 
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Nom</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($mesPraticien as $praticien)
+                    <tr>
+                        <td>{{ $praticien->nom_praticien }}</td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+
         </div>
     </div>
     {!! Form::close() !!}

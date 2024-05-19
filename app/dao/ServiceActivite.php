@@ -39,12 +39,19 @@ class ServiceActivite
         }
     }
 
-    public function getRealiser($id_activite)
+    public function getInviter($id_activite)
     {
         try {
-            return;
-        } catch (QueryException $e) {
+            $inviter = DB::table('inviter')
+                ->join('praticien', 'inviter.id_praticien', '=', 'praticien.id_praticien')
+                ->where('inviter.id_activite_compl', $id_activite)
+                ->select('praticien.nom_praticien')
+                ->get();
 
+            // Retourner une liste des noms des praticiens
+            return $inviter->pluck('nom_praticien');
+        } catch (QueryException $e) {
+            throw new MonException($e->getMessage(), 5);
         }
     }
 
