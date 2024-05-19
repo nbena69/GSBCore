@@ -4,7 +4,7 @@
 
     {!! Form::open(['url' => 'validerActivite']) !!}
     <div class="col-md-12  col-sm-12 well well-md">
-        <center><h1>Ajouter une activité</h1></center>
+        <center><h1>Modifier l'activité</h1></center>
         <div class="form-horizontal">
             <input type="hidden" name="id_activite" value="{{$uneActivite->id_activite_compl ?? 0}}"/>
             <div class="form-group">

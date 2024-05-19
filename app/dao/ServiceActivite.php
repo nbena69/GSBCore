@@ -39,6 +39,15 @@ class ServiceActivite
         }
     }
 
+    public function getRealiser($id_activite)
+    {
+        try {
+            return;
+        } catch (QueryException $e) {
+
+        }
+    }
+
     public function updateActivite($id_activite, $date_activite, $lieu_activite, $theme_activite, $motif_activite)
     {
         try {

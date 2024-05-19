@@ -56,7 +56,8 @@ class ActiviteController extends Controller
             $unServiceActivite = new ServiceActivite();
             $uneActivite = $unServiceActivite->getById($id_activite);
             $titrevue = "Modification d'une Activite";
-            return view('vues/activite/formActivite', compact('uneActivite', 'titrevue', 'erreur'));
+            $mesPraticien = $unServiceActivite->getRealiser($id_activite);
+            return view('vues/activite/formActivite', compact('uneActivite', 'mesPraticien', 'titrevue', 'erreur'));
         } catch (MonException $e) {
             $erreur = $e->getMessage();
             return view('vues/error', compact('erreur'));
