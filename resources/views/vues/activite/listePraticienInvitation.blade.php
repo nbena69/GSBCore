@@ -14,6 +14,7 @@
 
 <div class="container">
     <h1>Inviter un praticien</h1>
+    <p>Activité concernée n°{{$id_activite}}</p>
     <table class="table">
         <thead class="thead-dark">
         <tr>
@@ -28,8 +29,8 @@
                 <td>{{ $praticien->nom_praticien }}</td>
                 <td>{{ $praticien->prenom_praticien }}</td>
                 <td style="text-align: center;"><a href="{{url('/ajoutInviter')}}/{{$praticien->id_praticien}}">
-                        <span class="glyphicon glyphicon-pencil" data-toggle="tooltip" data-placement="top"
-                              title="modification"></span>
+                        <span class="glyphicon glyphicon-plus" data-toggle="tooltip" data-placement="top"
+                              title="ajouter"></span>
                     </a></td>            </tr>
         @endforeach
         </tbody>

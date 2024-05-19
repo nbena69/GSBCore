@@ -30,7 +30,7 @@ class ActiviteController extends Controller
         }
     }
 
-    public function getPraticien()
+    public function getPraticien($id_activite)
     {
         try {
             $erreur = "";
@@ -38,7 +38,7 @@ class ActiviteController extends Controller
             Session::forget('monErreur');
             $unServiceActivite = new ServiceActivite();
             $mesPraticiens = $unServiceActivite->getAllPraticien();
-            return view('vues/activite/listePraticienInvitation', compact('mesPraticiens', 'erreur'));
+            return view('vues/activite/listePraticienInvitation', compact('mesPraticiens', 'erreur', 'id_activite'));
         } catch (MonException$e) {
             $erreur = $e->getMessage();
             return view('vues/error', compact('erreur'));
