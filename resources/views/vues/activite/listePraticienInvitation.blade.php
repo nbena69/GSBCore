@@ -27,8 +27,10 @@
             <tr>
                 <td>{{ $praticien->nom_praticien }}</td>
                 <td>{{ $praticien->prenom_praticien }}</td>
-                <td>{{ $praticien->lieu_activite }}</td>
-            </tr>
+                <td style="text-align: center;"><a href="{{url('/ajoutInviter')}}/{{$praticien->id_praticien}}">
+                        <span class="glyphicon glyphicon-pencil" data-toggle="tooltip" data-placement="top"
+                              title="modification"></span>
+                    </a></td>            </tr>
         @endforeach
         </tbody>
     </table>

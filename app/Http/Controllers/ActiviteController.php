@@ -37,8 +37,8 @@ class ActiviteController extends Controller
             $monErreur = Session::get('monErreur');
             Session::forget('monErreur');
             $unServiceActivite = new ServiceActivite();
-            $mesActivites = $unServiceActivite->getAllPraticien();
-            return view('vues/activite/listePraticienInvitation', compact('mesActivites', 'erreur'));
+            $mesPraticiens = $unServiceActivite->getAllPraticien();
+            return view('vues/activite/listePraticienInvitation', compact('mesPraticiens', 'erreur'));
         } catch (MonException$e) {
             $erreur = $e->getMessage();
             return view('vues/error', compact('erreur'));
