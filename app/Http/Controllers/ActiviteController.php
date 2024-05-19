@@ -100,7 +100,24 @@ class ActiviteController extends Controller
             $id_visiteur = Session::get('id');
             $unServiceActivite = new ServiceActivite();
             $unServiceActivite->deleteActivite($id_activite, $id_visiteur);
+            $mesActivites = $unServiceActivite->getActivite($id_visiteur);
+            return view('vues/activite/listeActivite', compact('mesActivites', 'erreur', 'id_visiteur'));
+        } catch (MonException $e) {
+            $erreur = $e->getMessage();
+            return view('vues/error', compact('erreur'));
+        } catch (Exception $e) {
+            $erreur = $e->getMessage();
+            return view('vues/error', compact('erreur'));
+        }
+    }
+
+    public function supprimeInviter($id_praticien)
+    {
+        try {
+            $erreur = "";
+            $id_visiteur = Session::get('id');
             $unServiceActivite = new ServiceActivite();
+            $unServiceActivite->deleteInviter($id_praticien);
             $mesActivites = $unServiceActivite->getActivite($id_visiteur);
             return view('vues/activite/listeActivite', compact('mesActivites', 'erreur', 'id_visiteur'));
         } catch (MonException $e) {

@@ -60,11 +60,21 @@
                 @foreach($mesPraticien as $praticien)
                     <tr>
                         <td>{{ $praticien->nom_praticien }} - {{$praticien->prenom_praticien}}</td>
-                    </tr>
+                        <td style="text-align: center;"><a
+                                class="glyphicon glyphicon-remove" data-toggle="tooltip" data-placement="top"
+                                title="suppression" onclick="javascript:if (confirm('Suppression confirmée ?'))
+                        {window.location = '{{url('/supprimerInviter')}}/{{$praticien->id_praticien}}';}"></a></td></tr>
                 @endforeach
                 </tbody>
             </table>
 
+            <div class="form-group">
+                <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
+                    <button type="submit" class="btn btn-default btn-primary">
+ Ajouter un praticien
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
     {!! Form::close() !!}

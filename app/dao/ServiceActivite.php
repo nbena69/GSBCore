@@ -44,7 +44,7 @@ class ServiceActivite
         try {
             $inviter = DB::table('inviter')
                 ->join('praticien', 'inviter.id_praticien', '=', 'praticien.id_praticien')
-                ->select('praticien.nom_praticien', 'praticien.prenom_praticien')
+                ->select('praticien.nom_praticien', 'praticien.prenom_praticien', 'praticien.id_praticien')
                 ->where('inviter.id_activite_compl', "=", $id_activite)
                 ->get();
 
@@ -100,6 +100,17 @@ class ServiceActivite
             DB::table('realiser')
                 ->where('id_activite_compl', '=', $id_activite)
                 ->where('id_visiteur', '=', $id_visiteur)
+                ->delete();
+        } catch (QueryException $e) {
+            throw new MonException($e->getMessage(), 5);
+        }
+    }
+
+    public function deleteInviter($id_praticien)
+    {
+        try {
+            DB::table('inviter')
+                ->where('id_praticien', '=', $id_praticien)
                 ->delete();
         } catch (QueryException $e) {
             throw new MonException($e->getMessage(), 5);
