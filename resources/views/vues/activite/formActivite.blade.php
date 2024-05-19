@@ -52,13 +52,14 @@
             <table class="table">
                 <thead class="thead-dark">
                 <tr>
-                    <th scope="col">Nom</th>
+                    <th scope="col">Praticien inscrit :</th>
+                    <th scope="col">Supprimer</th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($mesPraticien as $praticien)
                     <tr>
-                        <td>{{ $praticien->nom_praticien }}</td>
+                        <td>{{ $praticien->nom_praticien }} - {{$praticien->prenom_praticien}}</td>
                     </tr>
                 @endforeach
                 </tbody>

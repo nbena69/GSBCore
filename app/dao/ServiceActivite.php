@@ -44,12 +44,12 @@ class ServiceActivite
         try {
             $inviter = DB::table('inviter')
                 ->join('praticien', 'inviter.id_praticien', '=', 'praticien.id_praticien')
-                ->where('inviter.id_activite_compl', $id_activite)
-                ->select('praticien.nom_praticien')
+                ->select('praticien.nom_praticien', 'praticien.prenom_praticien')
+                ->where('inviter.id_activite_compl', "=", $id_activite)
                 ->get();
 
             // Retourner une liste des noms des praticiens
-            return $inviter->pluck('nom_praticien');
+            return $inviter;
         } catch (QueryException $e) {
             throw new MonException($e->getMessage(), 5);
         }
