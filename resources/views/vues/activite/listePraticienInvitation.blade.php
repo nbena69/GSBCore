@@ -14,7 +14,7 @@
 
 <div class="container">
     <h1>Inviter un praticien</h1>
-    <p>Activité concernée n°{{$id_activite}}</p>
+    <p>Activité concernée n° {{$id_activite ?? 0}}</p>
     <table class="table">
         <thead class="thead-dark">
         <tr>
