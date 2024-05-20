@@ -71,7 +71,7 @@ class ActiviteController extends Controller
         try {
             $erreur = "";
             $unServiceActivite = new ServiceActivite();
-            $mesActivites = $unServiceActivite->insertPraticien($id, $id_praticien);
+            $unServiceActivite->insertPraticien($id, $id_praticien);
             return $this->updateActivite($id);
         } catch (MonException $e) {
             $erreur = $e->getMessage();
@@ -145,7 +145,7 @@ class ActiviteController extends Controller
         }
     }
 
-    public function supprimeInviter($id_praticien)
+    public function supprimeInviter($id_praticien, $id_activite)
     {
         try {
             $erreur = "";
@@ -153,7 +153,7 @@ class ActiviteController extends Controller
             $unServiceActivite = new ServiceActivite();
             $unServiceActivite->deleteInviter($id_praticien);
             $mesActivites = $unServiceActivite->getActivite($id_visiteur);
-            return view('vues/activite/listeActivite', compact('mesActivites', 'erreur', 'id_visiteur'));
+            return $this->updateActivite($id_activite);
         } catch (MonException $e) {
             $erreur = $e->getMessage();
             return view('vues/error', compact('erreur'));

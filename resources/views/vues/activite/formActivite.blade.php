@@ -63,14 +63,14 @@
                         <td style="text-align: center;"><a
                                 class="glyphicon glyphicon-remove" data-toggle="tooltip" data-placement="top"
                                 title="suppression" onclick="javascript:if (confirm('Suppression confirmée ?'))
-                        {window.location = '{{url('/supprimerInviter')}}/{{$praticien->id_praticien}}';}"></a></td></tr>
+                        {window.location = '{{url('/supprimerInviter')}}/{{$praticien->id_praticien}}/{{$uneActivite->id_activite_compl}}';}"></a></td></tr>
                 @endforeach
                 </tbody>
             </table>
 
             <div class="form-group">
                 <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
-                    <a href="{{ url('listePraticien')}}/{{$uneActivite->id_activite_compl}} }}">
+                    <a href="{{ url('listePraticien')}}/{{$uneActivite->id_activite_compl }}">
                         <button type="button" class="btn btn-default btn-primary"><span
                                 class="glyphicon glyphicon-plus"></span> Inviter un praticien supplémentaire
                         </button>

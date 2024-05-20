@@ -112,8 +112,8 @@ class ServiceActivite
             DB::table('inviter')
                 ->insert([
                     'id_activite_compl' => $id,
-                    'id_visiteur' => $id_praticien,
-                    'montant_ac' => 0.00
+                    'id_praticien' => $id_praticien,
+                    'specialiste' => "N"
                 ]);
         } catch (QueryException $e) {
             throw new MonException($e->getMessage(), 5);
