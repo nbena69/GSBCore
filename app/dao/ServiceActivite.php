@@ -106,6 +106,20 @@ class ServiceActivite
         }
     }
 
+    public function insertPraticien($id, $id_praticien)
+    {
+        try {
+            DB::table('inviter')
+                ->insert([
+                    'id_activite_compl' => $id,
+                    'id_visiteur' => $id_praticien,
+                    'montant_ac' => 0.00
+                ]);
+        } catch (QueryException $e) {
+            throw new MonException($e->getMessage(), 5);
+        }
+    }
+
     public function deleteActivite($id_activite, $id_visiteur)
     {
         try {

@@ -66,6 +66,22 @@ class ActiviteController extends Controller
         }
     }
 
+    public function addPraticien($id, $id_praticien)
+    {
+        try {
+            $erreur = "";
+            $unServiceActivite = new ServiceActivite();
+            $mesActivites = $unServiceActivite->insertPraticien($id, $id_praticien);
+            return $this->updateActivite($id);
+        } catch (MonException $e) {
+            $erreur = $e->getMessage();
+            return view('vues/error', compact('erreur'));
+        } catch (Exception $e) {
+            $erreur = $e->getMessage();
+            return view('vues/error', compact('erreur'));
+        }
+    }
+
     public function updateActivite($id_activite)
     {
         try {

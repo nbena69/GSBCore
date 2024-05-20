@@ -28,7 +28,7 @@
             <tr>
                 <td>{{ $praticien->nom_praticien }}</td>
                 <td>{{ $praticien->prenom_praticien }}</td>
-                <td style="text-align: center;"><a href="{{url('/ajoutInviter')}}/{{$praticien->id_praticien}}">
+                <td style="text-align: center;"><a href="{{url('/ajoutPraticien')}}/{{$id_activite}}/{{$praticien->id_praticien}}">
                         <span class="glyphicon glyphicon-plus" data-toggle="tooltip" data-placement="top"
                               title="ajouter"></span>
                     </a></td>            </tr>
