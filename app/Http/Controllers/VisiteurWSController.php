@@ -28,11 +28,6 @@ class VisiteurWSController extends Controller
         return response()->json(Visiteur::where('ville_visiteur', $ville_visiteur)->select('id_visiteur', 'nom_visiteur', 'prenom_visiteur')->get());
     }
 
-    function praticienVille($ville_praticien)
-    {
-        return response()->json(Praticien::where('ville_praticien', $ville_praticien)->select('id_praticien', 'nom_praticien', 'prenom_praticien')->get());
-    }
-
     function visiteurNom($nom_visiteur)
     {
         return response()->json(Visiteur::where('nom_visiteur', 'like', '%' . $nom_visiteur . '%')->select("*")->get());

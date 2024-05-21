@@ -4,6 +4,7 @@ use App\Http\Controllers\ActiviteWSController;
 use App\Http\Controllers\AffectationWSController;
 use App\Http\Controllers\FraisHorsForfaitWSController;
 use App\Http\Controllers\FraisWSController;
+use App\Http\Controllers\PraticienWSController;
 use App\Http\Controllers\ShortWSController;
 use App\Http\Controllers\VisiteurWSController;
 use Illuminate\Http\Request;
@@ -61,12 +62,15 @@ Route::middleware('auth:sanctum')->prefix('visiteur')->group(function () {
     Route::get('', [VisiteurWSController::class, "liste"]);
     Route::get('getUnVisiteur/{id_visiteur}', [VisiteurWSController::class, "details"]);
     Route::get('ville/{ville_visiteur}', [VisiteurWSController::class, "visiteurVille"]);
-    Route::get('villePraticien/{ville_visiteur}', [VisiteurWSController::class, "praticienVille"]);
     Route::get('nom/{nom_visiteur}', [VisiteurWSController::class, "visiteurNom"]);
     Route::delete('deleteVisiteur/{id}', [VisiteurWSController::class, 'deleteVisiteur']);
     Route::put('updateVisiteur/{id}', [VisiteurWSController::class, 'updateVisiteur']);
     Route::get('filtreAffectation', [VisiteurWSController::class, "filtreAffectation"]);
     Route::get('filtreAffectAvancee', [VisiteurWSController::class, "filtreAffectAvancee"]);
+});
+
+Route::middleware('auth:sanctum')->prefix('praticien')->group(function () {
+    Route::get('ville/{ville_visiteur}', [PraticienWSController::class, "praticienVille"]);
 });
 
 Route::middleware('auth:sanctum')->prefix('affectation')->group(function () {
@@ -76,9 +80,7 @@ Route::middleware('auth:sanctum')->prefix('affectation')->group(function () {
     Route::post('ajoutAffectation', [AffectationWSController::class, "ajoutAffectation"]);
     Route::put('updateAffectation/{id}', [AffectationWSController::class, "updateAffectation"]);
     Route::delete('deleteAffectation/{id}', [AffectationWSController::class, "deleteAffectation"]);
-    Route::post('ajoutAffectationPraticien', [AffectationWSController::class, "ajoutAffectationPraticien"]);
-    Route::put('updateAffectationPraticien/{id}', [AffectationWSController::class, "updateAffectationPraticien"]);
-    Route::delete('deleteAffectationPraticien/{id}', [AffectationWSController::class, "deleteAffectationPraticien"]);});
+});
 
 //auth
 Route::post('getConnexion', [VisiteurWSController::class, "getConnexion"]);
