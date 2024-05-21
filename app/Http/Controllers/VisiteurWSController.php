@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Praticien;
 use App\Models\Travailler;
 use App\Models\Visiteur;
 use Illuminate\Http\Request;
@@ -24,7 +25,12 @@ class VisiteurWSController extends Controller
 
     function visiteurVille($ville_visiteur)
     {
-        return response()->json(Visiteur::where('ville_visiteur', $ville_visiteur)->select('id_visiteur', 'nom_visiteur')->get());
+        return response()->json(Visiteur::where('ville_visiteur', $ville_visiteur)->select('id_visiteur', 'nom_visiteur', 'prenom_visiteur')->get());
+    }
+
+    function praticienVille($ville_praticien)
+    {
+        return response()->json(Praticien::where('ville_praticien', $ville_praticien)->select('id_praticien', 'nom_praticien', 'prenom_praticien')->get());
     }
 
     function visiteurNom($nom_visiteur)

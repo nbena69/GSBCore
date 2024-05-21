@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ActiviteCompl;
+use App\Models\Inviter;
 use App\Models\Realiser;
 use DateTime;
 use Illuminate\Http\Request;
@@ -58,6 +59,27 @@ class ActiviteWSController extends Controller
     {
         // Récupérer toutes les réalisations pour l'id_visiteur donné
         $realisations = Realiser::where('id_visiteur', $id_visiteur)->get();
+
+        // Formatter les données
+        $formattedActivites = $realisations->map(function ($realisation) {
+            $activiteCompl = $realisation->activite_compl;
+            return [
+                'id_activite_compl' => $activiteCompl->id_activite_compl,
+                'date_activite' => $activiteCompl->date_activite->format('d-m-Y'),
+                'lieu_activite' => $activiteCompl->lieu_activite,
+                'theme_activite' => $activiteCompl->theme_activite,
+                'motif_activite' => $activiteCompl->motif_activite,
+            ];
+        });
+
+        // Retourner les données formatées
+        return response()->json($formattedActivites);
+    }
+
+    public function activitePraticien($id_praticien)
+    {
+        // Récupérer toutes les réalisations pour l'id_visiteur donné
+        $realisations = Inviter::where('id_praticien', $id_praticien)->get();
 
         // Formatter les données
         $formattedActivites = $realisations->map(function ($realisation) {
