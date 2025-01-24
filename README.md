@@ -1,27 +1,27 @@
 <p align="center">
   <a href="https://laravel.com" target="_blank">
-    <img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Logo de GsbFrais">
+    <img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="GSB Logo">
   </a>
 </p>
 
 <p align="center">
-  <strong>Description du projet GsbFrais (GSB)</strong>
+  <strong>Description of the GSB project</strong>
 </p>
 
-## À propos de GsbFrais
+## About GSB
 
-**GsbFrais**, également connu sous le nom de **GSB**, est un projet informatique personnel qui représente le laboratoire **Galaxy Swiss Bourdin (GSB)**.
+**Gsb** is a personal computing project that represents the laboratory **Galaxy Swiss Bourdin (GSB)**.
 
-## Description du Laboratoire Gsb
+## Description of the Gsb Laboratory
 
-Le laboratoire **Galaxy Swiss Bourdin (GSB)** est issu de la fusion entre le géant américain Galaxy et le conglomérat européen Swiss Bourdin. L'entreprise **GSB** souhaite moderniser l'activité de visite médicale.
+The laboratory **Galaxy Swiss Bourdin (GSB)** is the result of the merger between the American giant Galaxy and the European conglomerate Swiss Bourdin. The company **GSB** wishes to modernize the medical examination activity.
 
-## Description du Système Informatique
+## Description of the Computer System
 
-Le système informatique de **GsbFrais** est crucial pour son bon fonctionnement. Il est fortement répandu sur le site de l'entreprise, avec des serveurs physiques et virtuels, et une gestion informatique essentielle pour les différents services.
+The computer system of **GSB** is crucial for its proper functioning. It is widely used on the company site, with physical and virtual servers, and essential IT management for the different departments.
 
-## Domaine d'étude
+## Field of study
 
-L'entreprise **GsbFrais** souhaite améliorer la gestion de sa force commerciale, en particulier la flotte de visiteurs médicaux. Pour atteindre ces objectifs, des outils informatiques sont nécessaires, notamment pour l'enregistrement d'informations en provenance des visiteurs, la gestion des frais de déplacement, et le suivi des équipes sur le terrain.
+The company **GSB** wishes to improve the management of its sales force, in particular the fleet of medical salespeople. To achieve these objectives, IT tools are necessary, particularly for recording information from visitors, managing travel expenses, and monitoring teams in the field.
 
-En résumé, **GsbFrais** est un projet informatique personnel dans le domaine de la gestion de la force commerciale, inspiré par l'entreprise **GSB** et ses besoins en matière de suivi des visiteurs médicaux. Ce projet vise à développer des outils pour améliorer la gestion de cette force commerciale et obtenir une meilleure vision de l'activité sur le terrain.
+In summary, **GSB** is a personal computing project in the field of sales force management, inspired by the company **GSB** and its needs in terms of monitoring medical visitors. This project aims to develop tools to improve the management of this sales force and obtain a better vision of activity in the field.
